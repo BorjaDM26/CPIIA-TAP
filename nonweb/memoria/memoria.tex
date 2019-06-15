@@ -1,0 +1,177 @@
+\documentclass[12pt,a4paper,oneside,spanish]{book}
+\usepackage[utf8]{inputenc}
+
+%\usepackage[T1]{fontenc}
+\usepackage{palatino}
+\usepackage{eurosym}
+
+
+\usepackage{color}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+\definecolor{blue50}{rgb}{0,0,1}
+
+\usepackage{longtable}
+\usepackage{fullpage}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{tocbibind}
+
+\setlength{\headheight}{16pt}
+
+\onehalfspacing
+
+%\usepackage[pdftex]{thumbpdf}
+\usepackage{url}
+\usepackage[pdftitle={},
+              pdfauthor={Borja Delgado Martín},
+              pdfsubject={TEMATICA},
+              pdfkeywords={Sistema, Gestión, Turnos, Actuación, Profesional, TAP, Colegio,
+              			   Ingeniería, Informática, Andalucía, CPIIA},
+              pdfproducer={pdfLaTeX}
+              pdftex,
+              colorlinks=true,
+              linkcolor=black,
+              pdfstartview=FitH]{hyperref}
+
+\usepackage{color}
+\definecolor{rltred}{rgb}{0.75,0,0}
+\definecolor{rltgreen}{rgb}{0,0.5,0}
+\definecolor{rltblue}{rgb}{0,0,0.75}
+\usepackage[pdftex]{graphicx}
+\usepackage{pdfpages}
+\usepackage{t1enc}
+
+\DeclareGraphicsExtensions{.pdf,.png,.jpg} %solo para PDFLaTeX
+
+\usepackage[spanish]{babel}
+%\usepackage[latin1]{inputenc}
+
+\usepackage{verbatim}
+\usepackage{calc} % para que funcione bien \ojo{}
+\usepackage{shadow}
+\usepackage{xspace}
+
+\usepackage{fancyhdr} % para cabeceras y pies de pagina
+\pagestyle{fancy}
+\addtolength{\textheight}{-1cm}
+\addtolength{\oddsidemargin}{1cm}
+\addtolength{\evensidemargin}{1cm}
+\addtolength{\textwidth}{-1.1cm}
+\addtolength{\headwidth}{-1.1cm}
+
+\headsep 1cm
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+%%%%\lhead{\bfseries \chaptermark}
+\lhead{\bfseries \sectionmark}
+\rfoot{\thepage}
+\cfoot{}
+
+\newenvironment{CompactItemize}{
+                        \begin{itemize}}
+                        {\end{itemize}}
+
+\newenvironment{Desc}{
+                        \begin{description}}
+                        {\end{description}}
+
+
+
+\onehalfspacing
+\setcounter{secnumdepth}{5}
+
+\newcommand{\sgn}{\operatorname{{\mathrm sgn}}}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+%\usepackage{algpseudocode}
+
+%\usepackage{program}
+
+
+\newcommand{\ii}{\'{\i}}
+
+
+%\hyphenation{in-ter-na-tional}
+
+\usepackage[hang,small,bf]{caption}
+
+
+
+
+
+%Preferencias propias
+%%%Paths
+\graphicspath{ {./Imagenes/} }
+%%% Paquetes
+\usepackage{enumerate} 
+\usepackage{placeins} %Para los FloatBarrier
+\usepackage[table, svgnames]{xcolor} \usepackage{array} %Formato de las tablas
+ \usepackage{etoolbox}
+\colorlet{headercolour}{blue!25}
+\AtBeginEnvironment{tabular}{\rowcolors{1}{\ifnumless{\rownum}{2}{headercolour}{white}}{}}
+%%% Contadores
+\newcounter{tabla}
+\newcounter{figura}
+\newcounter{rf}
+\newcounter{rnf}
+\newcounter{ri}
+\newcounter{casouso}
+
+
+
+%\usepackage{eurofont}
+\begin{document}
+%\frontmatter
+
+
+\tableofcontents
+
+
+\chapter{Introducción}
+
+\section{Introducción}
+
+
+% Aquí va la descripción de lo que se va a hacer del anteproyecto, cambiando el tiempo verbal de futuro a pasado (de "vamos a hacer", a "hemos hecho")
+
+
+
+\section{Objetivos}
+
+% Aquí va la descripción de lo que se va a hacer de los objetivos, cambiando el tiempo verbal de futuro a pasado (de "vamos a hacer", a "hemos hecho")
+
+
+\section{Organización de la memoria}
+
+ Hemos estructurado la memoria de la siguiente forma:
+
+\begin{itemize}
+\item En el primer capítulo enumeramos nuestros objetivos con este trabajo fin de grado.
+\item En el segundo capítulo, analizamos el estado del arte.
+\item En el tercer capítulo comentamos las tecnologías empleadas.
+\item En el cuarto capítulo, describimos el análisis y el diseño del sistema que implementaremos.
+%\item En el quinto capítulo, describimos las decisiones de diseño tomadas y la implementación final.
+\item En el quinto capítulo, comentamos las conclusiones a las que hemos llegado tras la realización de este trabajo.
+\item En el sexto capítulo, añadimos la bibliografía empleada.
+\item Incluímos un apéndice con un pequeño manual de usuario de la aplicación desarrollada.
+\end{itemize}
+
+\include{capitulo2}
+\include{capitulo3}
+\include{capitulo4}
+\include{capitulo5}
+\include{bibliografia}
+\include{manualdeusuario}
+
+
+\end{document}
+
