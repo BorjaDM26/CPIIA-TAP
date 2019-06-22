@@ -1,16 +1,35 @@
-body{
+/*------------------------------------------------------
+------------------------ GENERAL -----------------------
+------------------------------------------------------*/
+body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
 }
 
+p {
+	text-align : justify;
+}
 
-/* Menú Superior y Lateral */
+h1 {
+	margin-bottom: 20px;
+}
+h3 {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+footer {
+	bottom:0px;
+}
+
+/*------------------------------------------------------
+--------------------- MENÚ SUPERIOR --------------------
+------------------------------------------------------*/
 nav#menuSuperior {
 	z-index: 2;
 	width: 100%;
 	height: 70px;
-	position: fixed;
 	border-bottom: 2px solid #d6d6d6;
 	background-color: #3dbd09;
 	color: white;
@@ -42,35 +61,11 @@ nav#menuSuperior a[class~="sesion"]:hover{
 	background-color: white;
 	border-radius: 3px;
 }
-nav#menuLateral {
-	position: fixed;
-	z-index: 1;
-	left: 0;
-	background-color: #ececec;
-	overflow-x: hidden;
-	margin-top: 46px;
-	border-bottom: 2px solid #d6d6d6;
-	border-right: 2px solid #d6d6d6;
-}
-nav#menuLateral a[class~="top-item"] {
-	padding: 6px 8px 6px 16px;
-	text-decoration: none;
-	color: #818181;
-	display: block;
-	font-size: 20px;
-}
-nav#menuLateral a[class~="low-item"] {
-	padding: 6px 8px 6px 16px;
-	text-decoration: none;
-	display: block;
-	color: #212529;
-}
-div[class~="bloqueIzq"]{
-	margin-bottom: 20px;
-}
 
 
-/* Menú Dropdown */
+/*------------------------------------------------------
+--------------------- MENÚ DROPDOWN --------------------
+------------------------------------------------------*/
 .dropbtn {
   background-color: #000000;
   color: white;
@@ -101,7 +96,69 @@ div[class~="bloqueIzq"]{
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
-/* Menu Login */
+
+/*------------------------------------------------------
+------------------------ FOOTER ------------------------
+------------------------------------------------------*/
+.footer{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: normal 16px sans-serif;
+
+	padding: 45px 50px;
+	margin-top: 80px;
+}
+
+.footer-left{
+	color:  #8f9296;
+	font-size: 14px;
+	margin: 0;
+}
+
+/* Footer links */
+p.footer-links{
+	font-size:18px;
+	font-weight: bold;
+	color:  #ffffff;
+	margin: 0 0 10px;
+	padding: 0;
+}
+
+p.footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-right{
+	float: right;
+	margin-top: 6px;
+	max-width: 180px;
+}
+
+.footer-right a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-left: 3px;
+}
+
+
+/*------------------------------------------------------
+---------------------- MENÚ LOGIN ----------------------
+------------------------------------------------------*/
 form[class~='sesion'] {
 	z-index: 1;
 	width: 450px;
@@ -115,7 +172,9 @@ form[class~='sesion'] {
 	margin: auto;
 }
 
-/* Formularios */
+/*------------------------------------------------------
+--------------------- FORMULARIOS ----------------------
+------------------------------------------------------*/
 input[type="text"], input[type="password"]{
 	outline: none;
 	padding: 20px;
@@ -126,7 +185,7 @@ input[type="text"], input[type="password"]{
 	margin: 20px auto;
 }
 
-input[type="submit"], input[type="reset"], button[type="reset"], button[class="volver"]{
+input[type="submit"], input[type="reset"], button[type="reset"], button[class~="volver"]{
 	padding: 10px;
 	width: 200px;
 	margin-top: 0;
@@ -143,10 +202,10 @@ input[type="reset"], button[type="reset"]{
 input[type="reset"]:hover, button[type="reset"]:hover{
 	background-color: #00b8eb; 
 }
-button[class="volver"]{
+button[class~="volver"]{
 	background: #e40613;
 }
-button[class="volver"]:hover{
+button[class~="volver"]:hover{
 	background: #f00;
 }
 button[class~="crear"]{
@@ -169,36 +228,13 @@ button[class~="crear"]{
 }
 
 
-/* Estos header habrá que borrarlos */
-header{
-	border-bottom: 2px solid #eee;
-	padding: 20px 0;
-	margin-bottom: 10px;
-	width: 100%;
-	text-align: center;
-}
-header a{
-	text-decoration: none;
-	color: #333;
-}
-
-
-div.contenido {
-  margin-top: 80px;
-  margin-left: 230px;
-}
-div.contenidoCentro {
+/*------------------------------------------------------
+--------------------- CONTENIDO ----------------------
+------------------------------------------------------*/
+div.contenido{
   margin: auto;
-  margin-top: 60px;
-}
-div.contenidoAdmin {
-  margin-top: 60px;
-  margin-left: 300px;
 }
 
-li[class="nav-item"] a {
-	width: 100%;
-}
 
 form#formCrearColegiado *{
 	margin-right:10px;
@@ -210,7 +246,11 @@ thead *{
 	color: black
 }
 
-/* Pruebas */
+
+
+/*------------------------------------------------------
+------------------------ PRUEBAS -----------------------
+------------------------------------------------------*/
 input[class~="customInput"], select[class~="customInput"]{
 	weight: 400px;
     width: 12em;
@@ -236,13 +276,4 @@ select[class~="customFilter"]{
 label[class~="etiqueta"]{
 	margin-bottom: 0px;
 }
-
-h1{
-	margin-bottom: 20px;
-}
-h3{
-	margin-top: 30px;
-	margin-bottom: 20px;
-}
-
 
