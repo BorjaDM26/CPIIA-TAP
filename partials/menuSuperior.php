@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/funciones.js"></script>
 	</head>
 
 	<body>
@@ -27,14 +28,14 @@
 					<li class="nav-item">
 						<div class="dropdown">
 							<?php 
-								if(substr ( $pgnActual , 0 , 3) == 'TAP' || substr ( $pgnActual , 0 , 5) == 'index'){
+								if(substr ( $curPage , 0 , 3) == 'TAP' || substr ( $curPage , 0 , 5) == 'index'){
 									echo "<a class=\"nav-link activada\" href=\"index.php\"><i class=\"fas fa-home\"></i> TAP</a>";
 								} else{
 									echo "<a class=\"nav-link noActivada\" href=\"index.php\"><i class=\"fas fa-home\"></i> TAP</a>";
 								} 
 							?>
 							<div class="dropdown-content">
-								<a class="dropdown-item" href="#"> Solicitar Actuación</a>
+								<a class="dropdown-item" href="TAPSolicitarActuacion.php"> Solicitar Actuación</a>
 								<a class="dropdown-item" href="TAPListaPublica.php"> Listas Públicas</a>
 								<a class="dropdown-item" href="#"> Tipos de Lista</a>
 							</div>
@@ -44,7 +45,7 @@
 					<li class="nav-item">
 						<div class="dropdown">
 							<?php 
-								if(substr ( $pgnActual , 0 , 5) == 'Coleg'){
+								if(substr ( $curPage , 0 , 5) == 'Coleg'){
 									echo "<a class=\"nav-link activada\" href=\"#\"><i class=\"fas fa-users\"></i> Colegiados</a>";
 								} else{
 									echo "<a class=\"nav-link noActivada\" href=\"#\"><i class=\"fas fa-users\"></i> Colegiados</a>";
@@ -63,7 +64,7 @@
 						<li class="nav-item">
 							<div class="dropdown">
 								<?php 
-								if(substr ( $pgnActual , 0 , 5) == 'Admin'){
+								if(substr ( $curPage , 0 , 5) == 'Admin'){
 									echo "<a class=\"nav-link activada\" href=\"AdminColegiadoLista.php\"><i class=\"fab fa-whmcs\"></i> Administración</a>";
 								} else{
 									echo "<a class=\"nav-link noActivada\" href=\"AdminColegiadoLista.php\"><i class=\"fab fa-whmcs\"></i> Administración</a>";
@@ -96,5 +97,6 @@
 				<?php endif; ?>
 			</div>
 		</nav>
+		<br/>
 	</body>
 </html>

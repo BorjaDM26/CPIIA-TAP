@@ -1,10 +1,10 @@
 <?php 
-	$servidor = 'localhost';
-	$usuario = 'root';
+	$server = 'localhost';
+	$user = 'root';
 	$pass = '';
-	$baseDatos = 'bd-tap-cpiia'; //Nombre de la base de datos
+	$database = 'bdTapCPIIA'; //Nombre de la base de datos
 
-	$conn = mysqli_connect($servidor, $usuario, $pass, $baseDatos);
+	$conn = mysqli_connect($server, $user, $pass, $database);
 
 	// Check connection
 	if (mysqli_connect_errno()){
