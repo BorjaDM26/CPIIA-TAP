@@ -32,8 +32,8 @@
 	<body>
 		<?php require 'partials/menuSuperior.php' ?>
 
-		<h1>Login</h1>
-		<div class="contenidoCentro">
+		<div class="contenido col-md-9">
+			<h1>Login</h1>
 			<form class="sesion" action="login.php" method="post">
 				<input type="text" id="NumColeg" name="NumColeg" placeholder="Introduce tu número de colegiado">
 				<input type="password" id="pass" name="pass" placeholder="Introduce tu contraseña">

@@ -227,6 +227,10 @@ button[class~="crear"]{
 	background-color: #57de20;
 }
 
+div[class~="campoForm"]{
+	padding-right: 35px;
+}
+
 
 /*------------------------------------------------------
 --------------------- CONTENIDO ----------------------
@@ -242,10 +246,15 @@ form#formCrearColegiado *{
 *[class~="text-center"]{
 	text-align: center;
 }
+*[class~="text-justified"]{
+	text-align: justify;
+}
 thead *{
 	color: black
 }
-
+table{
+	margin: auto;
+}
 
 
 /*------------------------------------------------------
@@ -277,3 +286,6 @@ label[class~="etiqueta"]{
 	margin-bottom: 0px;
 }
 
+div[class~="card"], thead{
+	background-color: #e0d9d8;
+}

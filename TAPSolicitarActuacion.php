@@ -20,7 +20,7 @@
 
 			<form id="formCrearSolicitud" method="POST" action="procesarCrearSolicitud.php">
 				<div class="form-row">
-                    <div class="form-group campoForm offset-md-1">
+                    <div class="form-group offset-md-1">
                     	<label for="nombre" class="etiqueta">Nombre del solicitante * </label>
                         <input class="form-control customInput" type="text" id="nombre" name="nombre" required="true"/>
                     </div>
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group campoForm offset-md-1">
+                    <div class="form-group offset-md-1">
 	                	<label for="tipoLst" class="etiqueta">Tipo de solicitud * </label>
 	                	<select class="form-control customInput" name="tipoLst" id="tipoLst">
 	                		<?php 
@@ -45,7 +45,7 @@
 	                		?>
 						</select>
 	                </div>
-	                <div class="form-group campoForm offset-md-1">
+	                <div class="form-group offset-md-1">
 	                	<label for="provincia" class="etiqueta">Provincia * </label>
 	                	<select class="form-control customInput" name="provincia" id="provincia">
 	                		<option value="ALM">Almería</option>
@@ -67,7 +67,7 @@
                     </div>
 				</div>
 				<div class="form-row">
-                    <div class="form-group campoForm offset-md-1">
+                    <div class="form-group offset-md-1">
                     	<label for="descripcion" class="etiqueta">Descripción de lo solicitado * </label>
                         <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="80" required="true"></textarea>
                     </div>

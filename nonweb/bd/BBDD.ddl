@@ -99,7 +99,7 @@ CREATE TABLE `bdTapCPIIA`.`lista`(
     `IdLista`           INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `IdTipoLista`       INT NOT NULL,
     `Publica`           BOOLEAN,
-    `Territorio`      VARCHAR(3),
+    `Territorio`        VARCHAR(3) NOT NULL,
     UNIQUE (`IdTipoLista`, `Publica`, `Territorio`),
     FOREIGN KEY(`IdTipoLista`) REFERENCES `bdTapCPIIA`.`tipolista`(`IdTipoLista`)
         ON DELETE CASCADE ON UPDATE CASCADE,
@@ -165,6 +165,7 @@ CREATE TABLE `bdTapCPIIA`.`servicioactuacion` (
 --  INSERCIONES
 ------------------------------------------------------*/
 /*-- Colegiados --*/
+INSERT INTO `bdTapCPIIA`.`colegiado` (`Pass`, `Rol`, `Nombre`, `Apellidos`, `DomicilioProfesional`, `Localidad`, `CodigoPostal`, `Provincia`, `TelefonoProfesional`, `CorreoElectronico`, `URL`) VALUES (PASSWORD('1234'), 'Colegiado', 'Olivia', 'Ordoñez', 'Calle del Naranjo, N26, 4ºA', 'Jeréz', '03281', 'Cádiz', '650000018', 'OliviaO@mail.com', 'www.oliviaooo.com');
 /*
 INSERT INTO `bdTapCPIIA`.`colegiado` (`DNI`, `Pass`, `Rol`, `Nombre`, `Apellidos`, `FechaNacimiento`, `Domicilio`, `Localidad`, `CodigoPostal`, `territorio`, `TelefonoProfesional`, `OtroTelefono`, `CorreoElectronico`, `URL`) VALUES ('10000000Z', PASSWORD('1234'), 'Responsable', 'Ramón', 'Ramírez', '1974-04-03', 'Calle del Olmo, N01, 1ºA', 'Málaga', '14264', 'Málaga', '650000001', '952000001', 'RamonG@mail.com', 'www.ramonggg.com');
 INSERT INTO `bdTapCPIIA`.`colegiado` (`DNI`, `Pass`, `Rol`, `Nombre`, `Apellidos`, `FechaNacimiento`, `Domicilio`, `Localidad`, `CodigoPostal`, `territorio`, `TelefonoProfesional`, `OtroTelefono`, `CorreoElectronico`, `URL`) VALUES ('10000001S', PASSWORD('1234'), 'Colegiado', 'Adolfo', 'Arjona', '1962-04-03', 'Calle del Pino, N02, 1ºB', 'Jaén', '18204', 'Jaén', '650000002', '952000002', 'AdolfoA@mail.com', 'www.adolfoaaa.com');
@@ -183,116 +184,102 @@ INSERT INTO `bdTapCPIIA`.`colegiado` (`DNI`, `Pass`, `Rol`, `Nombre`, `Apellidos
 INSERT INTO `bdTapCPIIA`.`colegiado` (`DNI`, `Pass`, `Rol`, `Nombre`, `Apellidos`, `FechaNacimiento`, `Domicilio`, `Localidad`, `CodigoPostal`, `territorio`, `TelefonoProfesional`, `OtroTelefono`, `CorreoElectronico`, `URL`) VALUES ('10000014M', PASSWORD('1234'), 'Responsable', 'Inés', 'Iniesta', '1976-02-26', 'Calle del Olivo, N23, 3ºA', 'Bilbao', '14264', 'Bilbao', '650000015', '9520000015', 'InesI@mail.com', 'www.inesiii.com');
 INSERT INTO `bdTapCPIIA`.`colegiado` (`DNI`, `Pass`, `Rol`, `Nombre`, `Apellidos`, `FechaNacimiento`, `Domicilio`, `Localidad`, `CodigoPostal`, `territorio`, `TelefonoProfesional`, `OtroTelefono`, `CorreoElectronico`, `URL`) VALUES ('10000015Y', PASSWORD('1234'), 'Colegiado', 'Luis', 'Lozano', '1969-12-15', 'Calle de la Morera, N24, 3ºB', 'Sevila', '18204', 'Sevilla', '650000016', '9520000016', 'LuisL@mail.com', 'www.luislll.com');
 INSERT INTO `bdTapCPIIA`.`colegiado` (`DNI`, `Pass`, `Rol`, `Nombre`, `Apellidos`, `FechaNacimiento`, `Domicilio`, `Localidad`, `CodigoPostal`, `territorio`, `TelefonoProfesional`, `OtroTelefono`, `CorreoElectronico`, `URL`) VALUES ('10000016F', PASSWORD('1234'), 'Colegiado', 'Nadia', 'Navarro', '1984-10-06', 'Calle del Abedul, N25, 3ºC', 'Madrid', '20482', 'Madrid', '650000017', '952000017', 'NadiaN@mail.com', 'www.nadiannn.com');
-INSERT INTO `bdTapCPIIA`.`colegiado` (`DNI`, `Pass`, `Rol`, `Nombre`, `Apellidos`, `FechaNacimiento`, `Domicilio`, `Localidad`, `CodigoPostal`, `territorio`, `TelefonoProfesional`, `OtroTelefono`, `CorreoElectronico`, `URL`) VALUES ('10000017P', PASSWORD('1234'), 'Colegiado', 'Olivia', 'Ordoñez', '1986-09-17', 'Calle del Naranjo, N26, 4ºA', 'Jeréz', '03281', 'Cádiz', '650000018', '952000018', 'OliviaO@mail.com', 'www.oliviaooo.com');
 INSERT INTO `bdTapCPIIA`.`colegiado` (`DNI`, `Pass`, `Rol`, `Nombre`, `Apellidos`, `FechaNacimiento`, `Domicilio`, `Localidad`, `CodigoPostal`, `territorio`, `TelefonoProfesional`, `OtroTelefono`, `CorreoElectronico`, `URL`) VALUES ('10000018D', PASSWORD('1234'), 'Colegiado', 'Sara', 'Salcedo', '1991-07-14', 'Calle de la Haya, N27, 4ºB', 'Málaga', '43910', 'Malaga', '650000019', '952000019', 'SaraS@mail.com', 'www.sarasss.com');
 INSERT INTO `bdTapCPIIA`.`colegiado` (`DNI`, `Pass`, `Rol`, `Nombre`, `Apellidos`, `FechaNacimiento`, `Domicilio`, `Localidad`, `CodigoPostal`, `territorio`, `TelefonoProfesional`, `OtroTelefono`, `CorreoElectronico`, `URL`) VALUES ('10000019X', PASSWORD('1234'), 'Colegiado', 'Guillermo', 'Guerra', '1971-03-22', 'Calle de la Secuoya, N28, 4ºC', 'Córdoba', '22321', 'Córdoba', '650000020', '952000020', 'GuilleG@mail.com', 'www.gilleggg.com');
 */
 
 /*-- Territorios --*/
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('NAC', 'Nacional');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('AND', 'Andalucía');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('AOC', 'Andalucía Occidental');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('AOR', 'Andalucía Oriental');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('ALM', 'Almería');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('CAD', 'Cádiz');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('COR', 'Cordoba');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('GRA', 'Granada');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('HUE', 'Huelva');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('JAE', 'Jaén');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('MAL', 'Málaga');
-INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES ('SEV', 'Sevilla');
+INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES 
+('NAC', 'Nacional'),
+('AND', 'Andalucía'),
+('AOC', 'Andalucía Occidental'),
+('AOR', 'Andalucía Oriental'),
+('ALM', 'Almería'),
+('CAD', 'Cádiz'),
+('COR', 'Cordoba'),
+('GRA', 'Granada'),
+('HUE', 'Huelva'),
+('JAE', 'Jaén'),
+('MAL', 'Málaga'),
+('SEV', 'Sevilla');
 
 /*-- Comisiones --*/
-INSERT INTO `bdTapCPIIA`.`comisiontap` (`Presidente`) VALUES (NULL);
-INSERT INTO `bdTapCPIIA`.`comisiontap` (`Presidente`) VALUES (NULL);
-INSERT INTO `bdTapCPIIA`.`comisiontap` (`Presidente`) VALUES (NULL);
+INSERT INTO `bdTapCPIIA`.`comisiontap` (`Presidente`) VALUES 
+(NULL),
+(NULL),
+(NULL);
 
 /*-- Tipos de lista --*/
-INSERT INTO `bdTapCPIIA`.`tipolista` (`Nombre`, `Descripcion`, `IdComision`) VALUES ('Peritaje', 'Estudios e investigaciones orientados a la obtención de una prueba informática de aplicación en un asunto judicial para que sirva a un juez para decidir sobre la culpabilidad o inocencia de una de las partes.', 1);
-INSERT INTO `bdTapCPIIA`.`tipolista` (`Nombre`, `Descripcion`, `IdComision`) VALUES ('Pentesting', 'Una prueba de penetración, o \\\"pentest\\\", es un ataque a un sistema informático con la intención de encontrar las debilidades de seguridad y todo lo que podría tener acceso a ella, su funcionalidad y datos.\\r\\n\\r\\nEl proceso consiste en identificar el o los sistemas del objetivo. Las pruebas de penetración pueden hacerse sobre una \\\"caja blanca\\\" (donde se ofrece toda la información de fondo y de sistema) o caja negra (donde no se proporciona información, excepto el nombre de la empresa). Una prueba de penetración puede ayudar a determinar si un sistema es vulnerable a los ataques, si las defensas (si las hay) son suficientes y no fueron vencidas.\\r\\n\\r\\nLos problemas de seguridad descubiertos a través de la prueba de penetración deben notificarse al propietario del sistema. Con los resultados de las pruebas de penetración podremos evaluar los impactos potenciales a la organización y sugerir medidas para reducir los riesgos.', 2);
-INSERT INTO `bdTapCPIIA`.`tipolista` (`Nombre`, `Descripcion`, `IdComision`) VALUES ('Auditoría', 'Proceso que consiste en recoger, agrupar y evaluar evidencias para determinar si un Sistema de Información salvaguarda el activo empresarial, mantiene la integridad de los datos, utiliza eficientemente los recursos, cumple con las leyes y regulaciones establecidas.', 3);
+INSERT INTO `bdTapCPIIA`.`tipolista` (`Nombre`, `Descripcion`, `IdComision`) VALUES 
+('Peritaje', 'Estudios e investigaciones orientados a la obtención de una prueba informática de aplicación en un asunto judicial para que sirva a un juez para decidir sobre la culpabilidad o inocencia de una de las partes.', 1),
+('Pentesting', 'Una prueba de penetración, o "pentest", es un ataque a un sistema informático con la intención de encontrar las debilidades de seguridad y todo lo que podría tener acceso a ella, su funcionalidad y datos. <br><br>El proceso consiste en identificar el o los sistemas del objetivo. Las pruebas de penetración pueden hacerse sobre una "caja blanca" (donde se ofrece toda la información de fondo y de sistema) o caja negra (donde no se proporciona información, excepto el nombre de la empresa). Una prueba de penetración puede ayudar a determinar si un sistema es vulnerable a los ataques, si las defensas (si las hay) son suficientes y no fueron vencidas. <br><br>Los problemas de seguridad descubiertos a través de la prueba de penetración deben notificarse al propietario del sistema. Con los resultados de las pruebas de penetración podremos evaluar los impactos potenciales a la organización y sugerir medidas para reducir los riesgos.', 2),
+('Auditoría', 'Proceso que consiste en recoger, agrupar y evaluar evidencias para determinar si un Sistema de Información salvaguarda el activo empresarial, mantiene la integridad de los datos, utiliza eficientemente los recursos, cumple con las leyes y regulaciones establecidas.', 3);
 
 /*-- Campos de especialización --*/
-INSERT INTO `bdTapCPIIA`.`campoespecializacion` (`Nombre`, `Descripcion`) VALUES ('Linux', 'Sistema operativo libre tipo Unix; multiplataforma, multiusuario y multitarea.');
-INSERT INTO `bdTapCPIIA`.`campoespecializacion` (`Nombre`, `Descripcion`) VALUES ('MySQL', 'Sistema de gestión de bases de datos relacional.');
-INSERT INTO `bdTapCPIIA`.`campoespecializacion` (`Nombre`, `Descripcion`) VALUES ('PHP', 'Es un lenguaje de programación de propósito general de código del lado del servidor originalmente diseñado para el desarrollo web de contenido dinámico.');
-INSERT INTO `bdTapCPIIA`.`campoespecializacion` (`Nombre`, `Descripcion`) VALUES ('Minería de datos', 'Campo de la estadística y las ciencias de la computación referido al proceso que intenta descubrir patrones en grandes volúmenes de conjuntos de datos.​​');
-INSERT INTO `bdTapCPIIA`.`campoespecializacion` (`Nombre`, `Descripcion`) VALUES ('Computación en la nube', 'Paradigma que permite ofrecer servicios de computación a través de una red, que usualmente es Internet.');
-INSERT INTO `bdTapCPIIA`.`campoespecializacion` (`Nombre`, `Descripcion`) VALUES ('Java', 'Lenguaje de programación de propósito general, concurrente, orientado a objetos, que fue diseñado específicamente para tener tan pocas dependencias de implementación como fuera posible.');
-INSERT INTO `bdTapCPIIA`.`campoespecializacion` (`Nombre`, `Descripcion`) VALUES ('ISO 27000', 'Estándares de seguridad publicados por la Organización Internacional para la Estandarización (ISO) y la Comisión Electrotécnica Internacional (IEC).');
-INSERT INTO `bdTapCPIIA`.`campoespecializacion` (`Nombre`, `Descripcion`) VALUES ('Apache', 'Servidor web HTTP de código abierto, para plataformas Unix (BSD, GNU/Linux, etc.), Microsoft Windows, Macintosh y otras, que implementa el protocolo HTTP/1.1 y la noción de sitio virtual según la normativa RFC 2616.');
+INSERT INTO `bdTapCPIIA`.`campoespecializacion` (`Nombre`, `Descripcion`) VALUES 
+('Linux',                  'Sistema operativo libre tipo Unix; multiplataforma, multiusuario y multitarea.'),
+('MySQL',                  'Sistema de gestión de bases de datos relacional.'),
+('PHP',                    'Es un lenguaje de programación de propósito general de código del lado del servidor originalmente diseñado para el desarrollo web de contenido dinámico.'),
+('Minería de datos',       'Campo de la estadística y las ciencias de la computación referido al proceso que intenta descubrir patrones en grandes volúmenes de conjuntos de datos.​​'),
+('Computación en la nube', 'Paradigma que permite ofrecer servicios de computación a través de una red, que usualmente es Internet.'),
+('Java',                   'Lenguaje de programación de propósito general, concurrente, orientado a objetos, que fue diseñado específicamente para tener tan pocas dependencias de implementación como fuera posible.'),
+('ISO 27000',              'Estándares de seguridad publicados por la Organización Internacional para la Estandarización (ISO) y la Comisión Electrotécnica Internacional (IEC).'),
+('Apache',                 'Servidor web HTTP de código abierto, para plataformas Unix (BSD, GNU/Linux, etc.), Microsoft Windows, Macintosh y otras, que implementa el protocolo HTTP/1.1 y la noción de sitio virtual según la normativa RFC 2616.');
 
 /*-- Especializaciones de colegiado --*/
-INSERT INTO `bdTapCPIIA`.`especializacioncolegiado` (`NumColegiado`, `IdEspecializacion`) VALUES ('1', '1');
-INSERT INTO `bdTapCPIIA`.`especializacioncolegiado` (`NumColegiado`, `IdEspecializacion`) VALUES ('1', '2');
-INSERT INTO `bdTapCPIIA`.`especializacioncolegiado` (`NumColegiado`, `IdEspecializacion`) VALUES ('1', '3');
-INSERT INTO `bdTapCPIIA`.`especializacioncolegiado` (`NumColegiado`, `IdEspecializacion`) VALUES ('1', '7');
-INSERT INTO `bdTapCPIIA`.`especializacioncolegiado` (`NumColegiado`, `IdEspecializacion`) VALUES ('2', '1');
+INSERT INTO `bdTapCPIIA`.`especializacioncolegiado` (`NumColegiado`, `IdEspecializacion`) VALUES 
+('1', '1'),
+('1', '2'),
+('1', '3'),
+('1', '7'),
+('2', '1');
 
 /*-- Especializaciones de tipo de lista --*/
-INSERT INTO `bdTapCPIIA`.`especializacionlista` (`IdTipoLista`, `IdEspecializacion`) VALUES ('1', '7');
-INSERT INTO `bdTapCPIIA`.`especializacionlista` (`IdTipoLista`, `IdEspecializacion`) VALUES ('2', '1');
+INSERT INTO `bdTapCPIIA`.`especializacionlista` (`IdTipoLista`, `IdEspecializacion`) VALUES 
+('1', '7'),
+('2', '1');
 
 /*-- Inclusiones en comisiones --*/
-INSERT INTO `bdTapCPIIA`.`miembrocomision` (`NumColegiado`, `IdComision`) VALUES ('1', '1');
-INSERT INTO `bdTapCPIIA`.`miembrocomision` (`NumColegiado`, `IdComision`) VALUES ('1', '2');
+INSERT INTO `bdTapCPIIA`.`miembrocomision` (`NumColegiado`, `IdComision`) VALUES 
+('1', '1'),
+('1', '2');
 
 /*-- Listas --*/
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (1, 0, 'ALM');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (1, 0, 'CAD');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (1, 0, 'MAL');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (1, 0, 'SEV');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (1, 1, 'ALM');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (1, 1, 'CAD');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (1, 1, 'MAL');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (1, 1, 'SEV');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (2, 0, 'AOC');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (2, 0, 'AOR');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (2, 1, 'AOC');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (2, 1, 'AOR');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (3, 0, 'NAC');
-INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (3, 1, 'NAC');
+INSERT INTO `bdTapCPIIA`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES
+(1, 0,    'ALM'),
+(1, 0,    'CAD'),
+(1, 0,    'MAL'),
+(1, 0,    'SEV'),
+(1, 1,    'ALM'),
+(1, 1,    'CAD'),
+(1, 1,    'MAL'),
+(1, 1,    'SEV'),
+(2, 0,    'AOC'),
+(2, 0,    'AOR'),
+(2, 1,    'AOC'),
+(2, 1,    'AOR'),
+(3, 0,    'NAC'),
+(3, 1,    'NAC'),
+(1, NULL, 'NAC');
 
-/*-- Inscripciones (NumColegiado, IdEspecializacion, Public, IdTerritorio, Salida) --*/
-INSERT INTO `bdTapCPIIA`.`inscripcion` (`NumColegiado`, `IdLista`) VALUES ('1', '3');
-INSERT INTO `bdTapCPIIA`.`inscripcion` (`NumColegiado`, `IdLista`) VALUES ('1', '6');
-INSERT INTO `bdTapCPIIA`.`inscripcion` (`NumColegiado`, `IdLista`) VALUES ('1', '10');
-INSERT INTO `bdTapCPIIA`.`inscripcion` (`NumColegiado`, `IdLista`) VALUES ('1', '11');
+/*-- Inscripciones --*/
+INSERT INTO `bdTapCPIIA`.`inscripcion` (`NumColegiado`, `IdLista`) VALUES 
+('1', '3'),
+('1', '6'),
+('1', '10'),
+('1', '11'),
+('1', '15');
 
-CALL `crearinscripcion`('2', '1', NULL, NULL, @p0);
-CALL `crearinscripcion`('17', '1', NULL, NULL, @p0);
-CALL `crearinscripcion`('19', '1', NULL, NULL, @p0);
-CALL `crearinscripcion`('12', '1', '0', NULL, @p0);
-CALL `crearinscripcion`('14', '1', '1', NULL, @p0);
-CALL `crearinscripcion`('11', '1', '0', NULL, @p0);
-CALL `crearinscripcion`('1', '1', '0', 'MAL', @p0);
-CALL `crearinscripcion`('4', '1', '0', 'MAL', @p0);
-CALL `crearinscripcion`('6', '1', '0', 'MAL', @p0);
-CALL `crearinscripcion`('10', '1', '0', 'MAL', @p0);
-CALL `crearinscripcion`('4', '1', '1', 'MAL', @p0);
-CALL `crearinscripcion`('6', '1', '1', 'MAL', @p0);
-CALL `crearinscripcion`('8', '1', '1', 'MAL', @p0);
-CALL `crearinscripcion`('9', '1', '1', 'MAL', @p0);
-CALL `crearinscripcion`('12', '1', '1', 'MAL', @p0);
-CALL `crearinscripcion`('4', '1', '0', 'CAD', @p0);
-CALL `crearinscripcion`('8', '1', '0', 'CAD', @p0);
-CALL `crearinscripcion`('11', '1', '0', 'CAD', @p0);
-CALL `crearinscripcion`('12', '1', '0', 'CAD', @p0);
-CALL `crearinscripcion`('14', '1', '1', 'CAD', @p0);
-CALL `crearinscripcion`('11', '1', '0', 'GRA', @p0);
-CALL `crearinscripcion`('8', '1', '0', 'SEV', @p0);
-CALL `crearinscripcion`('11', '1', '1', 'JAE', @p0);
-
-
-
-/*-- Solicitudes de actuacion (Nombre, Descripcion, Visado, Correo, Telefono, IdEspecializacion, IdTerritorio, Salida)--*/
-CALL `crearsolicitudact`('bdTapCPIIA', 'Soy bdTapCPIIA y solicito un pentester', '0', 'bdTapCPIIA@mail.com', '650650650', '1', 'MAL', @p0);
-CALL `crearsolicitudact`('Juan', 'Soy Juan y solicito un pentester', '1', 'juan@mail.com', '650650651', '1', 'MAL', @p0);
-CALL `crearsolicitudact`('Arturo', 'Soy Arturo y solicito un pentester', '0', 'arturo@mail.com', '650650652', '1', 'MAL', @p0);
-CALL `crearsolicitudact`('Marta', 'Soy Marta y solicito un pentester', '1', 'marta@mail.com', '650650653', '1', 'MAL', @p0);
-CALL `crearsolicitudact`('Luque', 'Soy Luque y solicito un pentester', '1', 'luque@mail.com', '650650654', '1', 'MAL', @p0);
-CALL `crearsolicitudact`('Amigo de Ramon', 'Soy Amigo de Ramon y solicito que me ayude en un proyecto de pentesting','1', 'luque@mail.com', '650650655', '1', 'MAL', @p0);
-
+/*-- Solicitudes de actuacion --*/
+INSERT INTO `solicitudactuacion` (`IdSolicitudAct`, `Nombre`, `Descripcion`, `Visado`, `FechaSolicitud`, `Estado`, `CorreoElectronico`, `Telefono`, `IdLista`) VALUES
+(1, 'Prueba', 'Hans',     0, '2019-06-23', 'Pendiente de revision', 'test@mail.com', '1', 1),
+(2, 'Prueba', 'rsbbrs',   1, '2019-06-23', 'Pendiente de revision', 'test@mail.com', '2', 4),
+(3, 'Prueba', 'rbs',      0, '2019-06-23', 'Pendiente de revision', 'test@mail.com', '3', 10),
+(4, 'Prueba', 'srb',      0, '2019-06-23', 'Pendiente de revision', 'test@mail.com', '4', 9),
+(5, 'Prueba', 'bsrsbrrb', 1, '2019-06-23', 'Pendiente de revision', 'test@mail.com', '5', 13);
 
 /*-- Servicios de actuación --*/
-
+INSERT INTO `servicioactuacion` (`NumColegiado`, `IdSolicitudAct`, `EstadoProyecto`, `EstadoVisado`, `NumColegiadoRevisor`, `NumColegiadoTutela`) VALUES
+(1, 1, 'Presupuesto entregado',   NULL,        NULL, NULL),
+(2, 2, 'Pendiente de aceptacion', 'Revisando', 1,    NULL),
+(2, 3, 'Pendiente de aceptacion', NULL,        NULL, 1);

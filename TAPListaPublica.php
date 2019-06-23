@@ -77,7 +77,7 @@
 				?>
 			</div>
 			<div class="form-row">
-				<table class="table table-sm table-hover col-md-12">
+				<table class="table table-sm table-hover">
 					<thead>
 						<tr>
 							<th class="text-center" scope="col">N. Colegiado</th>
