@@ -205,8 +205,8 @@ INSERT INTO `bdTapCPIIA`.`territorio`(`IdTerritorio`, `Nombre`) VALUES
 
 /*-- Comisiones --*/
 INSERT INTO `bdTapCPIIA`.`comisiontap` (`Presidente`) VALUES 
-(NULL),
-(NULL),
+(1),
+(2),
 (NULL);
 
 /*-- Tipos de lista --*/
@@ -268,7 +268,11 @@ INSERT INTO `bdTapCPIIA`.`inscripcion` (`NumColegiado`, `IdLista`) VALUES
 ('1', '6'),
 ('1', '10'),
 ('1', '11'),
-('1', '15');
+('1', '15'),
+('2', '3'),
+('2', '6'),
+('2', '15');
+
 
 /*-- Solicitudes de actuacion --*/
 INSERT INTO `solicitudactuacion` (`IdSolicitudAct`, `Nombre`, `Descripcion`, `Visado`, `FechaSolicitud`, `Estado`, `CorreoElectronico`, `Telefono`, `IdLista`) VALUES
@@ -281,5 +285,6 @@ INSERT INTO `solicitudactuacion` (`IdSolicitudAct`, `Nombre`, `Descripcion`, `Vi
 /*-- Servicios de actuación --*/
 INSERT INTO `servicioactuacion` (`NumColegiado`, `IdSolicitudAct`, `EstadoProyecto`, `EstadoVisado`, `NumColegiadoRevisor`, `NumColegiadoTutela`) VALUES
 (1, 1, 'Presupuesto entregado',   NULL,        NULL, NULL),
-(2, 2, 'Pendiente de aceptacion', 'Revisando', 1,    NULL),
-(2, 3, 'Pendiente de aceptacion', NULL,        NULL, 1);
+(2, 2, 'Pendiente de aceptacion', 'Revisando', 1,    3),
+(2, 3, 'Pendiente de aceptacion', NULL,        3,    1);
+

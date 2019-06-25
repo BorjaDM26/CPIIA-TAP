@@ -34,7 +34,7 @@
     echo "Identificador de la lista = ".$idlista;
 
     // Crear la solicitud de actuacion
-	$consSolic = "INSERT INTO `solicitudactuacion` (`Nombre`, `Descripcion`, `Visado`, `FechaSolicitud`, `CorreoElectronico`, `Telefono`, `IdLista`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	$consSolic = "INSERT INTO `".$database."`.`solicitudactuacion` (`Nombre`, `Descripcion`, `Visado`, `FechaSolicitud`, `CorreoElectronico`, `Telefono`, `IdLista`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($consSolic);
     $stmt->bind_param("ssssssi", $nombre, $descrip, $visado, $fecha, $email, $telefono, $idlista);

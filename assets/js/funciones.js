@@ -1,5 +1,6 @@
 ajaxdir='/cpiia-tap/ajax/';
 
+// Muestra el listado de territorios existentes asociados a un tipo de lista
 function showTerritoriosTipoLst(idTipoLst, publica) {
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari

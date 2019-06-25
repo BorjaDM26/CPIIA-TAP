@@ -1,7 +1,7 @@
 <?php 
     if(!isset($_SESSION)) { session_start(); } 
 
-    if (!isset($_SESSION['SesionRol']) || ($_SESSION['SesionRol']!=='Responsable')) {
+    if (!isset($_SESSION['SesionRol'])) {
         echo'<script type="text/javascript"> alert("Acceso restringido."); window.location.href="index.php"; </script>';
     }
 
@@ -18,8 +18,10 @@
         <?php require 'partials/menuSuperior.php' ?>
 
         <div class="contenido col-md-9">
-            <h1>Mis Comisiones</h1>
-            
+            <div class="titulo row">
+                <h1>Mis Comisiones</h1>
+            </div>
+                        
             <?php 
                 $columns = array('TipoLista', 'Cargo');
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
@@ -52,6 +54,7 @@
                     ?>
                 </tbody>
             </table>
+            <div class="push"></div>
         </div>
         
         <?php require 'partials/footer.php' ?>

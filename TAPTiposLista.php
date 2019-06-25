@@ -15,7 +15,10 @@
 		<?php require 'partials/menuSuperior.php' ?>
 
 		<div class="contenido col-md-9">
-			<h1>Tipos de Lista</h1>
+			<div class="titulo row">
+                <h1>Tipos de Lista</h1>
+            </div>
+			
 			<?php 
     			while ($filaTipoLst = $stmtTipoLst->fetch_assoc()){
     				echo '<div class="card">';
@@ -26,6 +29,7 @@
     				echo '</div><br>';
     			} 
     		?>
+    		<div class="push"></div>
     	</div>
 
 		<?php require 'partials/footer.php' ?>

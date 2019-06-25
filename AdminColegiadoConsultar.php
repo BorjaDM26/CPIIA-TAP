@@ -1,7 +1,7 @@
 <?php 
     if(!isset($_SESSION)) { session_start(); } 
 
-    if (!isset($_SESSION['SesionRol'])) {
+    if (!isset($_SESSION['SesionRol']) || ($_SESSION['SesionRol']!=='Responsable')) {
         echo'<script type="text/javascript"> alert("Acceso restringido."); window.location.href="index.php"; </script>';
     }
 
@@ -11,22 +11,28 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Consultar Colegiado</title>
-	</head>
+    <head>
+        <title>Consultar Colegiado</title>
+    </head>
 
     <body>
         <?php require 'partials/menuSuperior.php' ?>
 
         <div class="contenido col-md-9">
             <div class="titulo row">
-                <h1>Mi Perfil</h1>
+                <h1>Consultar Colegiado</h1>
             </div>
             
             <?php 
-                $stmt = $conn->query("SELECT * FROM colegiado WHERE numColegiado='".$_SESSION["SesionNumColegiado"]."'");
+                $stmt = $conn->query("SELECT * FROM colegiado WHERE numColegiado='".$_REQUEST["numColegiado"]."'");
                 $row = $stmt->fetch_assoc();
                 echo "<p>Información del perfil del colegiado ".$row['Nombre']." ".$row['Apellidos'].".</p>";
+
+                if($row["FinInhabilitacion"] == NULL){
+                    $fecha='';
+                } else {
+                    $fecha=date("d/m/Y",strtotime($row['FinInhabilitacion']));
+                }
             ?>
 
             <div class="form-row">
@@ -80,10 +86,13 @@
                 </div>
                 <div class="form-group campoForm">
                     <label for="finInhabilitacion" class="etiqueta"> Fin de Inhabilitación </label>
-                    <input class="form-control customInput" type="date" id="finInhabilitacion" name="finInhabilitacion" readonly="true" <?php echo 'value="'.$row['FinInhabilitacion'].'"'; ?> />
+                    <input class="form-control customInput" type="text" id="finInhabilitacion" name="finInhabilitacion" readonly="true" <?php echo 'value="'.$fecha.'"'; ?> />
                 </div>
+
             </div>
-            <button type="button" class="volver" onclick="location.href='index.php'">Volver</button>
+            <div class="botonera row">
+                <button type="button" class="volver" onclick="location.href='AdminColegiados.php'">Volver</button>
+            </div>
             <div class="push"></div>
         </div>
 

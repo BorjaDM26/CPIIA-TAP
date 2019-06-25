@@ -33,7 +33,22 @@ nav#menuSuperior {
 	border-bottom: 2px solid #d6d6d6;
 	background-color: #3dbd09;
 	color: white;
+	padding: 0px 10vw;
 }
+
+div[class="left"]{
+	width: 57%;
+}
+nav#menuSuperior div[class="right"]{
+	float: right;
+	width: 43%;
+}
+
+nav#menuSuperior div[class="right"] a{
+	display: inline-block;
+	float: right;
+}
+
 nav#menuSuperior div[class~="dropdown"]{
 	margin-right: 5px;
 }
@@ -60,6 +75,28 @@ nav#menuSuperior a[class~="sesion"]:hover{
 	color: #3dbd09;
 	background-color: white;
 	border-radius: 3px;
+}
+
+/* Breakpoint para que colapse el menu del menu superior*/
+@media (min-width: 1165px){
+    .navbar-expand-custom {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .navbar-expand-custom .navbar-nav {
+        flex-direction: row;
+    }
+    .navbar-expand-custom .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
+    .navbar-expand-custom .navbar-collapse {
+        display: flex!important;
+    }
+    .navbar-expand-custom .navbar-toggler {
+        display: none;
+    }
 }
 
 
@@ -108,8 +145,8 @@ nav#menuSuperior a[class~="sesion"]:hover{
 	text-align: left;
 	font: normal 16px sans-serif;
 
-	padding: 45px 50px;
-	margin-top: 80px;
+	padding: 30px 100px;
+	margin-top: 50px;
 }
 
 .footer-left{
@@ -228,7 +265,7 @@ button[class~="crear"]{
 }
 
 div[class~="campoForm"]{
-	padding-right: 35px;
+	padding-right: 2vw;
 }
 
 
@@ -236,9 +273,14 @@ div[class~="campoForm"]{
 --------------------- CONTENIDO ----------------------
 ------------------------------------------------------*/
 div.contenido{
-  margin: auto;
+	padding:  35px 20px;
+	min-height: 513px;
+	margin: 0 auto -160px;
 }
 
+.titulo{
+	padding-bottom: 15px;
+}
 
 form#formCrearColegiado *{
 	margin-right:10px;
@@ -288,4 +330,39 @@ label[class~="etiqueta"]{
 
 div[class~="card"], thead{
 	background-color: #e0d9d8;
+}
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+div[class~="footer"], div[class~="push"] {
+  height: 160px;
+}
+
+
+
+
+div[class="left"]{
+	width: 57%;
+}
+div[class="right"]{
+	float: right;
+	width: 43%;
+}
+
+div[class="right"] button{
+	display: inline-block;
+	float: right;
+}
+
+div.botonera{
+	padding-top: 15px;
+}
+
+div.botonera input, div.botonera button {
+	margin-left: 5vw;
 }

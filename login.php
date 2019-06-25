@@ -33,12 +33,18 @@
 		<?php require 'partials/menuSuperior.php' ?>
 
 		<div class="contenido col-md-9">
-			<h1>Login</h1>
+			<div class="titulo row">
+                <h1>Login</h1>
+            </div>
+			
 			<form class="sesion" action="login.php" method="post">
 				<input type="text" id="NumColeg" name="NumColeg" placeholder="Introduce tu número de colegiado">
 				<input type="password" id="pass" name="pass" placeholder="Introduce tu contraseña">
 				<input class="btn btn-primary" type="submit" name="Enviar" value="Entrar">
 			</form>
-		</div>
-	</body>
+
+    		<div class="push"></div>
+    	</div>
+
+		<?php require 'partials/footer.php' ?>	</body>
 </html>
