@@ -247,7 +247,7 @@ button[class~="volver"]:hover{
 }
 button[class~="crear"]{
 	padding: 10px;
-	width: 90px;
+	width: 150px;
 	height: 50px;
 	margin-top: 0;
 	margin-right: 10px;
@@ -280,6 +280,10 @@ div.contenido{
 
 .titulo{
 	padding-bottom: 15px;
+}
+
+.subtitulo{
+	padding-top: 30px;
 }
 
 form#formCrearColegiado *{
@@ -365,4 +369,9 @@ div.botonera{
 
 div.botonera input, div.botonera button {
 	margin-left: 5vw;
+}
+
+.fa-times{
+	color: red;
+	font-size: 20px;
 }

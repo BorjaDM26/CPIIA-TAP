@@ -93,6 +93,191 @@
             <div class="botonera row">
                 <button type="button" class="volver" onclick="location.href='AdminColegiados.php'">Volver</button>
             </div>
+
+
+            <!-- Listas en las que está inscrito el colegiado -->
+            <div class="subtitulo row">
+                <h3>Listas a las que pertenece</h3>
+            </div>
+
+            <?php 
+                $columns = array('IdLista', 'TipoLista', 'Publica', 'Territorio');
+                $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+                $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+
+                $consulta = 'SELECT L.IdLista, L.Publica, TL.Nombre TipoLista, T.Nombre Territorio FROM inscripcion I, lista l, tipolista TL, territorio T WHERE I.IdLista=L.IdLista AND L.IdTipoLista=TL.IdTipoLista AND L.Territorio=T.IdTerritorio AND I.NumColegiado='.$_GET['numColegiado'].' ORDER BY '.$column.' '.$sort_order;
+
+                if ($result=$conn->query($consulta)) {
+                    $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
+                    $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
+                    $add_class = ' class="highlight"';
+                }
+            ?>
+
+            <table class="table table-sm table-hover col-md-11">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdLista&order=<?php echo $asc_or_desc; ?>">Id. Lista<i class="fas fa-sort<?php echo $column == 'IdLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col">Grupo</th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=Publica&order=<?php echo $asc_or_desc; ?>">Pública <i class="fas fa-sort<?php echo $column == 'Publica' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=Territorio&order=<?php echo $asc_or_desc; ?>">Territorio <i class="fas fa-sort<?php echo $column == 'Territorio' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        while ($row = $result->fetch_assoc()){
+                            echo '<tr>';
+                            echo '  <td class="text-center">'.$row['IdLista'].'</td>';
+                            if(is_null($row['Publica'])){
+                                echo '<td class="text-center">Revisores</td>';
+                                echo '<td class="text-center">'.$row['TipoLista'].'</td>';
+                                echo '<td class="text-center">Nacional</td>';
+                            } else{
+                                echo '<td class="text-center">Profesionales</td>';
+                                echo '<td class="text-center">'.$row['TipoLista'].'</td>';
+                                if($row['Publica'] == 0){
+                                    echo '<td class="text-center">No</td>';
+                                } else{
+                                    echo '<td class="text-center">Si</td>';
+                                }
+                            }
+                            echo '  <td class="text-center">'.$row['Territorio'].'</td>';
+                            echo '<tr>';
+                        }
+                    ?>
+                </tbody>
+            </table>
+
+
+            <!-- Comisiones en las que está participa el colegiado -->
+            <div class="subtitulo row">
+                <h3>Comisiones en las que participa</h3>
+            </div>
+                        
+            <?php 
+                $columns = array('TipoLista', 'Cargo');
+                $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+                $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+
+                $consulta = 'SELECT TL.Nombre TipoLista, M.IdComision, (SELECT IF(C.Presidente='.$_SESSION['SesionNumColegiado'].', "Presidente", "Miembro")) Cargo FROM miembrocomision M, comisiontap C, tipolista TL WHERE M.IdComision=C.IdComision AND C.IdComision=TL.IdComision AND M.NumColegiado='.$_GET['numColegiado'].' ORDER BY '.$column.' '.$sort_order;
+
+                if ($result=$conn->query($consulta)) {
+                    $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
+                    $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
+                    $add_class = ' class="highlight"';
+                }
+            ?>
+
+            <table class="table table-sm table-hover col-md-8">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdComision&order=<?php echo $asc_or_desc; ?>">Id. Comisión<i class="fas fa-sort<?php echo $column == 'IdComision' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=Cargo&order=<?php echo $asc_or_desc; ?>">Cargo<i class="fas fa-sort<?php echo $column == 'Cargo' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        while ($row = $result->fetch_assoc()){
+                            echo '<tr>';
+                            echo '  <td class="text-center">'.$row['IdComision'].'</td>';
+                            echo '  <td class="text-center">'.$row['TipoLista'].'</td>';
+                            echo '  <td class="text-center">'.$row['Cargo'].'</td>';
+                            echo '<tr>';
+                        }
+                    ?>
+                </tbody>
+            </table>
+
+
+            <!-- Especializaciones reconocidas del colegiado -->
+            <div class="subtitulo row">
+                <h3>Especializaciones reconocidas</h3>
+            </div>
+                        
+            <?php 
+                $columns = array('IdEspecializacion', 'Nombre');
+                $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+                $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+
+                $consulta = 'SELECT E.* FROM especializacioncolegiado EC, campoespecializacion E WHERE EC.IdEspecializacion=E.IdEspecializacion AND EC.NumColegiado='.$_GET['numColegiado'].' ORDER BY '.$column.' '.$sort_order;
+
+                if ($result=$conn->query($consulta)) {
+                    $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
+                    $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
+                    $add_class = ' class="highlight"';
+                }
+            ?>
+
+            <table class="table table-sm table-hover col-md-11">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. Especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col">Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <col width="160"><col width="160"><col width="600">
+                    <?php 
+                        while ($row = $result->fetch_assoc()){
+                            echo '<tr>';
+                            echo '  <td class="text-center">'.$row['IdEspecializacion'].'</td>';
+                            echo '  <td class="text-center">'.$row['Nombre'].'</td>';
+                            echo '  <td class="text-justified">'.$row['Descripcion'].'</td>';
+                            echo '<tr>';
+                        }
+                    ?>
+                </tbody>
+            </table>
+
+
+            <!-- Proyectos asignados al colegiado (como profesional, revisor o tutelador) -->
+            <div class="subtitulo row">
+                <h3>Proyectos asignados</h3>
+            </div>
+                        
+            <?php 
+                $columns = array('IdProyecto', 'Funcion');
+                $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+                $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+
+                $consulta = '(SELECT SE.IdSolicitudAct IdProyecto, "Profesional" Funcion, SE.EstadoProyecto Estado FROM servicioactuacion SE WHERE SE.NumColegiado='.$_GET['numColegiado'].') 
+                UNION
+                (SELECT SE.IdSolicitudAct, "Revisor" Funcion, SE.EstadoVisado Estado FROM servicioactuacion SE WHERE SE.NumColegiadoRevisor='.$_GET['numColegiado'].')
+                UNION
+                (SELECT SE.IdSolicitudAct, "Tutelador" Funcion, SE.EstadoProyecto Estado FROM servicioactuacion SE WHERE SE.NumColegiadoTutela='.$_GET['numColegiado'].') ORDER BY '.$column.' '.$sort_order;
+
+                if ($result=$conn->query($consulta)) {
+                    $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
+                    $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
+                    $add_class = ' class="highlight"';
+                }
+            ?>
+
+            <table class="table table-sm table-hover col-md-11">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdProyecto&order=<?php echo $asc_or_desc; ?>">Id. Proyecto<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoConsultar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=Funcion&order=<?php echo $asc_or_desc; ?>">Función<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        while ($row = $result->fetch_assoc()){
+                            echo '<tr>';
+                            echo '  <td class="text-center">'.$row['IdProyecto'].'</td>';
+                            echo '  <td class="text-center">'.$row['Funcion'].'</td>';
+                            echo '  <td class="text-center">'.$row['Estado'].'</td>';
+                            echo '<tr>';
+                        }
+                    ?>
+                </tbody>
+            </table>
+
+
             <div class="push"></div>
         </div>
 
