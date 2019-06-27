@@ -255,11 +255,12 @@ button[class~="crear"]{
 	border: 0;
 	border-radius: 3px;
 	color: #fff;
-	background-color: #57de20;
+	background-color: #3dbd09;
 }
-*[class~="buscar"]{
+input[class~="buscar"]{
   	transform: translateY(25%);	
  	height: 50px;
+ 	width: 140px;
 	color: #fff;
 	background-color: #57de20;
 }
@@ -278,7 +279,7 @@ div.contenido{
 	margin: 0 auto -160px;
 }
 
-.titulo{
+.titulo, form#formBuscarLista{
 	padding-bottom: 15px;
 }
 
@@ -350,12 +351,12 @@ div[class~="footer"], div[class~="push"] {
 
 
 
-div[class="left"]{
-	width: 57%;
+.titulo div[class="left"]{
+	width: 70%;
 }
-div[class="right"]{
+.titulo div[class="right"]{
 	float: right;
-	width: 43%;
+	width: 30%;
 }
 
 div[class="right"] button{

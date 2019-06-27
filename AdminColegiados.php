@@ -6,13 +6,12 @@
 	}
 
     require_once 'partials/referencias.php';
-
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Lista de Colegiados</title>
+		<title>Administración de Colegiados</title>
 	</head>
 
 	<body>
@@ -68,6 +67,5 @@
         </div>
         
         <?php require 'partials/footer.php' ?>
-		</div>
 	</body>
 </html>

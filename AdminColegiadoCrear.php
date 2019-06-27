@@ -6,7 +6,6 @@
     }
 
     require_once 'partials/referencias.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +19,7 @@
 
         <div class="contenido col-md-9">
             <div class="titulo row">
-                <h1>Administración - Colegiados</h1>
+                <h1>Administración - Crear Colegiado</h1>
             </div>
 
 			<form id="formCrearColegiado" method="POST" action="procesarCrearColegiado.php">

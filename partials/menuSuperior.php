@@ -75,7 +75,7 @@
 										?>
 										<div class="dropdown-content">
 											<a class="dropdown-item" href="AdminColegiados.php"> Colegiados</a>
-											<a class="dropdown-item" href="AdminListaLista.php"> Listas</a>
+											<a class="dropdown-item" href="AdminListas.php"> Listas</a>
 											<a class="dropdown-item" href="#"> Tipos de Lista</a>
 											<a class="dropdown-item" href="AdminEspecializacionLista.php"> Especializaciones</a>
 											<a class="dropdown-item" href="#"> Comisiones</a>

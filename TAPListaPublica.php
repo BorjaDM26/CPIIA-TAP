@@ -45,7 +45,7 @@
 	                		?>
 						</select>
 	                </div>
-	                <div class="form-group campoForm offset-md-1" id="txtHint">
+	                <div class="form-group campoForm offset-md-1" id="auxTerritTipoLst">
 	                	<label for="territ" class="etiqueta">Territorio: </label>
 	                	<select class="form-control customInput" name="territ" id="territ">
 	                		<?php 
