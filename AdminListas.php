@@ -170,8 +170,8 @@
 						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=IdLista&order=<?php echo $asc_or_desc; ?>">Id. Lista<i class="fas fa-sort<?php echo $column == 'IdLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
 						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
 		                <th class="text-center" scope="col">Grupo</th>
-						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=Publica&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'Publica' ? '-' . $up_or_down : '' ?>"></i></a></th>
-						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=Territorio&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'Territorio' ? '-' . $up_or_down : '' ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=Publica&order=<?php echo $asc_or_desc; ?>">Pública<i class="fas fa-sort<?php echo $column == 'Publica' ? '-' . $up_or_down : '' ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=Territorio&order=<?php echo $asc_or_desc; ?>">Territorio<i class="fas fa-sort<?php echo $column == 'Territorio' ? '-' . $up_or_down : '' ?>"></i></a></th>
 		                <th class="text-center" scope="col">Consultar</th>
 		                <th class="text-center" scope="col">Modificar</th>
 					</tr>

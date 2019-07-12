@@ -4,7 +4,6 @@
     $consInsertarLista = "INSERT INTO `".$database."`.`lista` (`IdTipoLista`, `Publica`, `Territorio`) VALUES (?, ?, ?)";
 
     $stmt = $conn->prepare($consInsertarLista);
-    echo $consInsertarLista;
 
     $stmt->bind_param("iis", $idTipoLista, $publica, $idTerritorio);
     $idTipoLista=$_REQUEST["tipoLista"];

@@ -3,8 +3,6 @@
 
     $consModificarLista = "UPDATE `".$database."`.`lista` SET `IdTipoLista`=?, `Publica`=?, `Territorio`=? WHERE `IdLista`=?";
 
-    echo $consModificarLista;
-
     $stmt = $conn->prepare($consModificarLista);
 
     $stmt->bind_param("iisi", $tipoLista, $publica, $territorio, $idLista);

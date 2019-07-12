@@ -76,10 +76,10 @@
 										<div class="dropdown-content">
 											<a class="dropdown-item" href="AdminColegiados.php"> Colegiados</a>
 											<a class="dropdown-item" href="AdminListas.php"> Listas</a>
-											<a class="dropdown-item" href="#"> Tipos de Lista</a>
-											<a class="dropdown-item" href="AdminEspecializacionLista.php"> Especializaciones</a>
-											<a class="dropdown-item" href="#"> Comisiones</a>
-											<a class="dropdown-item" href="#"> Proyectos</a>
+											<a class="dropdown-item" href="AdminTiposLista.php"> Tipos de Lista</a>
+											<a class="dropdown-item" href="AdminEspecializaciones.php"> Especializaciones</a>
+											<a class="dropdown-item" href="AdminComisiones.php"> Comisiones</a>
+											<a class="dropdown-item" href="AdminProyectos.php"> Proyectos</a>
 										</div>
 									</div>
 								</li>

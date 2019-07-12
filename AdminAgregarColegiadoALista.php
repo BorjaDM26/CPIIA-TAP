@@ -2,6 +2,7 @@
 	if(!isset($_SESSION)) { session_start(); } 
 
 	require_once 'partials/referencias.php';
+	
 	$consLst = "SELECT c.IdLista, d.Nombre TipoLista,c.Nombre Territorio, c.publica FROM 
 			(SELECT EC.NumColegiado, EL.IdTipoLista, COUNT(E.IdEspecializacion) cont
 			FROM especializacionlista EL, especializacioncolegiado EC, campoespecializacion E

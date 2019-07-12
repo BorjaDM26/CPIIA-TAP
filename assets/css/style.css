@@ -349,12 +349,15 @@ div[class~="footer"], div[class~="push"] {
 }
 
 
+select[class~="inTable"]{
+	border: none;
+	width: 100%;
+}
 
-
-.titulo div[class="left"]{
+.titulo div[class="left"], .subtitulo div[class="left"],{
 	width: 70%;
 }
-.titulo div[class="right"]{
+.titulo div[class="right"], .subtitulo div[class="right"]{
 	float: right;
 	width: 30%;
 }

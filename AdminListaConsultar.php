@@ -96,9 +96,9 @@
                 <table class="table table-sm table-hover col-md-11">
                     <thead>
                         <tr>
-                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">N. Colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                            <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">N. Colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                            <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                            <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                             <th class="text-center" scope="col">Email</th>
                             <th class="text-center" scope="col">Teléfono</th>
                             <th class="text-center" scope="col">URL</th>
@@ -145,8 +145,8 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. Especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. Especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Descripción</th>
                     </tr>
                 </thead>
@@ -187,8 +187,8 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdSolicitud&order=<?php echo $asc_or_desc; ?>">Id. Proyecto<i class="fas fa-sort<?php echo $column == 'IdSolicitud' ? '-' . $up_or_down : '' ?>"></i></a></th>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Solicitante<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdSolicitud&order=<?php echo $asc_or_desc; ?>">Id. Proyecto<i class="fas fa-sort<?php echo $column == 'IdSolicitud' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Solicitante<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Correo Electrónico</th>
                         <th class="text-center" scope="col">Teléfono</th>
                         <th class="text-center" scope="col">Estado</th>
