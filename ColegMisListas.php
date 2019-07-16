@@ -24,11 +24,11 @@
             
             
             <?php 
-                $columns = array('TipoLista', 'Publica', 'Territorio');
+                $columns = array('IdLista', 'TipoLista', 'Publica', 'Territorio');
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = 'SELECT L.IdLista, L.Publica, TL.Nombre TipoLista, T.Nombre Territorio FROM inscripcion I, lista l, tipolista TL, territorio T WHERE I.IdLista=L.IdLista AND L.IdTipoLista=TL.IdTipoLista AND L.Territorio=T.IdTerritorio AND I.NumColegiado='.$_SESSION['SesionNumColegiado'].' ORDER BY '.$column.' '.$sort_order;
+                $consulta = 'SELECT L.IdLista, L.Publica, TL.Nombre TipoLista, T.Nombre Territorio, I.Estado FROM inscripcion I, lista l, tipolista TL, territorio T WHERE I.IdLista=L.IdLista AND L.IdTipoLista=TL.IdTipoLista AND L.Territorio=T.IdTerritorio AND I.NumColegiado='.$_SESSION['SesionNumColegiado'].' ORDER BY '.$column.' '.$sort_order;
 
                 if ($result=$conn->query($consulta)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
@@ -40,17 +40,19 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
+                        <th class="text-center" scope="col"><a href="ColegMisListas.php?column=IdLista&order=<?php echo $asc_or_desc; ?>">Id. Lista<i class="fas fa-sort<?php echo $column == 'IdLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Grupo</th>
                         <th class="text-center" scope="col"><a href="ColegMisListas.php?column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="ColegMisListas.php?column=Publica&order=<?php echo $asc_or_desc; ?>">Pública <i class="fas fa-sort<?php echo $column == 'Publica' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="ColegMisListas.php?column=Territorio&order=<?php echo $asc_or_desc; ?>">Territorio <i class="fas fa-sort<?php echo $column == 'Territorio' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                        <th class="text-center" scope="col">Colegiados por delante</th>
+                        <th class="text-center" scope="col">Precediendo</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
                         while ($row = $result->fetch_assoc()){
                             echo '<tr>';
+                            echo '  <td class="text-center">'.$row['IdLista'].'</td>';
                             if(is_null($row['Publica'])){
                                 echo '<td class="text-center">Revisores</td>';
                                 echo '<td class="text-center">'.$row['TipoLista'].'</td>';
@@ -65,7 +67,16 @@
                                 }
                             }
                             echo '  <td class="text-center">'.$row['Territorio'].'</td>';
-                            echo '  <td class="text-center"> 0 </td>';
+
+                            if ($row['Estado']=='Esperando Turno') {
+                                $consPrecendiendo = "SELECT I.IdLista, COUNT(*) Precediendo FROM inscripcion I, colegiado C, colegiado CB WHERE I.NumColegiado=C.NumColegiado AND IdLista=".$row['IdLista']." AND I.Estado='Esperando Turno' AND CB.NumColegiado=".$_SESSION['SesionNumColegiado']." AND CONCAT(C.Apellidos, ' ', C.Nombre)<CONCAT(CB.Apellidos, ' ', CB.Nombre)  ORDER BY C.Apellidos, C.Nombre;";
+                                $prec = $conn->query($consPrecendiendo)->fetch_assoc()['Precediendo'];
+                            } else {
+                                $consPrecendiendo = "SELECT IdLista, SUM(Precediendo) Suma FROM ((SELECT I.IdLista, COUNT(*) Precediendo FROM inscripcion I, colegiado C, colegiado CB WHERE I.NumColegiado=C.NumColegiado AND IdLista=".$row['IdLista']." AND I.Estado='Esperando Turno' AND CONCAT(C.Apellidos, ' ', C.Nombre)>CONCAT(CB.Apellidos, ' ', CB.Nombre) AND CB.NumColegiado=".$_SESSION['SesionNumColegiado']." ORDER BY C.Apellidos, C.Nombre) UNION
+                                (SELECT I.IdLista, COUNT(*) Precediendo FROM inscripcion I, colegiado C, colegiado CB WHERE I.NumColegiado=C.NumColegiado AND IdLista=".$row['IdLista']." AND CB.NumColegiado=".$_SESSION['SesionNumColegiado']." AND CONCAT(C.Apellidos, ' ', C.Nombre)<CONCAT(CB.Apellidos, ' ', CB.Nombre) ORDER BY C.Apellidos, C.Nombre)) AS Precediendo;";
+                                $prec = $conn->query($consPrecendiendo)->fetch_assoc()['Suma'];
+                            }
+                            echo '  <td class="text-center">'.$prec.'</td>';
                             echo '<tr>';
                         }
                     ?>

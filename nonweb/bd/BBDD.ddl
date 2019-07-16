@@ -162,6 +162,145 @@ CREATE TABLE `bdTapCPIIA`.`servicioactuacion` (
 
 
 /*------------------------------------------------------
+--  CREACIÓN DE PROCEDIMIENTOS
+------------------------------------------------------*/
+delimiter //
+
+/* Encargar proyecto a un colegiado: (IdSolicitudAct, Respuesta) */
+CREATE OR REPLACE PROCEDURE `bdTapCPIIA`.asignarProyectoAEncargado (
+    IN idSolicAct INT, OUT res INT
+) BEGIN
+    DECLARE fallo INT DEFAULT FALSE;
+    DECLARE idLst, encargadosDisp, idEncargado INT;
+    /* Comprueba si la solicitud no está ya asignada a un colegiado */
+    DECLARE curYaAsignada CURSOR FOR 
+        SELECT IdLista FROM solicitudactuacion
+        WHERE  IdSolicitudAct=idSolicAct AND IdSolicitudAct NOT IN 
+            (SELECT IdSolicitudAct FROM servicioactuacion WHERE EstadoProyecto!='Servicio rechazado');
+    /* Comprueba existen colegiados inscritos en la lista necesaria */
+    DECLARE curEncargadosDisponibles CURSOR FOR 
+        SELECT COUNT(NumColegiado) FROM inscripcion WHERE IdLista=idLst AND NumColegiado NOT IN 
+            (SELECT NumColegiado FROM servicioactuacion WHERE IdSolicitudAct=idSolicAct);
+    /* Selecciona el colegiado que se encargará de la solicitud */
+    DECLARE curEncargadoSeleccionado CURSOR FOR 
+        SELECT C.NumColegiado FROM inscripcion I, colegiado C
+        WHERE I.NumColegiado=C.NumColegiado AND I.IdLista=idLst AND I.Estado='Esperando turno' 
+            AND I.NumColegiado NOT IN 
+                (SELECT NumColegiado FROM servicioactuacion WHERE IdSolicitudAct=idSolicAct)
+        ORDER BY C.Apellidos, C.Nombre;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET fallo = TRUE;
+
+
+    OPEN curYaAsignada;
+    FETCH curYaAsignada INTO idLst;
+    IF fallo THEN
+        /* La solicitud está ya en manos de otro colegiado */
+        select -1 into res;
+    ELSE
+        OPEN curEncargadosDisponibles;
+        FETCH curEncargadosDisponibles INTO encargadosDisp;
+        IF (encargadosDisp<=0) THEN
+            /* No hay colegiados disponibles en la lista */
+            select -2 into res;
+        ELSE
+            OPEN curEncargadoSeleccionado;
+            FETCH curEncargadoSeleccionado INTO idEncargado;
+            IF fallo THEN
+                /* Ya se ha recorrido toda la lista */
+                CLOSE curEncargadoSeleccionado;
+                UPDATE `inscripcion` SET `Estado` = 'Esperando Turno' WHERE `IdLista`=idLst;
+                OPEN curEncargadoSeleccionado;
+                FETCH curEncargadoSeleccionado INTO idEncargado;
+            END IF;
+
+            /* Se ha encargado la solicitud a un colegiado */
+            INSERT INTO `servicioactuacion` (`NumColegiado`, `IdSolicitudAct`, `EstadoProyecto`) 
+                VALUES (idEncargado, idSolicAct, 'Pendiente de aceptacion');
+            UPDATE `inscripcion` SET `Estado` = 'Turno asignado' 
+                WHERE `NumColegiado`=idEncargado AND `IdLista`=idLst;
+            select idEncargado into res;
+            CLOSE curEncargadoSeleccionado;
+        END IF;
+        CLOSE curEncargadosDisponibles;        
+    END IF;
+    CLOSE curYaAsignada;
+END//
+
+/* Asignar revisión de un proyecto a un colegiado: (IdSolicitudAct, Respuesta) */
+CREATE OR REPLACE PROCEDURE `bdTapCPIIA`.asignarProyectoARevisor (
+    IN idSolicAct INT, OUT res INT
+) BEGIN
+    DECLARE fallo INT DEFAULT FALSE;
+    DECLARE idEncargado, idLst, revisoresDisp, idRevisor INT;
+    /* Comprueba el proyecto está asignado a un encargado pero no a un revisor. */
+    DECLARE curYaAsignada CURSOR FOR 
+        SELECT NumColegiado FROM servicioactuacion SE
+        WHERE SE.IdSolicitudAct=idSolicAct AND SE.EstadoProyecto!='Servicio rechazado' 
+            AND SE.NumColegiadoRevisor IS NULL;
+    /* Selecciona el ID de la lista de revisores. */
+    DECLARE curListaRevisores CURSOR FOR 
+        SELECT LR.IdLista FROM solicitudactuacion SO, lista LP, lista LR
+        WHERE SO.IdLista=LP.IdLista AND LP.IdTipoLista=LR.IdTipoLista 
+            AND LR.Publica IS NULL AND SO.IdSolicitudAct=idSolicAct;
+    /* Comprueba existen colegiados inscritos en la lista de revisores. */
+    DECLARE curRevisoresDisponibles CURSOR FOR
+        SELECT COUNT(NumColegiado) FROM inscripcion WHERE IdLista=idLst;
+    /* Selecciona el revisor que se encargará de la solicitud */
+    DECLARE curRevisorSeleccionado CURSOR FOR 
+        SELECT C.NumColegiado FROM inscripcion I, colegiado C
+        WHERE I.NumColegiado=C.NumColegiado AND I.IdLista=21 AND I.Estado='Esperando turno' 
+            AND I.NumColegiado NOT IN 
+                (SELECT NumColegiado FROM servicioactuacion WHERE IdSolicitudAct=idSolicAct)
+        ORDER BY C.Apellidos, C.Nombre;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET fallo = TRUE;
+
+
+    OPEN curYaAsignada;
+    FETCH curYaAsignada INTO idEncargado;
+    IF fallo THEN
+        /* No existe un encargado del proyecto o ya está asignada a un revisor. */
+        select -1 into res;
+    ELSE
+        OPEN curListaRevisores;
+        FETCH curListaRevisores INTO idLst;
+        IF fallo THEN
+            /* No existe una lista de revisores para ese tipo de lista. */
+            select -2 into res;
+        ELSE
+            OPEN curRevisoresDisponibles;
+            FETCH curRevisoresDisponibles INTO revisoresDisp;
+            IF (revisoresDisp<=0) THEN
+                /* No hay revisores disponibles. */
+                select -3 into res;
+            ELSE
+                OPEN curRevisorSeleccionado;
+                FETCH curRevisorSeleccionado INTO idRevisor;
+                IF fallo THEN
+                    /* Ya se ha recorrido toda la lista de revisores. */
+                    CLOSE curRevisorSeleccionado;
+                    UPDATE `inscripcion` SET `Estado` = 'Esperando Turno' WHERE `IdLista`=idLst;
+                    OPEN curRevisorSeleccionado;
+                    FETCH curRevisorSeleccionado INTO idRevisor;
+                END IF;
+
+                /* Se ha encargado la solicitud a un revisor. */
+                UPDATE `servicioactuacion` 
+                    SET `NumColegiadoRevisor`=idRevisor, `EstadoVisado`='Esperando fin de servicio' 
+                    WHERE `NumColegiado`=idEncargado AND `IdSolicitudAct`=idSolicAct;
+                select idRevisor into res;
+                CLOSE curRevisorSeleccionado;
+            END IF;
+            CLOSE curRevisoresDisponibles;
+        END IF;
+        CLOSE curListaRevisores;
+    END IF;
+    CLOSE curYaAsignada;
+END//
+
+delimiter ;
+
+
+/*------------------------------------------------------
 --  INSERCIONES
 ------------------------------------------------------*/
 /*-- Colegiados --*/
