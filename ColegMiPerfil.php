@@ -46,8 +46,6 @@
                     <label for="rol" class="etiqueta">Rol </label>
                     <input class="form-control customInput" type="text" id="rol" name="rol" readonly="true" <?php echo 'value="'.$row['Rol'].'"'; ?> />
                 </div>
-            </div>
-            <div class="form-row">
                 <div class="form-group campoForm">
                     <label for="domicilio" class="etiqueta">Domicilio Profesional </label>
                     <input class="form-control customInput" type="text" id="domicilio" name="domicilio" readonly="true" <?php echo 'value="'.$row['DomicilioProfesional'].'"'; ?> />
@@ -64,8 +62,6 @@
                     <label for="provincia" class="etiqueta">Provincia </label>
                     <input class="form-control customInput" type="text" id="provincia" name="provincia" readonly="true" <?php echo 'value="'.$row['Provincia'].'"'; ?> />
                 </div>
-            </div>
-            <div class="form-row">
                 <div class="form-group campoForm">
                     <label for="telefonoProfesional" class="etiqueta">Teléfono Profesional </label>
                     <input class="form-control customInput" type="text" id="telefonoProfesional" name="telefonoProfesional" readonly="true" <?php echo 'value="'.$row['TelefonoProfesional'].'"'; ?> />
@@ -84,6 +80,37 @@
                 </div>
             </div>
             <button type="button" class="volver" onclick="location.href='index.php'">Volver</button>
+
+            <!-- Subapartado para cambio de contraseña -->
+            <div class="subtitulo row">
+                <div class="left">
+                    <h3>Actualizar contraseña</h3>
+                </div>
+            </div>
+
+            <div class="card col-md-11 prt">
+                <div class="card-body prt">
+                    <form id="formActualizarPass" method="POST" action="procesarModificarPass.php">
+                        <div class="form-row">
+                            <div class="form-group campoForm">
+                                <label for="oldPass" class="etiqueta">Contraseña Antigua </label>
+                                <input class="form-control customInput" type="password" id="oldPass" name="oldPass" required="true"/>
+                            </div>
+                            <div class="form-group campoForm">
+                                <label for="newPass" class="etiqueta">Nueva Contraseña </label>
+                                <input class="form-control customInput" type="password" id="newPass" name="newPass" required="true"/>
+                            </div>
+                            <div class="form-group campoForm">
+                                <label for="confNewPass" class="etiqueta">Confirmación de Contraseña </label>
+                                <input class="form-control customInput" type="password" id="confNewPass" name="confNewPass" required="true"/>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-success" value="Actualizar Contraseña" />
+                    </form>
+                </div>
+            </div>
+
+
             <div class="push"></div>
         </div>
 

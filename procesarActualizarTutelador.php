@@ -3,8 +3,6 @@
 
     $consActualizarTutelador = "UPDATE `".$database."`.`servicioactuacion` SET `NumColegiadoTutela`=? WHERE `IdSolicitudAct`=? AND `NumColegiado`=?";
 
-    //echo $consActualizarTutelador;
-
     $stmt = $conn->prepare($consActualizarTutelador);
     $stmt->bind_param("iii", $tutelador, $proyecto, $encargado);
 

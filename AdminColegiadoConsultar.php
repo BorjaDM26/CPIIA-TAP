@@ -25,7 +25,6 @@
             <?php 
                 $stmt = $conn->query("SELECT * FROM colegiado WHERE numColegiado='".$_REQUEST["numColegiado"]."'");
                 $row = $stmt->fetch_assoc();
-                echo "<p>Información del perfil del colegiado ".$row['Nombre']." ".$row['Apellidos'].".</p>";
 
                 if($row["FinInhabilitacion"] == NULL){
                     $fecha='';

@@ -4,7 +4,6 @@
     $consInsertarTipoLista = "INSERT INTO `".$database."`.`tipolista` (`Nombre`, `Descripcion`, `FechaIniVacacional`, `FechaFinVacacional`, `IdComision`) VALUES (?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($consInsertarTipoLista);
-    //echo $consInsertarTipoLista;
 
     $stmt->bind_param("ssssi", $nombre, $descripcion, $iniciovacaciones, $finvacaciones, $comision);
     $nombre=$_REQUEST["nombre"];

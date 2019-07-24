@@ -46,11 +46,16 @@
 	                <div class="form-group campoForm">
 	                	<label for="estado" class="etiqueta">Estado del Visado </label>
 	                	<select class="form-control customInput" name="estado" id="estado">
-	                		<?php echo '<option value="'.$rowRevision['Estado'].'" selected>'.$rowRevision['Estado'].'</option>'; ?>
-                            <option value='Esperando fin de servicio'>Esperando fin de servicio</option>
-                            <option value='Revisando'>Revisando</option>
-                            <option value='Servicio finalizado con errores'>Servicio finalizado con errores</option>
-                            <option value='Servicio finalizado correctamente'>Servicio finalizado correctamente</option>
+	                		<?php
+                                foreach ($estadosVisado as $i => $value) {
+                                    if($value == $rowRevision['Estado']){
+                                        echo "<option value='$i' selected>$value</option>";
+                                    } else {
+                                        echo "<option value='$i'>$value</option>";
+                                    }
+                                }
+                                echo '</select>';
+                            ?>
 						</select>
 	                </div>
                     <div class="form-group campoForm">

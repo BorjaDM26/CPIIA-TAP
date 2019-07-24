@@ -171,7 +171,7 @@ CREATE OR REPLACE PROCEDURE `bdTapCPIIA`.asignarProyectoAEncargado (
     IN idSolicAct INT, OUT res INT
 ) BEGIN
     DECLARE fallo INT DEFAULT FALSE;
-    DECLARE idLst, encargadosDisp, idEncargado INT;
+    DECLARE idLst, encargadosDisp, idEncargado, vacaciones INT;
     /* Comprueba si la solicitud no está ya asignada a un colegiado */
     DECLARE curYaAsignada CURSOR FOR 
         SELECT IdLista FROM solicitudactuacion
@@ -188,6 +188,10 @@ CREATE OR REPLACE PROCEDURE `bdTapCPIIA`.asignarProyectoAEncargado (
             AND I.NumColegiado NOT IN 
                 (SELECT NumColegiado FROM servicioactuacion WHERE IdSolicitudAct=idSolicAct)
         ORDER BY C.Apellidos, C.Nombre;
+    /* Comprueba si estamos durante el periodo vacacional */
+    DECLARE curVacacional CURSOR FOR 
+        SELECT IF(CURRENT_DATE BETWEEN TL.FechaIniVacacional AND TL.FechaFinVacacional, 0, 1) Vacacional 
+        FROM tipolista TL, lista L WHERE L.IdLista = idLst AND L.IdTipoLista=TL.IdTipoLista;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET fallo = TRUE;
 
 
@@ -212,12 +216,16 @@ CREATE OR REPLACE PROCEDURE `bdTapCPIIA`.asignarProyectoAEncargado (
                 OPEN curEncargadoSeleccionado;
                 FETCH curEncargadoSeleccionado INTO idEncargado;
             END IF;
-
             /* Se ha encargado la solicitud a un colegiado */
             INSERT INTO `servicioactuacion` (`NumColegiado`, `IdSolicitudAct`, `EstadoProyecto`) 
                 VALUES (idEncargado, idSolicAct, 'Pendiente de aceptacion');
-            UPDATE `inscripcion` SET `Estado` = 'Turno asignado' 
-                WHERE `NumColegiado`=idEncargado AND `IdLista`=idLst;
+            /* Si estamos en periodo vacacional no se actualiza el turno */
+            OPEN curVacacional;
+            FETCH curVacacional INTO vacaciones;
+            IF vacaciones THEN
+                UPDATE `inscripcion` SET `Estado` = 'Turno asignado' 
+                    WHERE `NumColegiado`=idEncargado AND `IdLista`=idLst;
+            END IF;
             select idEncargado into res;
             CLOSE curEncargadoSeleccionado;
         END IF;
@@ -231,7 +239,7 @@ CREATE OR REPLACE PROCEDURE `bdTapCPIIA`.asignarProyectoARevisor (
     IN idSolicAct INT, OUT res INT
 ) BEGIN
     DECLARE fallo INT DEFAULT FALSE;
-    DECLARE idEncargado, idLst, revisoresDisp, idRevisor INT;
+    DECLARE idEncargado, idLst, revisoresDisp, idRevisor, vacaciones INT;
     /* Comprueba el proyecto está asignado a un encargado pero no a un revisor. */
     DECLARE curYaAsignada CURSOR FOR 
         SELECT NumColegiado FROM servicioactuacion SE
@@ -248,10 +256,14 @@ CREATE OR REPLACE PROCEDURE `bdTapCPIIA`.asignarProyectoARevisor (
     /* Selecciona el revisor que se encargará de la solicitud */
     DECLARE curRevisorSeleccionado CURSOR FOR 
         SELECT C.NumColegiado FROM inscripcion I, colegiado C
-        WHERE I.NumColegiado=C.NumColegiado AND I.IdLista=21 AND I.Estado='Esperando turno' 
+        WHERE I.NumColegiado=C.NumColegiado AND I.IdLista=idLista AND I.Estado='Esperando turno' 
             AND I.NumColegiado NOT IN 
                 (SELECT NumColegiado FROM servicioactuacion WHERE IdSolicitudAct=idSolicAct)
         ORDER BY C.Apellidos, C.Nombre;
+    /* Comprueba si estamos durante el periodo vacacional */
+    DECLARE curVacacional CURSOR FOR 
+        SELECT IF(CURRENT_DATE BETWEEN TL.FechaIniVacacional AND TL.FechaFinVacacional, 0, 1) Vacacional 
+        FROM tipolista TL, lista L WHERE L.IdLista = idLst AND L.IdTipoLista=TL.IdTipoLista;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET fallo = TRUE;
 
 
@@ -287,6 +299,14 @@ CREATE OR REPLACE PROCEDURE `bdTapCPIIA`.asignarProyectoARevisor (
                 UPDATE `servicioactuacion` 
                     SET `NumColegiadoRevisor`=idRevisor, `EstadoVisado`='Esperando fin de servicio' 
                     WHERE `NumColegiado`=idEncargado AND `IdSolicitudAct`=idSolicAct;
+                /* Si estamos en periodo vacacional no se actualiza el turno */
+                OPEN curVacacional;
+                FETCH curVacacional INTO vacaciones;
+                IF vacaciones THEN
+                    UPDATE `inscripcion` SET `Estado` = 'Turno asignado' 
+                        WHERE `NumColegiado`=idRevisor AND `IdLista`=idLst;
+                END IF;
+                CLOSE curVacacional;
                 select idRevisor into res;
                 CLOSE curRevisorSeleccionado;
             END IF;

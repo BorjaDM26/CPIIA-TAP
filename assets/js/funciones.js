@@ -1,4 +1,3 @@
-
 ajaxdir='/cpiia-tap/ajax/';
 
 // Muestra el listado de territorios existentes asociados a un tipo de lista
@@ -76,6 +75,28 @@ function actualizarEstadoServicio(Estado, IdProyecto, IdEncargado) {
       if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
           alert(xmlhttp.responseText);
           window.location.href="AdminProyectoModificar.php?idProyecto="+IdProyecto;
+      }
+  }
+  xmlhttp.send(params);
+}
+
+function actualizarEstadoInscripcion(Estado, IdLista, NumColegiado) {
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+
+  var params = "estado="+Estado+"&idLista="+IdLista+"&numColegiado="+NumColegiado;
+  xmlhttp.open('POST', 'procesarActualizarEstadoInscripcion.php', true);
+
+  //Send the proper header information along with the request
+  xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+  xmlhttp.onreadystatechange = function() {//Call a function when the state changes.
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          alert(xmlhttp.responseText);
       }
   }
   xmlhttp.send(params);

@@ -109,11 +109,11 @@
             </div>
 
             <?php 
-                $columns = array('NumColegiado','Nombre', 'Apellidos', 'CorreoElectronico', 'TelefonoProfesional', 'URL');
+                $columns = array('NumColegiado','Nombre', 'Apellidos');
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = 'SELECT C.NumColegiado, C.Nombre, C.Apellidos, C.CorreoElectronico, C.TelefonoProfesional, C.URL FROM inscripcion I, colegiado C WHERE I.NumColegiado=C.NumColegiado AND I.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order;
+                $consulta = 'SELECT C.NumColegiado, C.Nombre, C.Apellidos, C.CorreoElectronico, I.Estado FROM inscripcion I, colegiado C WHERE I.NumColegiado=C.NumColegiado AND I.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order;
 
                 if ($result=$conn->query($consulta)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
@@ -129,9 +129,7 @@
                             <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                             <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                             <th class="text-center" scope="col">Email</th>
-                            <th class="text-center" scope="col">Teléfono</th>
-                            <th class="text-center" scope="col">URL</th>
-
+                            <th class="text-center" scope="col">Estado</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -141,9 +139,18 @@
                             <td class="text-center"><?php echo $row['Nombre']; ?></td>
                             <td class="text-center"><?php echo $row['Apellidos']; ?></td>
                             <td class="text-center"><?php echo $row['CorreoElectronico']; ?></td>
-                            <td class="text-center"><?php echo $row['TelefonoProfesional']; ?></td>
                             <td class="text-center">
-                                <?php echo "<a href=\"http://".$row['URL']."\">".$row['URL']."</a>"; ?>
+                                <select class="form-control customInput inTable" name="estado" id="tutelador" <?php echo 'onchange="actualizarEstadoInscripcion(this.value, '.$_REQUEST['idLista'].', '.$row['NumColegiado'].')"'; ?>>
+                                    <?php 
+                                        foreach ($estadosInscripcion as $i => $value) {
+                                            if($value == $row['Estado']){
+                                                echo "<option value='$i' selected>$value</option>";
+                                            } else {
+                                                echo "<option value='$i'>$value</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
                             </td>
                         </tr>
                         <?php endwhile; ?>

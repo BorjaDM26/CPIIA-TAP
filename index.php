@@ -20,6 +20,26 @@
 			<?php else: ?>
 				<h2>Por favor, <a href="login.php">inicia sesión</a></h2>
 			<?php endif; ?>
+			<br><br>
+			<?php
+				$pass = 'Hans';
+				echo "Soy una prueba: '$pass' <br>";
+				$passCryp = hash('sha256', $pass);
+				echo $pass.'->'.$passCryp.'<br>';
+
+				$pass2 = 'hans';
+				$passCryp2 = hash('sha256', $pass2);
+				echo $pass2.'->'.$passCryp2.'<br>';
+
+				print_r($estadosInscripcion); 
+
+				echo '<br> Array = [';
+				foreach ($estadosInscripcion as $i => $value) {
+				    echo $value.'<br>';
+				}
+				echo '];';
+			?>
+
 			<div class="push"></div>
 		</div>
 

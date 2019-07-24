@@ -24,28 +24,27 @@
             
             <?php 
                 $stmt = $conn->query("SELECT * FROM colegiado WHERE numColegiado='".$_REQUEST["numColegiado"]."'");
-                $row = $stmt->fetch_assoc();
-                echo "<p>Información del perfil del colegiado ".$row['Nombre']." ".$row['Apellidos'].".</p>";
+                $colegiado = $stmt->fetch_assoc();
             ?>
 
             <form id="formModificarColegiado" method="POST" action="procesarModificarColegiado.php?numColegiado=<?php echo $_REQUEST["numColegiado"] ?>">
                 <div class="form-row">
                     <div class="form-group campoForm">
                         <label for="nuevoNumColegiado" class="etiqueta">Número de Colegiado </label>
-                        <input class="form-control customInput" type="number" id="nuevoNumColegiado" name="nuevoNumColegiado" <?php echo 'value="'.$row['NumColegiado'].'"'; ?> />
+                        <input class="form-control customInput" type="number" id="nuevoNumColegiado" name="nuevoNumColegiado" <?php echo 'value="'.$colegiado['NumColegiado'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="nombre" class="etiqueta">Nombre </label>
-                        <input class="form-control customInput" type="text" id="nombre" name="nombre" <?php echo 'value="'.$row['Nombre'].'"'; ?> />
+                        <input class="form-control customInput" type="text" id="nombre" name="nombre" <?php echo 'value="'.$colegiado['Nombre'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="apellidos" class="etiqueta">Apellidos </label>
-                        <input class="form-control customInput" type="text" id="apellidos" name="apellidos" <?php echo 'value="'.$row['Apellidos'].'"'; ?> />
+                        <input class="form-control customInput" type="text" id="apellidos" name="apellidos" <?php echo 'value="'.$colegiado['Apellidos'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="rol" class="etiqueta">Rol * </label>
                         <select class="form-control customInput" name="rol" id="rol"> 
-                            <?php if ($row['Rol']=='Colegiado') {
+                            <?php if ($colegiado['Rol']=='Colegiado') {
                                 echo '<option value="Colegiado" selected>Colegiado</option>';
                                 echo '<option value="Responsable">Responsable</option>';
                             } else{
@@ -57,35 +56,35 @@
                     </div>
                     <div class="form-group campoForm">
                         <label for="domicilio" class="etiqueta">Domicilio Profesional </label>
-                        <input class="form-control customInput" type="text" id="domicilio" name="domicilio" <?php echo 'value="'.$row['DomicilioProfesional'].'"'; ?> />
+                        <input class="form-control customInput" type="text" id="domicilio" name="domicilio" <?php echo 'value="'.$colegiado['DomicilioProfesional'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="localidad" class="etiqueta">Localidad </label>
-                        <input class="form-control customInput" type="text" id="localidad" name="localidad" <?php echo 'value="'.$row['Localidad'].'"'; ?> />
+                        <input class="form-control customInput" type="text" id="localidad" name="localidad" <?php echo 'value="'.$colegiado['Localidad'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="codigoPostal" class="etiqueta">Código Postal </label>
-                        <input class="form-control customInput" type="text" id="codigoPostal" name="codigoPostal" <?php echo 'value="'.$row['CodigoPostal'].'"'; ?> />
+                        <input class="form-control customInput" type="text" id="codigoPostal" name="codigoPostal" <?php echo 'value="'.$colegiado['CodigoPostal'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="provincia" class="etiqueta">Provincia </label>
-                        <input class="form-control customInput" type="text" id="provincia" name="provincia" <?php echo 'value="'.$row['Provincia'].'"'; ?> />
+                        <input class="form-control customInput" type="text" id="provincia" name="provincia" <?php echo 'value="'.$colegiado['Provincia'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="telefonoProfesional" class="etiqueta">Teléfono Profesional </label>
-                        <input class="form-control customInput" type="text" id="telefonoProfesional" name="telefonoProfesional" <?php echo 'value="'.$row['TelefonoProfesional'].'"'; ?> />
+                        <input class="form-control customInput" type="text" id="telefonoProfesional" name="telefonoProfesional" <?php echo 'value="'.$colegiado['TelefonoProfesional'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="email" class="etiqueta">Correo Electrónico </label>
-                        <input class="form-control customInput" type="text" id="email" name="email" <?php echo 'value="'.$row['CorreoElectronico'].'"'; ?> />
+                        <input class="form-control customInput" type="text" id="email" name="email" <?php echo 'value="'.$colegiado['CorreoElectronico'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="URL" class="etiqueta">Web Personal </label>
-                        <input class="form-control customInput" type="text" id="URL" name="URL" <?php echo 'value="'.$row['URL'].'"'; ?> />
+                        <input class="form-control customInput" type="text" id="URL" name="URL" <?php echo 'value="'.$colegiado['URL'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
                         <label for="finInhabilitacion" class="etiqueta"> Fin de Inhabilitación </label>
-                        <input class="form-control customInput" type="date" id="finInhabilitacion" name="finInhabilitacion" <?php echo 'value="'.$row['FinInhabilitacion'].'"'; ?> />
+                        <input class="form-control customInput" type="date" id="finInhabilitacion" name="finInhabilitacion" <?php echo 'value="'.$colegiado['FinInhabilitacion'].'"'; ?> />
                     </div>
                 </div>
                 <div class="botonera row">
@@ -101,9 +100,11 @@
                 <div class="left">
                     <h3>Listas a las que pertenece</h3>
                 </div>
+                <?php if($colegiado['FinInhabilitacion'] == NULL) : ?>
                 <div class="right">
                     <button class="btn btn-success crear right"  onclick="location.href='AdminAgregarColegiadoALista.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>'"><i class="fas fa-plus"> Añadir inscripción</i></button>
                 </div>
+                <?php endif; ?>
             </div>
 
             <?php 
@@ -111,9 +112,9 @@
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = 'SELECT L.IdLista, L.Publica, TL.Nombre TipoLista, T.Nombre Territorio FROM inscripcion I, lista l, tipolista TL, territorio T WHERE I.IdLista=L.IdLista AND L.IdTipoLista=TL.IdTipoLista AND L.Territorio=T.IdTerritorio AND I.NumColegiado='.$_GET['numColegiado'].' ORDER BY '.$column.' '.$sort_order;
+                $consultaLista = 'SELECT L.IdLista, L.Publica, TL.Nombre TipoLista, T.Nombre Territorio FROM inscripcion I, lista l, tipolista TL, territorio T WHERE I.IdLista=L.IdLista AND L.IdTipoLista=TL.IdTipoLista AND L.Territorio=T.IdTerritorio AND I.NumColegiado='.$_GET['numColegiado'].' ORDER BY '.$column.' '.$sort_order;
 
-                if ($result=$conn->query($consulta)) {
+                if ($resultLista=$conn->query($consultaLista)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
                     $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
                     $add_class = ' class="highlight"';
@@ -133,24 +134,24 @@
                 </thead>
                 <tbody>
                     <?php 
-                        while ($row = $result->fetch_assoc()){
+                        while ($rowLista = $resultLista->fetch_assoc()){
                             echo '<tr>';
-                            echo '  <td class="text-center">'.$row['IdLista'].'</td>';
-                            if(is_null($row['Publica'])){
+                            echo '  <td class="text-center">'.$rowLista['IdLista'].'</td>';
+                            if(is_null($rowLista['Publica'])){
                                 echo '<td class="text-center">Revisores</td>';
-                                echo '<td class="text-center">'.$row['TipoLista'].'</td>';
+                                echo '<td class="text-center">'.$rowLista['TipoLista'].'</td>';
                                 echo '<td class="text-center">Nacional</td>';
                             } else{
                                 echo '<td class="text-center">Profesionales</td>';
-                                echo '<td class="text-center">'.$row['TipoLista'].'</td>';
-                                if($row['Publica'] == 0){
+                                echo '<td class="text-center">'.$rowLista['TipoLista'].'</td>';
+                                if($rowLista['Publica'] == 0){
                                     echo '<td class="text-center">No</td>';
                                 } else{
                                     echo '<td class="text-center">Si</td>';
                                 }
                             }
-                            echo '  <td class="text-center">'.$row['Territorio'].'</td>';
-                            echo '  <td class="text-center"><a href= "procesarEliminarColegiadoDeLista.php?numColegiado='.$_REQUEST["numColegiado"] .'&idLista='.$row["IdLista"].'"><i class="fas fa-times red"></i></a></td>';
+                            echo '  <td class="text-center">'.$rowLista['Territorio'].'</td>';
+                            echo '  <td class="text-center"><a href= "procesarEliminarColegiadoDeLista.php?numColegiado='.$_REQUEST["numColegiado"] .'&idLista='.$rowLista["IdLista"].'"><i class="fas fa-times red"></i></a></td>';
                             echo '<tr>';
                         }
                     ?>
@@ -163,9 +164,11 @@
                 <div class="left">
                     <h3>Comisiones en las que participa</h3>
                 </div>
+                <?php if($colegiado['FinInhabilitacion'] == NULL) : ?>
                 <div class="right">
                     <button class="btn btn-success crear right"  onclick="location.href='AdminAgregarColegiadoAComision.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>'"><i class="fas fa-plus"> Añadir a comisión</i></button>
                 </div>
+                <?php endif; ?>
             </div>
                         
             <?php 
@@ -173,9 +176,9 @@
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = 'SELECT C.IdComision, TL.Nombre TipoLista, (SELECT IF(C.Presidente='.$_SESSION['SesionNumColegiado'].', "Presidente", "Miembro")) Cargo FROM miembrocomision M, comisiontap C, tipolista TL WHERE M.IdComision=C.IdComision AND C.IdComision=TL.IdComision AND M.NumColegiado='.$_GET['numColegiado'].' ORDER BY '.$column.' '.$sort_order;
+                $consultaComision = 'SELECT C.IdComision, TL.Nombre TipoLista, (SELECT IF(C.Presidente='.$_SESSION['SesionNumColegiado'].', "Presidente", "Miembro")) Cargo FROM miembrocomision M, comisiontap C, tipolista TL WHERE M.IdComision=C.IdComision AND C.IdComision=TL.IdComision AND M.NumColegiado='.$_GET['numColegiado'].' ORDER BY '.$column.' '.$sort_order;
 
-                if ($result=$conn->query($consulta)) {
+                if ($resultComision=$conn->query($consultaComision)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
                     $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
                     $add_class = ' class="highlight"';
@@ -193,12 +196,12 @@
                 </thead>
                 <tbody>
                     <?php 
-                        while ($row = $result->fetch_assoc()){
+                        while ($rowComision = $resultComision->fetch_assoc()){
                             echo '<tr>';
-                            echo '  <td class="text-center">'.$row['IdComision'].'</td>';
-                            echo '  <td class="text-center">'.$row['TipoLista'].'</td>';
-                            echo '  <td class="text-center">'.$row['Cargo'].'</td>';
-                            echo '  <td class="text-center"><a href= "procesarEliminarColegiadoDeComision.php?numColegiado='.$_REQUEST["numColegiado"] .'&idComision='.$row["IdComision"].'"><i class="fas fa-times red"></i></a></td>';
+                            echo '  <td class="text-center">'.$rowComision['IdComision'].'</td>';
+                            echo '  <td class="text-center">'.$rowComision['TipoLista'].'</td>';
+                            echo '  <td class="text-center">'.$rowComision['Cargo'].'</td>';
+                            echo '  <td class="text-center"><a href= "procesarEliminarColegiadoDeComision.php?numColegiado='.$_REQUEST["numColegiado"] .'&idComision='.$rowComision["IdComision"].'"><i class="fas fa-times red"></i></a></td>';
                             echo '<tr>';
                         }
                     ?>
@@ -221,9 +224,9 @@
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = 'SELECT E.* FROM especializacioncolegiado EC, campoespecializacion E WHERE EC.IdEspecializacion=E.IdEspecializacion AND EC.NumColegiado='.$_GET['numColegiado'].' ORDER BY '.$column.' '.$sort_order;
+                $consultaEspec = 'SELECT E.* FROM especializacioncolegiado EC, campoespecializacion E WHERE EC.IdEspecializacion=E.IdEspecializacion AND EC.NumColegiado='.$_GET['numColegiado'].' ORDER BY '.$column.' '.$sort_order;
 
-                if ($result=$conn->query($consulta)) {
+                if ($resultEspec=$conn->query($consultaEspec)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
                     $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
                     $add_class = ' class="highlight"';
@@ -241,11 +244,11 @@
                 <tbody>
                     <col width="160"><col width="160"><col width="600">
                     <?php 
-                        while ($row = $result->fetch_assoc()){
+                        while ($rowEspec = $resultEspec->fetch_assoc()){
                             echo '<tr>';
-                            echo '  <td class="text-center">'.$row['IdEspecializacion'].'</td>';
-                            echo '  <td class="text-center">'.$row['Nombre'].'</td>';
-                            echo '  <td class="text-justified">'.$row['Descripcion'].'</td>';
+                            echo '  <td class="text-center">'.$rowEspec['IdEspecializacion'].'</td>';
+                            echo '  <td class="text-center">'.$rowEspec['Nombre'].'</td>';
+                            echo '  <td class="text-justified">'.$rowEspec['Descripcion'].'</td>';
                             echo '<tr>';
                         }
                     ?>
@@ -263,13 +266,13 @@
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = '(SELECT SE.IdSolicitudAct IdProyecto, "Profesional" Funcion, SE.EstadoProyecto Estado FROM servicioactuacion SE WHERE SE.NumColegiado='.$_GET['numColegiado'].') 
+                $consultaProyectos = '(SELECT SE.IdSolicitudAct IdProyecto, "Profesional" Funcion, SE.EstadoProyecto Estado FROM servicioactuacion SE WHERE SE.NumColegiado='.$_GET['numColegiado'].') 
                 UNION
                 (SELECT SE.IdSolicitudAct, "Revisor" Funcion, SE.EstadoVisado Estado FROM servicioactuacion SE WHERE SE.NumColegiadoRevisor='.$_GET['numColegiado'].')
                 UNION
                 (SELECT SE.IdSolicitudAct, "Tutelador" Funcion, SE.EstadoProyecto Estado FROM servicioactuacion SE WHERE SE.NumColegiadoTutela='.$_GET['numColegiado'].') ORDER BY '.$column.' '.$sort_order;
 
-                if ($result=$conn->query($consulta)) {
+                if ($resultProyectos=$conn->query($consultaProyectos)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
                     $asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
                     $add_class = ' class="highlight"';
@@ -286,11 +289,11 @@
                 </thead>
                 <tbody>
                     <?php 
-                        while ($row = $result->fetch_assoc()){
+                        while ($rowProyectos = $resultProyectos->fetch_assoc()){
                             echo '<tr>';
-                            echo '  <td class="text-center">'.$row['IdProyecto'].'</td>';
-                            echo '  <td class="text-center">'.$row['Funcion'].'</td>';
-                            echo '  <td class="text-center">'.$row['Estado'].'</td>';
+                            echo '  <td class="text-center">'.$rowProyectos['IdProyecto'].'</td>';
+                            echo '  <td class="text-center">'.$rowProyectos['Funcion'].'</td>';
+                            echo '  <td class="text-center">'.$rowProyectos['Estado'].'</td>';
                             echo '<tr>';
                         }
                     ?>

@@ -7,9 +7,8 @@
 
     $stmt->bind_param("issssssssssi", $numColegiado, $cryptedpass, $rol, $nombre, $apellidos, $domicilio, $localidad, $codigoPostal, $provincia, $telefonoProfesional, $email, $url);
     $numColegiado=$_REQUEST["numColegiado"];
-	// $pass = generateRandomString(); //Contraseña autogenerada
-    // $cryptedpass = password_hash($pass, PASSWORD_BCRYPT);
-    $cryptedpass = password_hash('1234', PASSWORD_BCRYPT);
+	$pass = generateRandomString(); //Contraseña autogenerada
+    $cryptedpass = hash('sha256', $pass);
     $rol=$_REQUEST["rol"];
     $nombre=$_REQUEST["nombre"];
     $apellidos=$_REQUEST["apellidos"];

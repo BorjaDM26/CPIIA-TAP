@@ -66,12 +66,16 @@
                     <div class="form-group campoForm">
                         <label for="estado" class="etiqueta">Estado </label>
                         <select class="form-control customInput" name="estado" id="estado">
-                            <option value='Pendiente de revision'>Pendiente de revision</option>
-                            <option value='Pendiente de presupuesto'>Pendiente de presupuesto</option>
-                            <option value='En desarrollo'>En desarrollo</option>
-                            <option value='Finalizada'>Finalizada</option>
-                            <option value='Cancelada'>Cancelada</option>
-                            <option value='Pendiente de aceptacion del presupuesto'>Pendiente de aceptacion del presupuesto</option>
+                            <?php
+                                foreach ($estadosSolicitud as $i => $value) {
+                                    if($value == $row['Estado']){
+                                        echo "<option value='$i' selected>$value</option>";
+                                    } else {
+                                        echo "<option value='$i'>$value</option>";
+                                    }
+                                    
+                                }
+                            ?>
                         </select>
                     </div>
                     <div class="form-group campoForm">
@@ -152,15 +156,13 @@
                         <td class="text-center">
                             <?php
                                 echo '<select class="form-control customInput inTable" name="estado" id="estado" onchange="actualizarEstadoServicio(this.value, '.$_REQUEST['idProyecto'].', '.$rowEncargado['NumColegiado'].')">';
-
-                                echo '  <option value="'.$rowEncargado['Estado'].'" selected>'.$rowEncargado['Estado'].'</option>';
-                                echo '  <option value="En proceso de realizacion">En proceso de realizacion</option>';
-                                echo '  <option value="Pendiente de aceptacion">Pendiente de aceptacion</option>';
-                                echo '  <option value="Pendiente de presupuesto">Pendiente de presupuesto</option>';
-                                echo '  <option value="Presupuesto entregado">Presupuesto entregado</option>';
-                                echo '  <option value="Proyecto finalizado">Proyecto finalizado</option>';
-                                echo '  <option value="Servicio rechazado">Servicio rechazado</option>';
-
+                                foreach ($estadosServicio as $i => $value) {
+                                    if($value == $rowEncargado['Estado']){
+                                        echo "<option value='$i' selected>$value</option>";
+                                    } else {
+                                        echo "<option value='$i'>$value</option>";
+                                    }
+                                }
                                 echo '</select>';
                             ?>
                         </td>

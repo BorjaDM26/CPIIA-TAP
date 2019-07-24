@@ -65,12 +65,16 @@
                 <div class="form-group campoForm">
                     <label for="estado" class="etiqueta">Estado </label>
                     <select class="form-control customInput" name="estado" id="estado" disabled="true">
-                        <option value='Pendiente de revision'>Pendiente de revision</option>
-                        <option value='Pendiente de presupuesto'>Pendiente de presupuesto</option>
-                        <option value='En desarrollo'>En desarrollo</option>
-                        <option value='Finalizada'>Finalizada</option>
-                        <option value='Cancelada'>Cancelada</option>
-                        <option value='Pendiente de aceptacion del presupuesto'>Pendiente de aceptacion del presupuesto</option>
+                    <?php
+                        foreach ($estadosSolicitud as $i => $value) {
+                            if($value == $row['Estado']){
+                                echo "<option value='$i' selected>$value</option>";
+                            } else {
+                                echo "<option value='$i'>$value</option>";
+                            }
+                            
+                        }
+                    ?>
                     </select>
                 </div>
                 <div class="form-group campoForm">
