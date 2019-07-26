@@ -23,7 +23,7 @@
     			while ($filaTipoLst = $stmtTipoLst->fetch_assoc()){
     				echo '<div class="card">';
     				echo '	<div class="card-body">';
-    				echo '		<h5 class="card-title"><b>'.$filaTipoLst['Nombre'].'</b></h5>';
+    				echo '		<h5 class="card-title text-center"><b>'.$filaTipoLst['Nombre'].'</b></h5>';
     				echo '		<p class="card-text">'.$filaTipoLst['Descripcion'].'</p>';
     				echo '	</div>';
     				echo '</div><br>';

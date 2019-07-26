@@ -22,7 +22,6 @@
                 <h1>Mis Listas</h1>
             </div>
             
-            
             <?php 
                 $columns = array('IdLista', 'TipoLista', 'Publica', 'Territorio');
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
@@ -40,7 +39,7 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="ColegMisListas.php?column=IdLista&order=<?php echo $asc_or_desc; ?>">Id. Lista<i class="fas fa-sort<?php echo $column == 'IdLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="ColegMisListas.php?column=IdLista&order=<?php echo $asc_or_desc; ?>">Id. de lista<i class="fas fa-sort<?php echo $column == 'IdLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Grupo</th>
                         <th class="text-center" scope="col"><a href="ColegMisListas.php?column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="ColegMisListas.php?column=Publica&order=<?php echo $asc_or_desc; ?>">Pública <i class="fas fa-sort<?php echo $column == 'Publica' ? '-' . $up_or_down : ''; ?>"></i></a></th>
@@ -56,7 +55,7 @@
                             if(is_null($row['Publica'])){
                                 echo '<td class="text-center">Revisores</td>';
                                 echo '<td class="text-center">'.$row['TipoLista'].'</td>';
-                                echo '<td class="text-center">Nacional</td>';
+                                echo '<td class="text-center">No</td>';
                             } else{
                                 echo '<td class="text-center">Profesionales</td>';
                                 echo '<td class="text-center">'.$row['TipoLista'].'</td>';

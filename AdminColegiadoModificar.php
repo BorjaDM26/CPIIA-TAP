@@ -30,19 +30,19 @@
             <form id="formModificarColegiado" method="POST" action="procesarModificarColegiado.php?numColegiado=<?php echo $_REQUEST["numColegiado"] ?>">
                 <div class="form-row">
                     <div class="form-group campoForm">
-                        <label for="nuevoNumColegiado" class="etiqueta">Número de Colegiado </label>
+                        <label for="nuevoNumColegiado" class="etiqueta">Número de colegiado * </label>
                         <input class="form-control customInput" type="number" id="nuevoNumColegiado" name="nuevoNumColegiado" <?php echo 'value="'.$colegiado['NumColegiado'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="nombre" class="etiqueta">Nombre </label>
+                        <label for="nombre" class="etiqueta">Nombre * </label>
                         <input class="form-control customInput" type="text" id="nombre" name="nombre" <?php echo 'value="'.$colegiado['Nombre'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="apellidos" class="etiqueta">Apellidos </label>
+                        <label for="apellidos" class="etiqueta">Apellidos * </label>
                         <input class="form-control customInput" type="text" id="apellidos" name="apellidos" <?php echo 'value="'.$colegiado['Apellidos'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="rol" class="etiqueta">Rol * </label>
+                        <label for="rol" class="etiqueta">Rol </label>
                         <select class="form-control customInput" name="rol" id="rol"> 
                             <?php if ($colegiado['Rol']=='Colegiado') {
                                 echo '<option value="Colegiado" selected>Colegiado</option>';
@@ -55,39 +55,39 @@
                         </select>
                     </div>
                     <div class="form-group campoForm">
-                        <label for="domicilio" class="etiqueta">Domicilio Profesional </label>
+                        <label for="domicilio" class="etiqueta">Domicilio profesional * </label>
                         <input class="form-control customInput" type="text" id="domicilio" name="domicilio" <?php echo 'value="'.$colegiado['DomicilioProfesional'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="localidad" class="etiqueta">Localidad </label>
+                        <label for="localidad" class="etiqueta">Localidad * </label>
                         <input class="form-control customInput" type="text" id="localidad" name="localidad" <?php echo 'value="'.$colegiado['Localidad'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="codigoPostal" class="etiqueta">Código Postal </label>
+                        <label for="codigoPostal" class="etiqueta">Código postal * </label>
                         <input class="form-control customInput" type="text" id="codigoPostal" name="codigoPostal" <?php echo 'value="'.$colegiado['CodigoPostal'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="provincia" class="etiqueta">Provincia </label>
+                        <label for="provincia" class="etiqueta">Provincia * </label>
                         <input class="form-control customInput" type="text" id="provincia" name="provincia" <?php echo 'value="'.$colegiado['Provincia'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="telefonoProfesional" class="etiqueta">Teléfono Profesional </label>
+                        <label for="telefonoProfesional" class="etiqueta">Teléfono profesional * </label>
                         <input class="form-control customInput" type="text" id="telefonoProfesional" name="telefonoProfesional" <?php echo 'value="'.$colegiado['TelefonoProfesional'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="email" class="etiqueta">Correo Electrónico </label>
+                        <label for="email" class="etiqueta">Correo electrónico * </label>
                         <input class="form-control customInput" type="text" id="email" name="email" <?php echo 'value="'.$colegiado['CorreoElectronico'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="URL" class="etiqueta">Web Personal </label>
+                        <label for="URL" class="etiqueta">Web personal </label>
                         <input class="form-control customInput" type="text" id="URL" name="URL" <?php echo 'value="'.$colegiado['URL'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="finInhabilitacion" class="etiqueta"> Fin de Inhabilitación </label>
+                        <label for="finInhabilitacion" class="etiqueta"> Fin de inhabilitación </label>
                         <input class="form-control customInput" type="date" id="finInhabilitacion" name="finInhabilitacion" <?php echo 'value="'.$colegiado['FinInhabilitacion'].'"'; ?> />
                     </div>
                 </div>
-                <div class="botonera row">
+                <div class="botonera">
                     <input type="submit" class="btn btn-success" value="Modificar Colegiado" />
                     <button type="reset" <?php echo "onclick=\"location.href='AdminColegiadoModificar.php?numColegiado=".$_GET['numColegiado']."'\"" ?>>Reiniciar Formulario</button>
                     <button type="button" class="volver" onclick="location.href='AdminColegiados.php'">Cancelar</button>
@@ -124,7 +124,7 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdLista&order=<?php echo $asc_or_desc; ?>">Id. Lista<i class="fas fa-sort<?php echo $column == 'IdLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdLista&order=<?php echo $asc_or_desc; ?>">Id. de lista<i class="fas fa-sort<?php echo $column == 'IdLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Grupo</th>
                         <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=Publica&order=<?php echo $asc_or_desc; ?>">Pública <i class="fas fa-sort<?php echo $column == 'Publica' ? '-' . $up_or_down : ''; ?>"></i></a></th>
@@ -140,7 +140,7 @@
                             if(is_null($rowLista['Publica'])){
                                 echo '<td class="text-center">Revisores</td>';
                                 echo '<td class="text-center">'.$rowLista['TipoLista'].'</td>';
-                                echo '<td class="text-center">Nacional</td>';
+                                echo '<td class="text-center">No</td>';
                             } else{
                                 echo '<td class="text-center">Profesionales</td>';
                                 echo '<td class="text-center">'.$rowLista['TipoLista'].'</td>';
@@ -188,7 +188,7 @@
             <table class="table table-sm table-hover col-md-9">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdComision&order=<?php echo $asc_or_desc; ?>">Id. Comisión<i class="fas fa-sort<?php echo $column == 'IdComision' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdComision&order=<?php echo $asc_or_desc; ?>">Id. de comisión<i class="fas fa-sort<?php echo $column == 'IdComision' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=Cargo&order=<?php echo $asc_or_desc; ?>">Cargo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Expulsar</th>
@@ -236,13 +236,13 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. Especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. de especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <col width="160"><col width="160"><col width="600">
+                    <col width="190"><col width="150"><col width="600">
                     <?php 
                         while ($rowEspec = $resultEspec->fetch_assoc()){
                             echo '<tr>';
@@ -282,8 +282,8 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?column=IdProyecto&order=<?php echo $asc_or_desc; ?>">Id. Proyecto<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
-                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?column=Funcion&order=<?php echo $asc_or_desc; ?>">Función<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=IdProyecto&order=<?php echo $asc_or_desc; ?>">Id. del proyecto<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>&column=Funcion&order=<?php echo $asc_or_desc; ?>">Función<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Estado</th>
                     </tr>
                 </thead>

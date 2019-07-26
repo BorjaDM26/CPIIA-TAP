@@ -29,7 +29,7 @@
 			<form id="formCrearSolicitud" method="POST" action="procesarRequerirEspecializacionATipoLista.php">
 				<div class="form-row">
 					<div class="form-group campoForm">
-	                    <label for="idTipoLista" class="etiqueta">Id. Tipo de Lista </label>
+	                    <label for="idTipoLista" class="etiqueta">Id. de tipo de lista </label>
 	                    <input class="form-control customInput" type="text" id="idTipoLista" name="idTipoLista" readonly="true" <?php echo 'value="'.$rowTipoLst['IdTipoLista'].'"'; ?> />
 	                </div>
 					<div class="form-group campoForm">
@@ -38,7 +38,7 @@
 	                </div>
 
 	                <div class="form-group campoForm">
-	                	<label for="espec" class="etiqueta">Campo de Especialización * </label>
+	                	<label for="espec" class="etiqueta">Campo de especialización * </label>
 	                	<select class="form-control customInput" name="espec" id="espec">
 	                		<?php 
 	                			while ($rowEspecTipoLst = $stmtEspecTipoLst->fetch_assoc()){
@@ -50,7 +50,7 @@
 	                </div>
                 </div>
                 <div class="botonera">
-				    <input type="submit" class="btn btn-success" value="Requerir" />
+				    <input type="submit" class="btn btn-success" value="Requerir Especialización" />
 				    <button type="button" class="volver" onclick="location.href='AdminTipoListaModificar.php?idTipoLista=<?php echo $_REQUEST["idTipoLista"]; ?>'">Cancelar</button>
 				</div>
 			</form>

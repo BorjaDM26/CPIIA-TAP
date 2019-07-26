@@ -7,10 +7,6 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-p {
-	text-align : justify;
-}
-
 h1 {
 	margin-bottom: 20px;
 }
@@ -19,9 +15,18 @@ h3 {
 	margin-bottom: 20px;
 }
 
+p, *[class~="text-justified"] {
+	text-align : justify;
+}
+
+*[class~="text-center"]{
+	text-align: center;
+}
+
 footer {
 	bottom:0px;
 }
+
 
 /*------------------------------------------------------
 --------------------- MENÚ SUPERIOR --------------------
@@ -31,12 +36,12 @@ nav#menuSuperior {
 	width: 100%;
 	height: 70px;
 	border-bottom: 2px solid #d6d6d6;
-	background-color: #3dbd09;
+	background-color: #016701;
 	color: white;
 	padding: 0px 10vw;
 }
 
-div[class="left"]{
+.collapse div[class="left"]{
 	width: 57%;
 }
 nav#menuSuperior div[class="right"]{
@@ -50,11 +55,11 @@ nav#menuSuperior div[class="right"] a{
 }
 
 nav#menuSuperior div[class~="dropdown"]{
-	margin-right: 5px;
+	margin-left: 10px;
 }
 nav#menuSuperior a[class~="noActivada"], nav#menuSuperior a[class~="sesion"]{
 	color: white;
-	background-color: #3dbd09;
+	background-color: #016701;
 }
 nav#menuSuperior a[class~="sesion"]{
 	padding: 5px;
@@ -63,16 +68,20 @@ nav#menuSuperior a[class~="sesion"]{
 	padding: 7px;
 	margin-right: 5px;
 }
-nav#menuSuperior a[class~="dropdown-item"]:hover{
+nav#menuSuperior a[class~="dropdown-item"]{
 	color: white;
-	background-color: #57de20;
+	background-color: #016701;
+}
+nav#menuSuperior a[class~="dropdown-item"]:hover{
+	color: #016701;
+	background-color: white;
 }
 nav#menuSuperior a[class~="noActivada"]:hover, nav#menuSuperior a[class~="activada"]{
-	color: #3dbd09;
+	color: #016701;
 	background-color: white;
 }
 nav#menuSuperior a[class~="sesion"]:hover{
-	color: #3dbd09;
+	color: #016701;
 	background-color: white;
 	border-radius: 3px;
 }
@@ -97,6 +106,15 @@ nav#menuSuperior a[class~="sesion"]:hover{
     .navbar-expand-custom .navbar-toggler {
         display: none;
     }
+}
+
+/* Cambio de color del menú comprimido */
+.navbar .navbar-toggler{
+	border-color: white;
+}
+
+.navbar .navbar-toggler .icon-bar{
+	color: white;
 }
 
 
@@ -132,6 +150,50 @@ nav#menuSuperior a[class~="sesion"]:hover{
 .dropdown-content a:hover {background-color: #ddd;}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+/*------------------------------------------------------
+--------------------- CONTENIDO ----------------------
+------------------------------------------------------*/
+div.contenido{
+	padding:  35px 20px;
+	min-height: 513px;
+	margin: 0 auto -160px;
+}
+
+.titulo{
+	width: 100%;
+	padding-bottom: 15px;
+}
+
+.subtitulo{
+	padding-top: 30px;
+}
+
+.titulo div[class="left"], .subtitulo div[class="left"],{
+	width: 75%;
+}
+.titulo div[class="right"], .subtitulo div[class="right"]{
+	float: right;
+	width: 25%;
+}
+
+div[class~="card"], thead{
+	background-color: #e0d9d8;
+}
+
+thead *{
+	color: black
+}
+
+table, .actualizarPass{
+	margin: auto;
+}
+
+select[class~="inTable"]{
+	border: none;
+	width: 100%;
+}
 
 
 /*------------------------------------------------------
@@ -199,7 +261,7 @@ p.footer-links a{
 form[class~='sesion'] {
 	z-index: 1;
 	width: 450px;
-	height: 265px;
+	height: 320px;
 	left: 0;
 	background-color: #ececec;
 	overflow-x: hidden;
@@ -222,95 +284,6 @@ input[type="text"], input[type="password"]{
 	margin: 20px auto;
 }
 
-input[type="submit"], input[type="reset"], button[type="reset"], button[class~="volver"]{
-	padding: 10px;
-	width: 200px;
-	margin-top: 0;
-	margin-right: 10px;
-	cursor: pointer;
-	border: 0;
-	border-radius: 3px;
-	color: #fff;
-}
-
-input[type="reset"], button[type="reset"]{
-	background: #0098cb;
-}
-input[type="reset"]:hover, button[type="reset"]:hover{
-	background-color: #00b8eb; 
-}
-button[class~="volver"]{
-	background: #e40613;
-}
-button[class~="volver"]:hover{
-	background: #f00;
-}
-button[class~="crear"]{
-	padding: 10px;
-	width: 150px;
-	height: 50px;
-	margin-top: 0;
-	margin-right: 10px;
-	cursor: pointer;
-	border: 0;
-	border-radius: 3px;
-	color: #fff;
-	background-color: #3dbd09;
-}
-input[class~="buscar"]{
-  	transform: translateY(25%);	
- 	height: 50px;
- 	width: 140px;
-	color: #fff;
-	background-color: #57de20;
-}
-
-div[class~="campoForm"]{
-	padding-right: 2vw;
-}
-
-
-/*------------------------------------------------------
---------------------- CONTENIDO ----------------------
-------------------------------------------------------*/
-div.contenido{
-	padding:  35px 20px;
-	min-height: 513px;
-	margin: 0 auto -160px;
-}
-
-.titulo, form#formBuscarLista{
-	padding-bottom: 15px;
-}
-
-.subtitulo{
-	padding-top: 30px;
-}
-
-form#formCrearColegiado *{
-	margin-right:10px;
-}
-*[class~="text-center"]{
-	text-align: center;
-}
-*[class~="text-justified"]{
-	text-align: justify;
-}
-thead *{
-	color: black
-}
-table{
-	margin: auto;
-}
-
-*[class~="prt"]{
-	margin: auto;
-}
-
-
-/*------------------------------------------------------
------------------------- PRUEBAS -----------------------
-------------------------------------------------------*/
 input[class~="customInput"], select[class~="customInput"]{
 	weight: 400px;
     width: 12em;
@@ -324,6 +297,7 @@ textarea[class~="customInput"]{
     margin-top: 0px;
     margin-bottom: 10px;
 }
+
 select[class~="customFilter"]{
 	weight: 400px;
     width: 10em;
@@ -337,48 +311,87 @@ label[class~="etiqueta"]{
 	margin-bottom: 0px;
 }
 
-div[class~="card"], thead{
-	background-color: #e0d9d8;
+div[class~="campoForm"]{
+	padding-right: 2vw;
 }
 
-
-
-html, body {
-  height: 100%;
-  margin: 0;
+form#formBuscarLista{
+	padding-bottom: 15px;
 }
 
-div[class~="footer"], div[class~="push"] {
-  height: 160px;
+/* Botones */
+div.botonera * {
+	margin-left: 5vw;
+	margin-top: 20px;
 }
 
-
-select[class~="inTable"]{
-	border: none;
-	width: 100%;
+input[type="submit"], *[type="reset"], button[class~="volver"]{
+	padding: 10px;
+	width: 200px;
+	margin-top: 0;
+	margin-right: 10px;
+	cursor: pointer;
+	border: 0;
+	border-radius: 3px;
+	color: #fff;
 }
 
-.titulo div[class="left"], .subtitulo div[class="left"],{
-	width: 70%;
-}
-.titulo div[class="right"], .subtitulo div[class="right"]{
-	float: right;
-	width: 30%;
+input[type="submit"]{
+	background-color: #2c7e2c;
 }
 
-div[class="right"] button{
+input[type="submit"]:hover{
+	background-color: #016701;
+}
+
+*[type="reset"]{
+	background: #37779c;
+}
+*[type="reset"]:hover{
+	background-color: #004e7d; 
+}
+button[class~="volver"]{
+	background: #cc2727;
+}
+button[class~="volver"]:hover{
+	background: #b00000;
+}
+
+button[class~="crear"]{
+	padding: 10px;
+	width: 150px;
+	height: 50px;
+	margin-top: 0;
+	margin-right: 10px;
+	cursor: pointer;
+	border: 0;
+	border-radius: 3px;
+	color: #fff;
+	background-color: #016701;
+}
+
+input[class~="buscar"]{
+  	transform: translateY(25%);	
+ 	height: 50px;
+ 	width: 140px;
+	color: #fff;
+	background-color: #2c7e2c;
+}
+
+.right button{
 	display: inline-block;
 	float: right;
 }
 
-div.botonera{
-	padding-top: 15px;
+
+/*------------------------------------------------------
+------------------------ OTROS -------------------------
+------------------------------------------------------*/
+div[class~="footer"], div[class~="push"] {
+  height: 160px;
 }
 
-div.botonera input, div.botonera button {
-	margin-left: 5vw;
-}
-
+/* Icono "Eliminar" */
 .fa-times{
 	color: red;
 	font-size: 20px;

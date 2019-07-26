@@ -43,8 +43,8 @@
 			<table class="table table-sm table-hover col-md-11">
 				<thead>
 					<tr>
-						<th class="text-center" scope="col"><a href="AdminComisiones.php?column=IdComision&order=<?php echo $asc_or_desc; ?>">Id. Comisión<i class="fas fa-sort<?php echo $column == 'IdComision' ? '-' . $up_or_down : '' ?>"></i></a></th>
-						<th class="text-center" scope="col"><a href="AdminComisiones.php?column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo de Lista <i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminComisiones.php?column=IdComision&order=<?php echo $asc_or_desc; ?>">Id. de comisión<i class="fas fa-sort<?php echo $column == 'IdComision' ? '-' . $up_or_down : '' ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminComisiones.php?column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo de lista <i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : ''; ?>"></i></a></th>
 		                <th class="text-center" scope="col">Presidente</th>
 		                <th class="text-center" scope="col">Consultar</th>
 		                <th class="text-center" scope="col">Modificar</th>
@@ -59,7 +59,13 @@
 		                <td class="text-center"><?php echo $row['Presidente']; ?></td>
 	                    <td class="text-center"><a <?php echo "href=\"AdminComisionConsultar.php?idComision=".$row['IdComision']."\"" ?>><i class="fas fa-eye"></i></a></td>
 	                    <td class="text-center"><a <?php echo "href=\"AdminComisionModificar.php?idComision=".$row['IdComision']."\"" ?>><i class="fas fa-edit"></i></a></td>
-	                    <td class="text-center"><a <?php echo "href=\"procesarEliminarComision.php?idComision=".$row['IdComision']."\"" ?> onclick="return confirm('¿Está seguro que desea borrar la comisión?')"><i class="fas fa-times red"></i></a></td>
+	                    <?php
+	                    	if($row['TipoLista']==NULL){
+	                    		echo '<td class="text-center"><a href="procesarEliminarComision.php?idComision='.$row['IdComision'].'" onclick="return confirm(\'¿Está seguro que desea borrar la comisión?\')"><i class="fas fa-times red"></i></a></td>';
+	                    	} else {
+	                    		echo '<td></td>';
+	                    	}
+	                    ?>
 	                </tr>
 					<?php endwhile; ?>
 				</tbody>

@@ -30,21 +30,19 @@
 			<form id="formCrearSolicitud" method="POST" action="procesarActualizarEstadoRevision.php">
 				<div class="form-row">
 					<div class="form-group campoForm">
-	                    <label for="idProyecto" class="etiqueta">Id. Proyecto </label>
+	                    <label for="idProyecto" class="etiqueta">Id. del proyecto </label>
 	                    <input class="form-control customInput" type="text" id="idProyecto" name="idProyecto" readonly="true" <?php echo 'value="'.$_REQUEST['idProyecto'].'"'; ?> />
 	                </div>
 					<div class="form-group campoForm">
 	                    <label for="encargado" class="etiqueta">Encargado </label>
-	                    <select class="form-control customInput" name="encargado" id="encargado" readonly="true">
-	                		<?php echo '<option value="'.$rowEncargado['IdEncargado'].'" selected>'.$rowEncargado['Encargado'].'</option>'; ?>
-						</select>
+	                    <input class="form-control customInput" type="text" id="encargado" name="encargado" readonly="true" <?php echo 'value="'.$rowEncargado['Encargado'].'"'; ?> />
 	                </div>
 					<div class="form-group campoForm">
 	                    <label for="revisor" class="etiqueta">Revisor </label>
 	                    <input class="form-control customInput" type="text" id="revisor" name="revisor" readonly="true" <?php echo 'value="'.$rowRevision['Revisor'].'"'; ?> />
 	                </div>
 	                <div class="form-group campoForm">
-	                	<label for="estado" class="etiqueta">Estado del Visado </label>
+	                	<label for="estado" class="etiqueta">Estado del visado </label>
 	                	<select class="form-control customInput" name="estado" id="estado">
 	                		<?php
                                 foreach ($estadosVisado as $i => $value) {
@@ -60,11 +58,11 @@
 	                </div>
                     <div class="form-group campoForm">
                         <label for="descripcion" class="etiqueta">Descripción</label>
-                        <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="80" required="true" > <?php echo $rowRevision['Descripcion']; ?></textarea>
+                        <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="94" required="true" > <?php echo $rowRevision['Descripcion']; ?></textarea>
                     </div>
                 </div>
                 <div class="botonera">
-				    <input type="submit" class="btn btn-success" value="Actualizar" />
+				    <input type="submit" class="btn btn-success" value="Actualizar Visado" />
 				    <button type="button" class="volver" onclick="location.href='AdminProyectoModificar.php?<?php echo "idProyecto=".$_REQUEST["idProyecto"]; ?>'">Cancelar</button>
 				</div>
 			</form>

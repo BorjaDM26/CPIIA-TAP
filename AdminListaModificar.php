@@ -30,7 +30,7 @@
 			<form id="formModificarLista" method="POST" action="procesarModificarLista.php?idLista=<?php echo $_REQUEST["idLista"] ?>">
 				<div class="form-row">
                     <div class="form-group campoForm">
-                        <label for="nuevoIdLista" class="etiqueta">Id. Lista </label>
+                        <label for="nuevoIdLista" class="etiqueta">Id. de lista </label>
                         <input class="form-control customInput" type="number" id="nuevoIdLista" name="nuevoIdLista" <?php echo 'value="'.$row['IdLista'].'"'; ?> readonly="true"/>
                     </div>
                     <div class="form-group campoForm">
@@ -48,7 +48,7 @@
                         </select>
                     </div>
                     <div class="form-group campoForm">
-                    	<label for="tipoLista" class="etiqueta">Tipo de Lista </label>
+                    	<label for="tipoLista" class="etiqueta">Tipo de lista </label>
                         <select class="form-control customInput" name="tipoLista" id="tipoLista">
                             <?php 
                                 $stmtTipoLst = $conn->query("SELECT * FROM tipolista;");
@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-row" id="auxPubTerritXGrupo">
                         <div class="form-group campoForm">
-                        	<label for="publica" class="etiqueta">Publica </label>
+                        	<label for="publica" class="etiqueta">Pública </label>
                             <select class="form-control customInput" name="publica" id="publica" <?php if($row['Publica']==null){echo 'disabled="true"';} ?>>
                             <?php
                             if($row['Publica']==1){
@@ -96,7 +96,7 @@
                         </div>
                     </div>
 				</div>
-                <div class="botonera row">
+                <div class="botonera">
     			    <input type="submit" class="btn btn-success" value="Modificar Lista" />
             		<input type="reset" value="Reiniciar Formulario"/>
     			    <button type="button" class="volver" onclick="location.href='AdminListas.php'">Cancelar</button>
@@ -125,14 +125,15 @@
                 <table class="table table-sm table-hover col-md-11">
                     <thead>
                         <tr>
-                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">N. Colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">Nº de colegiado<i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                             <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                             <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                            <th class="text-center" scope="col">Email</th>
+                            <th class="text-center" scope="col">Correo electrónico</th>
                             <th class="text-center" scope="col">Estado</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <col width="190"><col width="200"><col width="200"><col width="200"><col width="300">
                         <?php while (isset($result) && $row = $result->fetch_assoc()): ?>
                         <tr>
                             <td class="text-center"><?php echo $row['NumColegiado']; ?></td>
@@ -181,13 +182,13 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. Especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. de especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <col width="160"><col width="160"><col width="600">
+                    <col width="190"><col width="150"><col width="600">
                     <?php 
                         while ($row = $result->fetch_assoc()){
                             echo '<tr>';
@@ -223,9 +224,9 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdSolicitud&order=<?php echo $asc_or_desc; ?>">Id. Proyecto<i class="fas fa-sort<?php echo $column == 'IdSolicitud' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdSolicitud&order=<?php echo $asc_or_desc; ?>">Id. del proyecto<i class="fas fa-sort<?php echo $column == 'IdSolicitud' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Solicitante<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
-                        <th class="text-center" scope="col">Correo Electrónico</th>
+                        <th class="text-center" scope="col">Correo electrónico</th>
                         <th class="text-center" scope="col">Teléfono</th>
                         <th class="text-center" scope="col">Estado</th>
                     </tr>
@@ -238,13 +239,12 @@
                             echo '  <td class="text-center">'.$row['Nombre'].'</td>';
                             echo '  <td class="text-center">'.$row['CorreoElectronico'].'</td>';
                             echo '  <td class="text-center">'.$row['Telefono'].'</td>';
-                            echo '  <td class="text-justified">'.$row['Estado'].'</td>';
+                            echo '  <td class="text-center">'.$row['Estado'].'</td>';
                             echo '<tr>';
                         }
                     ?>
                 </tbody>
             </table>
-
 
             <div class="push"></div>
         </div>

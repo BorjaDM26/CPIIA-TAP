@@ -26,12 +26,11 @@
             <?php 
                 $stmt = $conn->query("SELECT * FROM colegiado WHERE numColegiado='".$_SESSION["SesionNumColegiado"]."'");
                 $row = $stmt->fetch_assoc();
-                echo "<p>Información del perfil del colegiado ".$row['Nombre']." ".$row['Apellidos'].".</p>";
             ?>
 
             <div class="form-row">
                 <div class="form-group campoForm">
-                    <label for="numColegiado" class="etiqueta">Número de Colegiado </label>
+                    <label for="numColegiado" class="etiqueta">Número de colegiado </label>
                     <input class="form-control customInput" type="text" id="numColegiado" name="numColegiado" readonly="true" <?php echo 'value="'.$row['NumColegiado'].'"'; ?> />
                 </div>
                 <div class="form-group campoForm">
@@ -47,7 +46,7 @@
                     <input class="form-control customInput" type="text" id="rol" name="rol" readonly="true" <?php echo 'value="'.$row['Rol'].'"'; ?> />
                 </div>
                 <div class="form-group campoForm">
-                    <label for="domicilio" class="etiqueta">Domicilio Profesional </label>
+                    <label for="domicilio" class="etiqueta">Domicilio profesional </label>
                     <input class="form-control customInput" type="text" id="domicilio" name="domicilio" readonly="true" <?php echo 'value="'.$row['DomicilioProfesional'].'"'; ?> />
                 </div>
                 <div class="form-group campoForm">
@@ -55,7 +54,7 @@
                     <input class="form-control customInput" type="text" id="localidad" name="localidad" readonly="true" <?php echo 'value="'.$row['Localidad'].'"'; ?> />
                 </div>
                 <div class="form-group campoForm">
-                    <label for="codigoPostal" class="etiqueta">Código Postal </label>
+                    <label for="codigoPostal" class="etiqueta">Código postal </label>
                     <input class="form-control customInput" type="text" id="codigoPostal" name="codigoPostal" readonly="true" <?php echo 'value="'.$row['CodigoPostal'].'"'; ?> />
                 </div>
                 <div class="form-group campoForm">
@@ -63,23 +62,22 @@
                     <input class="form-control customInput" type="text" id="provincia" name="provincia" readonly="true" <?php echo 'value="'.$row['Provincia'].'"'; ?> />
                 </div>
                 <div class="form-group campoForm">
-                    <label for="telefonoProfesional" class="etiqueta">Teléfono Profesional </label>
+                    <label for="telefonoProfesional" class="etiqueta">Teléfono profesional </label>
                     <input class="form-control customInput" type="text" id="telefonoProfesional" name="telefonoProfesional" readonly="true" <?php echo 'value="'.$row['TelefonoProfesional'].'"'; ?> />
                 </div>
                 <div class="form-group campoForm">
-                    <label for="email" class="etiqueta">Correo Electrónico </label>
+                    <label for="email" class="etiqueta">Correo electrónico </label>
                     <input class="form-control customInput" type="text" id="email" name="email" readonly="true" <?php echo 'value="'.$row['CorreoElectronico'].'"'; ?> />
                 </div>
                 <div class="form-group campoForm">
-                    <label for="URL" class="etiqueta">Web Personal </label>
+                    <label for="URL" class="etiqueta">Web personal </label>
                     <input class="form-control customInput" type="text" id="URL" name="URL" readonly="true" <?php echo 'value="'.$row['URL'].'"'; ?> />
                 </div>
                 <div class="form-group campoForm">
-                    <label for="finInhabilitacion" class="etiqueta"> Fin de Inhabilitación </label>
+                    <label for="finInhabilitacion" class="etiqueta"> Fin de inhabilitación </label>
                     <input class="form-control customInput" type="date" id="finInhabilitacion" name="finInhabilitacion" readonly="true" <?php echo 'value="'.$row['FinInhabilitacion'].'"'; ?> />
                 </div>
             </div>
-            <button type="button" class="volver" onclick="location.href='index.php'">Volver</button>
 
             <!-- Subapartado para cambio de contraseña -->
             <div class="subtitulo row">
@@ -88,24 +86,24 @@
                 </div>
             </div>
 
-            <div class="card col-md-11 prt">
-                <div class="card-body prt">
+            <div class="card col-md-11 actualizarPass">
+                <div class="card-body actualizarPass">
                     <form id="formActualizarPass" method="POST" action="procesarModificarPass.php">
                         <div class="form-row">
                             <div class="form-group campoForm">
-                                <label for="oldPass" class="etiqueta">Contraseña Antigua </label>
+                                <label for="oldPass" class="etiqueta">Contraseña actual </label>
                                 <input class="form-control customInput" type="password" id="oldPass" name="oldPass" required="true"/>
                             </div>
                             <div class="form-group campoForm">
-                                <label for="newPass" class="etiqueta">Nueva Contraseña </label>
+                                <label for="newPass" class="etiqueta">Nueva contraseña </label>
                                 <input class="form-control customInput" type="password" id="newPass" name="newPass" required="true"/>
                             </div>
                             <div class="form-group campoForm">
-                                <label for="confNewPass" class="etiqueta">Confirmación de Contraseña </label>
+                                <label for="confNewPass" class="etiqueta">Confirmación de contraseña </label>
                                 <input class="form-control customInput" type="password" id="confNewPass" name="confNewPass" required="true"/>
                             </div>
                         </div>
-                        <input type="submit" class="btn btn-success" value="Actualizar Contraseña" />
+                        <input type="submit" class="btn-success" value="Actualizar Contraseña" />
                     </form>
                 </div>
             </div>

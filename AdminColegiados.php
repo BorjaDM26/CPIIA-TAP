@@ -23,7 +23,7 @@
             		<h1>Administración - Colegiados</h1>
             	</div>
             	<div class="right">
-					<button class="btn btn-success crear right"  onclick="location.href='AdminColegiadoCrear.php'"><i class="fas fa-plus"> Crear</i></button>
+					<button class="btn-success crear right"  onclick="location.href='AdminColegiadoCrear.php'"><i class="fas fa-plus"> Crear</i></button>
 				</div>
 			</div>
             
@@ -42,7 +42,7 @@
 			<table class="table table-sm table-hover col-md-11">
 				<thead>
 					<tr>
-						<th class="text-center" scope="col"><a href="AdminColegiados.php?column=NumColegiado&order=<?php echo $asc_or_desc; ?>">N. Colegiado<i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : '' ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminColegiados.php?column=NumColegiado&order=<?php echo $asc_or_desc; ?>">Nº de colegiado<i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : '' ?>"></i></a></th>
 						<th class="text-center" scope="col"><a href="AdminColegiados.php?column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
 						<th class="text-center" scope="col"><a href="AdminColegiados.php?column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
 						<th class="text-center" scope="col"><a href="AdminColegiados.php?column=Rol&order=<?php echo $asc_or_desc; ?>">Rol<i class="fas fa-sort<?php echo $column == 'Rol' ? '-' . $up_or_down : ''; ?>"></i></a></th>

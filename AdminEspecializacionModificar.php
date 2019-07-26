@@ -30,7 +30,7 @@
             <form id="formModificarEspecializacion" method="POST" action="procesarModificarEspecializacion.php?idEspecializacion=<?php echo $_REQUEST["idEspecializacion"] ?>">
         		<div class="form-row">
                     <div class="form-group campoForm">
-                        <label for="nuevoIdEspecializacion" class="etiqueta">Id. Especialización </label>
+                        <label for="nuevoIdEspecializacion" class="etiqueta">Id. de especialización </label>
                         <input class="form-control customInput" type="number" id="nuevoIdEspecializacion" name="nuevoIdEspecializacion" <?php echo 'value="'.$row['IdEspecializacion'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
@@ -39,10 +39,10 @@
                     </div>
                     <div class="form-group campoForm">
                         <label for="descripcion" class="etiqueta">Descripción </label>
-                        <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="80" required="true" > <?php echo $row['Descripcion']; ?> </textarea>
+                        <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="94" required="true" > <?php echo $row['Descripcion']; ?> </textarea>
                     </div>
         		</div>
-                <div class="botonera row">
+                <div class="botonera">
                     <input type="submit" class="btn btn-success" value="Modificar Especialización" />
                     <input type="reset" value="Reiniciar Formulario"/>
                     <button type="button" class="volver" onclick="location.href='AdminEspecializaciones.php'">Cancelar</button>
@@ -71,13 +71,12 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminEspecializacionModificar.php?idEspecializacion=<?php echo $_REQUEST["idEspecializacion"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">N. Colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminEspecializacionModificar.php?idEspecializacion=<?php echo $_REQUEST["idEspecializacion"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">Nº de colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminEspecializacionModificar.php?idEspecializacion=<?php echo $_REQUEST["idEspecializacion"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminEspecializacionModificar.php?idEspecializacion=<?php echo $_REQUEST["idEspecializacion"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                        <th class="text-center" scope="col">Email</th>
+                        <th class="text-center" scope="col">Correo electrónico</th>
                         <th class="text-center" scope="col">Teléfono</th>
-                        <th class="text-center" scope="col">URL</th>
-
+                        <th class="text-center" scope="col">Web personal</th>
                     </tr>
                 </thead>
                 <tbody>

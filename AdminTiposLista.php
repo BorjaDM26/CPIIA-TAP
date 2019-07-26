@@ -42,7 +42,7 @@
 			<table class="table table-sm table-hover col-md-11">
 				<thead>
 					<tr>
-						<th class="text-center" scope="col"><a href="AdminTiposLista.php?column=IdTipoLista&order=<?php echo $asc_or_desc; ?>">Id. Tipo de Lista<i class="fas fa-sort<?php echo $column == 'IdTipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminTiposLista.php?column=IdTipoLista&order=<?php echo $asc_or_desc; ?>">Id. de tipo de lista<i class="fas fa-sort<?php echo $column == 'IdTipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
 						<th class="text-center" scope="col"><a href="AdminTiposLista.php?column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
 		                <th class="text-center" scope="col">Consultar</th>
 		                <th class="text-center" scope="col">Modificar</th>

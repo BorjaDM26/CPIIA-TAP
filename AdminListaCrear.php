@@ -32,7 +32,7 @@
                         </select>
                     </div>
                     <div class="form-group campoForm">
-                    	<label for="tipoLista" class="etiqueta">Tipo de Lista </label>
+                    	<label for="tipoLista" class="etiqueta">Tipo de lista </label>
                         <select class="form-control customInput" name="tipoLista" id="tipoLista">
                             <?php 
                                 $stmtTipoLst = $conn->query("SELECT * FROM tipolista;");
@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-row" id="auxPubTerritXGrupo">
                         <div class="form-group campoForm">
-                        	<label for="publica" class="etiqueta">Publica </label>
+                        	<label for="publica" class="etiqueta">Pública </label>
                             <select class="form-control customInput" name="publica" id="publica">
                                 <option value="1">Si</option>    
                                 <option value="0">No</option>
@@ -65,8 +65,8 @@
                         </div>
                     </div>
 				</div>
-                <div class="botonera row">
-    			    <input type="submit" class="btn btn-success" value="Crear Lista" />
+                <div class="botonera">
+    			    <input type="submit" class="btn-success" value="Crear Lista" />
             		<input type="reset" value="Reiniciar Formulario"/>
     			    <button type="button" class="volver" onclick="location.href='AdminListas.php'">Cancelar</button>
                 </div>

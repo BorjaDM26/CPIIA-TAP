@@ -30,7 +30,7 @@
             <form id="formModificarProyecto" method="POST" action="procesarModificarProyecto.php?idProyecto=<?php echo $_REQUEST["idProyecto"] ?>">
         		<div class="form-row">
                     <div class="form-group campoForm">
-                        <label for="idProyecto" class="etiqueta">Id. Proyecto</label>
+                        <label for="idProyecto" class="etiqueta">Id. del proyecto</label>
                         <input class="form-control customInput" type="number" id="idProyecto" name="idProyecto" <?php echo 'value="'.$row['IdSolicitudAct'].'"'; ?> readonly="true"/>
                     </div>
                     <div class="form-group campoForm">
@@ -52,11 +52,11 @@
                         </select>
                     </div>
                     <div class="form-group campoForm">
-                        <label for="fecha" class="etiqueta">Fecha de Solicitud</label>
+                        <label for="fecha" class="etiqueta">Fecha de solicitud</label>
                         <input class="form-control customInput" type="date" id="fecha" name="fecha" <?php echo 'value="'.$row['FechaSolicitud'].'"'; ?> readonly="true"/>
                     </div>
                     <div class="form-group campoForm">
-                        <label for="email" class="etiqueta">Correo Electrónico *</label>
+                        <label for="email" class="etiqueta">Correo electrónico *</label>
                         <input class="form-control customInput" type="text" id="email" name="email" <?php echo 'value="'.$row['CorreoElectronico'].'"'; ?> required="true"/>
                     </div>
                     <div class="form-group campoForm">
@@ -97,10 +97,10 @@
                     </div>
                     <div class="form-group campoForm">
                         <label for="descripcion" class="etiqueta">Descripción *</label>
-                        <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="80" required="true"> <?php echo $row['Descripcion']; ?> </textarea>
+                        <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="94" required="true"> <?php echo $row['Descripcion']; ?> </textarea>
                     </div>
         		</div>
-                <div class="botonera row">
+                <div class="botonera">
                     <input type="submit" class="btn btn-success" value="Modificar Proyecto" />
                     <input type="reset" value="Reiniciar Formulario"/>
                     <button type="button" class="volver" onclick="location.href='AdminProyectos.php'">Cancelar</button>
@@ -124,7 +124,7 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col">Num. Colegiado</th>
+                        <th class="text-center" scope="col">Nº de colegiado</th>
                         <th class="text-center" scope="col">Nombre</th>
                         <th class="text-center" scope="col">Apellidos</th>
                         <th class="text-center" scope="col">Tutelador</th>
@@ -188,7 +188,7 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col">Num. Colegiado</th>
+                        <th class="text-center" scope="col">Nº de colegiado</th>
                         <th class="text-center" scope="col">Nombre</th>
                         <th class="text-center" scope="col">Apellidos</th>
                         <th class="text-center" scope="col">Estado</th>

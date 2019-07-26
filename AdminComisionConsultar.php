@@ -31,11 +31,11 @@
 
     		<div class="form-row">
                 <div class="form-group campoForm">
-                    <label for="nuevoIdComision" class="etiqueta">Id. Comisión </label>
+                    <label for="nuevoIdComision" class="etiqueta">Id. de comisión </label>
                     <input class="form-control customInput" type="number" id="nuevoIdComision" name="nuevoIdComision" <?php echo 'value="'.$row['IdComision'].'"'; ?> readonly="true"/>
                 </div>
                 <div class="form-group campoForm">
-                    <label for="tipoLista" class="etiqueta">Tipo de Lista </label>
+                    <label for="tipoLista" class="etiqueta">Tipo de lista </label>
                     <select class="form-control customInput" name="tipoLista" id="tipoLista" readonly="true">
                         <?php 
                             echo '<option value="'.$row['TipoLista'].'" selected>'.$row['TipoLista'].'</option>';
@@ -45,9 +45,7 @@
                 <div class="form-group campoForm">
                     <label for="presidente" class="etiqueta">Presidente </label>
                     <select class="form-control customInput" name="presidente" id="presidente"  readonly="true">
-                        <?php 
-                            echo '<option value=""> </option>';
-
+                        <?php
                             $stmtMiembrosComision = $conn->query("SELECT C.NumColegiado, CONCAT(C.NumColegiado, ' - ', C.Nombre, ' ', C.Apellidos) Miembro FROM miembrocomision M, colegiado C WHERE M.NumColegiado=C.NumColegiado AND M.IdComision=".$_REQUEST["idComision"]);
 
                             while ($rowMiembrosComision = $stmtMiembrosComision->fetch_assoc()){
@@ -61,9 +59,7 @@
                     </select>
                 </div>
     		</div>
-            <div class="botonera row">
-                <button type="button" class="volver" onclick="location.href='AdminComisiones.php'">Volver</button>
-            </div>
+            <button type="button" class="volver" onclick="location.href='AdminComisiones.php'">Volver</button>
 
             <!-- Colegiados que forman parte de la comisión -->
             <div class="subtitulo row">
@@ -87,12 +83,12 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminComisionModificar.php?idComision=<?php echo $_REQUEST["idComision"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">N. Colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminComisionModificar.php?idComision=<?php echo $_REQUEST["idComision"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">Nº de colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminComisionModificar.php?idComision=<?php echo $_REQUEST["idComision"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminComisionModificar.php?idComision=<?php echo $_REQUEST["idComision"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                        <th class="text-center" scope="col">Email</th>
+                        <th class="text-center" scope="col">Correo electrónico</th>
                         <th class="text-center" scope="col">Teléfono</th>
-                        <th class="text-center" scope="col">URL</th>
+                        <th class="text-center" scope="col">Web personal</th>
 
                     </tr>
                 </thead>

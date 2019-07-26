@@ -32,7 +32,7 @@
 			<form id="formCrearColegiado" method="GET" action="TAPListaPublica.php">	
 				<div class="form-row">
 	                <div class="form-group campoForm offset-md-1">
-	                	<label for="idTipoLst" class="etiqueta">Tipo de Lista: </label>
+	                	<label for="idTipoLst" class="etiqueta">Tipo de lista </label>
 	                	<select class="form-control customInput" name="idTipoLst" id="idTipoLst" onchange="showTerritoriosTipoLst(this.value, 1)">
 	                		<?php 
 	                			while ($filaTipoLst = $stmtTipoLst->fetch_assoc()){
@@ -46,7 +46,7 @@
 						</select>
 	                </div>
 	                <div class="form-group campoForm offset-md-1" id="auxTerritTipoLst">
-	                	<label for="territ" class="etiqueta">Territorio: </label>
+	                	<label for="territ" class="etiqueta">Territorio </label>
 	                	<select class="form-control customInput" name="territ" id="territ">
 	                		<?php 
 	                			while ($filaTerrit = $stmtTerrit->fetch_assoc()){
@@ -80,12 +80,12 @@
 					<table class="table table-sm table-hover">
 						<thead>
 							<tr>
-								<th class="text-center" scope="col">N. Colegiado</th>
+								<th class="text-center" scope="col">Nº de colegiado</th>
 								<th class="text-center" scope="col">Nombre</th>
 								<th class="text-center" scope="col">Apellidos</th>
-								<th class="text-center" scope="col">Email</th>
+								<th class="text-center" scope="col">Correo electrónico</th>
 								<th class="text-center" scope="col">Teléfono</th>
-								<th class="text-center" scope="col">URL</th>
+								<th class="text-center" scope="col">Web personal</th>
 							</tr>
 						</thead>
 						<tbody>

@@ -39,7 +39,7 @@
 			<form id="formCrearSolicitud" method="POST" action="procesarAgregarColegiadoALista.php">
 				<div class="form-row">
 					<div class="form-group campoForm">
-	                    <label for="numColegiado" class="etiqueta">Número de Colegiado </label>
+	                    <label for="numColegiado" class="etiqueta">Nº de colegiado </label>
 	                    <input class="form-control customInput" type="text" id="numColegiado" name="numColegiado" readonly="true" <?php echo 'value="'.$rowColeg['NumColegiado'].'"'; ?> />
 	                </div>
 					<div class="form-group campoForm">

@@ -40,11 +40,10 @@
 		<?php require 'partials/menuSuperior.php' ?>
 
 		<div class="contenido col-md-9">
-			<div class="titulo row">
-                <h1>Login</h1>
-            </div>
 			
 			<form class="sesion" action="login.php" method="post">
+				<h1>Iniciar Sesión</h1>
+
 				<input type="text" id="NumColeg" name="NumColeg" placeholder="Introduce tu número de colegiado" required="true">
 				<input type="password" id="pass" name="pass" placeholder="Introduce tu contraseña" required="true">
 				<input class="btn btn-primary" type="submit" name="Enviar" value="Entrar">
@@ -53,5 +52,6 @@
     		<div class="push"></div>
     	</div>
 
-		<?php require 'partials/footer.php' ?>	</body>
+		<?php require 'partials/footer.php' ?>
+	</body>
 </html>

@@ -32,11 +32,11 @@
             <form id="formModificarComision" method="POST" action="procesarModificarComision.php?idComision=<?php echo $_REQUEST["idComision"] ?>">
         		<div class="form-row">
                     <div class="form-group campoForm">
-                        <label for="nuevoIdComision" class="etiqueta">Id. Comisión </label>
+                        <label for="nuevoIdComision" class="etiqueta">Id. de comisión </label>
                         <input class="form-control customInput" type="number" id="nuevoIdComision" name="nuevoIdComision" <?php echo 'value="'.$row['IdComision'].'"'; ?> />
                     </div>
                     <div class="form-group campoForm">
-                        <label for="tipoLista" class="etiqueta">Tipo de Lista </label>
+                        <label for="tipoLista" class="etiqueta">Tipo de lista </label>
                         <select class="form-control customInput" name="tipoLista" id="tipoLista" readonly="true">
                             <?php 
                                 echo '<option value="'.$row['TipoLista'].'" selected>'.$row['TipoLista'].'</option>';
@@ -62,8 +62,8 @@
                         </select>
                     </div>
         		</div>
-                <div class="botonera row">
-                    <input type="submit" class="btn btn-success" value="Modificar Especialización" />
+                <div class="botonera">
+                    <input type="submit" class="btn btn-success" value="Modificar Comisión" />
                     <input type="reset" value="Reiniciar Formulario"/>
                     <button type="button" class="volver" onclick="location.href='AdminComisiones.php'">Cancelar</button>
                 </div>
@@ -91,12 +91,12 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminComisionModificar.php?idComision=<?php echo $_REQUEST["idComision"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">N. Colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminComisionModificar.php?idComision=<?php echo $_REQUEST["idComision"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">Nº de colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminComisionModificar.php?idComision=<?php echo $_REQUEST["idComision"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminComisionModificar.php?idComision=<?php echo $_REQUEST["idComision"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                        <th class="text-center" scope="col">Email</th>
+                        <th class="text-center" scope="col">Correo electrónico</th>
                         <th class="text-center" scope="col">Teléfono</th>
-                        <th class="text-center" scope="col">URL</th>
+                        <th class="text-center" scope="col">Web personal</th>
 
                     </tr>
                 </thead>

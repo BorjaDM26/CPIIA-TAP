@@ -29,7 +29,7 @@
 
 			<div class="form-row">
                 <div class="form-group campoForm">
-                    <label for="nuevoIdTipoLista" class="etiqueta">Id. Tipo de Lista </label>
+                    <label for="nuevoIdTipoLista" class="etiqueta">Id. de tipo de lista </label>
                     <input class="form-control customInput" type="number" id="nuevoIdTipoLista" name="nuevoIdTipoLista" <?php echo 'value="'.$row['IdTipoLista'].'"'; ?> readonly="true"/>
                 </div>
                 <div class="form-group campoForm">
@@ -46,20 +46,18 @@
                 </div>
                 <div class="form-group campoForm">
                     <label for="iniciovacaciones" class="etiqueta">Inicio vacacional </label>
-                    <input class="form-control customInput" type="date" id="iniciovacaciones" name="iniciovacaciones" <?php echo 'value="'.$row['FechaIniVacacional'].'"'; ?> readonly="true"/>
+                    <input class="form-control customInput" type="text" id="iniciovacaciones" name="iniciovacaciones" <?php if($row['FechaIniVacacional']!=NULL){echo 'value="'.date("d/m/Y", strtotime($row['FechaIniVacacional'])).'"';} ?> readonly="true"/>
                 </div>
                 <div class="form-group campoForm">
                     <label for="finvacaciones" class="etiqueta">Fin vacacional </label>
-                    <input class="form-control customInput" type="date" id="finvacaciones" name="finvacaciones" <?php echo 'value="'.$row['FechaFinVacacional'].'"'; ?> readonly="true"/>
+                    <input class="form-control customInput" type="text" id="finvacaciones" name="finvacaciones" <?php if($row['FechaFinVacacional']!=NULL){echo 'value="'.date("d/m/Y", strtotime($row['FechaFinVacacional'])).'"';} ?> readonly="true"/>
                 </div>
                 <div class="form-group campoForm">
                     <label for="descripcion" class="etiqueta">Descripción </label>
-                    <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="80" required="true" readonly="true"><?php echo $row['Descripcion']; ?> </textarea>
+                    <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="94" required="true" readonly="true"><?php echo $row['Descripcion']; ?> </textarea>
                 </div>
 			</div>
-            <div class="botonera row">
-			    <button type="button" class="volver" onclick="location.href='AdminTiposLista.php'">Volver</button>
-            </div>
+			<button type="button" class="volver" onclick="location.href='AdminTiposLista.php'">Volver</button>
 
 
             <!-- Especializaciones requeridas para inscribirse en las listas de este tipo -->
@@ -84,13 +82,13 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminTipoListaConsultar.php?idTipoLista=<?php echo $_REQUEST["idTipoLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. Especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminTipoListaConsultar.php?idTipoLista=<?php echo $_REQUEST["idTipoLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. de especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminTipoListaConsultar.php?idTipoLista=<?php echo $_REQUEST["idTipoLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <col width="160"><col width="160"><col width="600">
+                    <col width="190"><col width="150"><col width="600">
                     <?php 
                         while ($row = $result->fetch_assoc()){
                             echo '<tr>';

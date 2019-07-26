@@ -37,7 +37,7 @@
 	                </div>
 
 	                <div class="form-group campoForm">
-	                	<label for="tipoLst" class="etiqueta">Tipo de solicitud * </label>
+	                	<label for="tipoLst" class="etiqueta">Tipo de solicitud </label>
 	                	<select class="form-control customInput" name="tipoLst" id="tipoLst">
 	                		<?php 
 	                			while ($filaTipoLst = $stmtTipoLst->fetch_assoc()){
@@ -47,7 +47,7 @@
 						</select>
 	                </div>
 	                <div class="form-group campoForm">
-	                	<label for="provincia" class="etiqueta">Provincia * </label>
+	                	<label for="provincia" class="etiqueta">Provincia </label>
 	                	<select class="form-control customInput" name="provincia" id="provincia">
 	                		<option value="ALM">Almería</option>
 	                		<option value="CAD">Cádiz</option>
@@ -60,7 +60,7 @@
 						</select>
 	                </div>
 	                <div class="form-group campoForm">
-	                	<label for="visado" class="etiqueta">Visado * </label>
+	                	<label for="visado" class="etiqueta">Visado </label>
 	                    <select class="form-control customInput" name="visado" id="visado">    
 							<option value="0" selected>No</option>    
 							<option value="1">Si</option>     
@@ -68,15 +68,16 @@
 	                </div>
 	                <div class="form-group campoForm">
 	                	<label for="descripcion" class="etiqueta">Descripción de lo solicitado * </label>
-	                    <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="80" required="true"></textarea>
+	                    <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="94" required="true"></textarea>
 	                </div>
                 </div>
                 <div class="botonera">
-				    <input type="submit" class="btn btn-success" value="Enviar solicitud" />
+				    <input type="submit" value="Enviar solicitud"/>
 	        		<input type="reset" value="Reiniciar Formulario"/>
 				    <button type="button" class="volver" onclick="location.href='index.php'">Volver</button>
 				</div>
 			</form>
+
 			<div class="push"></div>
 		</div>
 

@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Modificar Proyecto</title>
+		<title>Consultar Proyecto</title>
 	</head>
 
 	<body>
@@ -19,7 +19,7 @@
 
         <div class="contenido col-md-9">
             <div class="titulo row">
-                <h1>Administración - Modificar Proyecto</h1>
+                <h1>Administración - Consultar Proyecto</h1>
             </div>
 
             <?php 
@@ -29,11 +29,11 @@
 
     		<div class="form-row">
                 <div class="form-group campoForm">
-                    <label for="idProyecto" class="etiqueta">Id. Proyecto</label>
+                    <label for="idProyecto" class="etiqueta">Id. del proyecto</label>
                     <input class="form-control customInput" type="number" id="idProyecto" name="idProyecto" <?php echo 'value="'.$row['IdSolicitudAct'].'"'; ?> readonly="true"/>
                 </div>
                 <div class="form-group campoForm">
-                    <label for="solicitante" class="etiqueta">Solicitante *</label>
+                    <label for="solicitante" class="etiqueta">Solicitante</label>
                     <input class="form-control customInput" type="text" id="solicitante" name="solicitante" <?php echo 'value="'.$row['Nombre'].'"'; ?> required="true" readonly="true"/>
                 </div>
                 <div class="form-group campoForm">
@@ -51,11 +51,11 @@
                     </select>
                 </div>
                 <div class="form-group campoForm">
-                    <label for="fecha" class="etiqueta">Fecha de Solicitud</label>
+                    <label for="fecha" class="etiqueta">Fecha de solicitud</label>
                     <input class="form-control customInput" type="date" id="fecha" name="fecha" <?php echo 'value="'.$row['FechaSolicitud'].'"'; ?> readonly="true"/>
                 </div>
                 <div class="form-group campoForm">
-                    <label for="email" class="etiqueta">Correo Electrónico *</label>
+                    <label for="email" class="etiqueta">Correo electrónico</label>
                     <input class="form-control customInput" type="text" id="email" name="email" <?php echo 'value="'.$row['CorreoElectronico'].'"'; ?> required="true" readonly="true"/>
                 </div>
                 <div class="form-group campoForm">
@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group campoForm">
                     <label for="estado" class="etiqueta">Estado </label>
-                    <select class="form-control customInput" name="estado" id="estado" disabled="true">
+                    <select class="form-control customInput" name="estado" id="estado" readonly="true">
                     <?php
                         foreach ($estadosSolicitud as $i => $value) {
                             if($value == $row['Estado']){
@@ -95,13 +95,11 @@
                     </select>
                 </div>
                 <div class="form-group campoForm">
-                    <label for="descripcion" class="etiqueta">Descripción *</label>
-                    <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="80" required="true" readonly="true"> <?php echo $row['Descripcion']; ?> </textarea>
+                    <label for="descripcion" class="etiqueta">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" class="form-control customInput" rows="5" cols="94" required="true" readonly="true"> <?php echo $row['Descripcion']; ?> </textarea>
                 </div>
     		</div>
-            <div class="botonera row">
-                <button type="button" class="volver" onclick="location.href='AdminProyectos.php'">Cancelar</button>
-            </div>
+            <button type="button" class="volver" onclick="location.href='AdminProyectos.php'">Volver</button>
 
             <!-- Colegiados a los que les fue asignado el proyecto -->
             <div class="subtitulo row">
@@ -115,7 +113,7 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col">Num. Colegiado</th>
+                        <th class="text-center" scope="col">Nº de colegiado</th>
                         <th class="text-center" scope="col">Nombre</th>
                         <th class="text-center" scope="col">Apellidos</th>
                         <th class="text-center" scope="col">Tutelador</th>
@@ -155,7 +153,7 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col">Num. Colegiado</th>
+                        <th class="text-center" scope="col">Nº de colegiado</th>
                         <th class="text-center" scope="col">Nombre</th>
                         <th class="text-center" scope="col">Apellidos</th>
                         <th class="text-center" scope="col">Estado</th>

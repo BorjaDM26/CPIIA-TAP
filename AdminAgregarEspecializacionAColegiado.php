@@ -32,7 +32,7 @@
 			<form id="formCrearSolicitud" method="POST" action="procesarAgregarEspecializacionAColegiado.php">
 				<div class="form-row">
 					<div class="form-group campoForm">
-	                    <label for="numColegiado" class="etiqueta">Número de Colegiado </label>
+	                    <label for="numColegiado" class="etiqueta">Nº de colegiado </label>
 	                    <input class="form-control customInput" type="text" id="numColegiado" name="numColegiado" readonly="true" <?php echo 'value="'.$rowColeg['NumColegiado'].'"'; ?> />
 	                </div>
 					<div class="form-group campoForm">
@@ -45,7 +45,7 @@
 	                </div>
 
 	                <div class="form-group campoForm">
-	                	<label for="espec" class="etiqueta">Campo de Especialización * </label>
+	                	<label for="espec" class="etiqueta">Campo de especialización * </label>
 	                	<select class="form-control customInput" name="espec" id="espec">
 	                		<?php 
 	                			while ($rowEspecColeg = $stmtEspecColeg->fetch_assoc()){
@@ -57,7 +57,7 @@
 	                </div>
                 </div>
                 <div class="botonera">
-				    <input type="submit" class="btn btn-success" value="Incluir" />
+				    <input type="submit" class="btn btn-success" value="Asignar Especialización" />
 				    <button type="button" class="volver" onclick="location.href='AdminColegiadoModificar.php?numColegiado=<?php echo $_REQUEST["numColegiado"]; ?>'">Cancelar</button>
 				</div>
 			</form>

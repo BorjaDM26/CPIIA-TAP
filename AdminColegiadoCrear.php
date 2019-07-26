@@ -25,7 +25,7 @@
 			<form id="formCrearColegiado" method="POST" action="procesarCrearColegiado.php">
 				<div class="form-row">
                     <div class="form-group campoForm">
-                    	<label for="numColegiado" class="etiqueta">Número de Colegiado * </label>
+                    	<label for="numColegiado" class="etiqueta">Nº de colegiado * </label>
                         <input class="form-control customInput" type="number" id="numColegiado" name="numColegiado" required="true"/>
                     </div>
                     <div class="form-group campoForm">
@@ -37,14 +37,14 @@
                         <input class="form-control customInput" type="text" id="apellidos" name="apellidos" required="true"/>
                     </div>
                     <div class="form-group campoForm">
-                    	<label for="rol" class="etiqueta">Rol * </label>
+                    	<label for="rol" class="etiqueta">Rol </label>
                         <select class="form-control customInput" name="rol" id="rol">    
 							<option value="Colegiado">Colegiado</option>    
 							<option value="Responsable">Responsable</option>     
 						</select>
                     </div>
                     <div class="form-group campoForm">
-                    	<label for="domicilio" class="etiqueta">Domicilio Profesional * </label>
+                    	<label for="domicilio" class="etiqueta">Domicilio profesional * </label>
                         <input class="form-control customInput" type="text" id="domicilio" name="domicilio" required="true"/>
                     </div>
                     <div class="form-group campoForm">
@@ -52,7 +52,7 @@
                         <input class="form-control customInput" type="text" id="localidad" name="localidad" required="true"/>
                     </div>
                     <div class="form-group campoForm">
-                    	<label for="codigoPostal" class="etiqueta">Código Postal * </label>
+                    	<label for="codigoPostal" class="etiqueta">Código postal * </label>
                         <input class="form-control customInput" type="text" id="codigoPostal" name="codigoPostal" required="true"/>
                     </div>
                     <div class="form-group campoForm">
@@ -60,24 +60,28 @@
                         <input class="form-control customInput" type="text" id="provincia" name="provincia" required="true"/>
                     </div>
                     <div class="form-group campoForm">
-                    	<label for="telefonoProfesional" class="etiqueta">Teléfono Profesional * </label>
+                    	<label for="telefonoProfesional" class="etiqueta">Teléfono profesional * </label>
                         <input class="form-control customInput" type="text" id="telefonoProfesional" name="telefonoProfesional" required="true"/>
                     </div>
                     <div class="form-group campoForm">
-                    	<label for="email" class="etiqueta">Correo Electrónico * </label>
+                    	<label for="email" class="etiqueta">Correo electrónico * </label>
                         <input class="form-control customInput" type="text" id="email" name="email" required="true"/>
                     </div>
                     <div class="form-group campoForm">
-                        <label for="URL" class="etiqueta">Web Personal </label>
+                        <label for="URL" class="etiqueta">Web personal </label>
                         <input class="form-control customInput" type="text" id="URL" name="URL"/>
                     </div>
 				</div>
-                <div class="botonera row">
-    			    <input type="submit" class="btn btn-success" value="Crear Colegiado" />
-            		<input type="reset" value="Reiniciar Formulario"/>
-    			    <button type="button" class="volver" onclick="location.href='AdminColegiados.php'">Cancelar</button>
+                <div class="botonera">
+                    <input type="submit" class="btn-success" value="Crear Colegiado"/>
+                    <input type="reset" value="Reiniciar Formulario"/>
+                    <button type="button" class="volver" onclick="location.href='AdminColegiados.php'">Volver</button>
                 </div>
 			</form>
+
+            <div class="push"></div>
 		</div>
+
+        <?php require 'partials/footer.php' ?>
 	</body>
 </html>

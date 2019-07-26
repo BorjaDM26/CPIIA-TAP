@@ -19,11 +19,12 @@
 		<header>
 			<nav id="menuSuperior" class="navbar navbar-expand-custom navbar-light">
 				<a class="navbar-brand" href="index.php">
-					<img src="assets/images/LogoCPIIA.jpg" height="50px"/>
+					<!--<img src="assets/images/LogoCPIIA.jpg" height="50px"/>-->
 					<!--<img src="assets/images/LogoCPIIA.png" height="45px"/>-->
+					<img src="assets/images/LogoCPIIA.png" height="45px"/>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-					<span class="navbar-toggler-icon"></span>
+					<span class="icon-bar"><i class="fas fa-bars fa-lg"></i></span>
 				</button>
 					<div class="collapse navbar-collapse row" id="navbarNav">
 						<div class="left">

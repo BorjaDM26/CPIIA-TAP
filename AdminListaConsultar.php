@@ -29,7 +29,7 @@
 
 			<div class="form-row">
                 <div class="form-group campoForm">
-                    <label for="nuevoIdLista" class="etiqueta">Id. Lista </label>
+                    <label for="nuevoIdLista" class="etiqueta">Id. de lista </label>
                     <input class="form-control customInput" type="number" id="nuevoIdLista" name="nuevoIdLista" <?php echo 'value="'.$row['IdLista'].'"'; ?> readonly="true"/>
                 </div>
                 <div class="form-group campoForm">
@@ -45,14 +45,14 @@
                     </select>
                 </div>
                 <div class="form-group campoForm">
-                	<label for="tipoLista" class="etiqueta">Tipo de Lista </label>
+                	<label for="tipoLista" class="etiqueta">Tipo de lista </label>
                     <select class="form-control customInput" name="tipoLista" id="tipoLista" disabled="true">
                         <?php echo "<option value=\"".$row['IdTipoLista']."\" selected>".$row['TipoLista']."</option>";
                         ?>
                     </select>
                 </div>
                 <div class="form-group campoForm">
-                	<label for="publica" class="etiqueta">Publica </label>
+                	<label for="publica" class="etiqueta">Pública </label>
                     <select class="form-control customInput" name="publica" id="publica" disabled="true">
                         <?php
                         if($row['Publica']==1){
@@ -70,9 +70,7 @@
                     </select>
                 </div>
 			</div>
-            <div class="botonera row">
-			    <button type="button" class="volver" onclick="location.href='AdminListas.php'">Volver</button>
-            </div>
+			<button type="button" class="volver" onclick="location.href='AdminListas.php'">Volver</button>
 
             <!-- Colegiados inscritos en la lista -->
             <div class="subtitulo row">
@@ -80,11 +78,11 @@
             </div>
 
             <?php 
-                $columns = array('NumColegiado','Nombre', 'Apellidos', 'CorreoElectronico', 'TelefonoProfesional', 'URL');
+                $columns = array('NumColegiado','Nombre', 'Apellidos');
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = 'SELECT C.NumColegiado, C.Nombre, C.Apellidos, C.CorreoElectronico, C.TelefonoProfesional, C.URL FROM inscripcion I, colegiado C WHERE I.NumColegiado=C.NumColegiado AND I.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order;
+                $consulta = 'SELECT C.NumColegiado, C.Nombre, C.Apellidos, C.CorreoElectronico, I.Estado FROM inscripcion I, colegiado C WHERE I.NumColegiado=C.NumColegiado AND I.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order;
 
                 if ($result=$conn->query($consulta)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
@@ -96,12 +94,11 @@
                 <table class="table table-sm table-hover col-md-11">
                     <thead>
                         <tr>
-                            <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">N. Colegiado <i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                            <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">Nº de colegiado<i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                             <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                             <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                            <th class="text-center" scope="col">Email</th>
-                            <th class="text-center" scope="col">Teléfono</th>
-                            <th class="text-center" scope="col">URL</th>
+                            <th class="text-center" scope="col">Correo electrónico</th>
+                            <th class="text-center" scope="col">Estado</th>
 
                         </tr>
                     </thead>
@@ -112,10 +109,7 @@
                             <td class="text-center"><?php echo $row['Nombre']; ?></td>
                             <td class="text-center"><?php echo $row['Apellidos']; ?></td>
                             <td class="text-center"><?php echo $row['CorreoElectronico']; ?></td>
-                            <td class="text-center"><?php echo $row['TelefonoProfesional']; ?></td>
-                            <td class="text-center">
-                                <?php echo "<a href=\"http://".$row['URL']."\">".$row['URL']."</a>"; ?>
-                            </td>
+                            <td class="text-center"><?php echo $row['Estado']; ?></td>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
@@ -145,13 +139,13 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. Especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. de especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <col width="160"><col width="160"><col width="600">
+                    <col width="190"><col width="150"><col width="600">
                     <?php 
                         while ($row = $result->fetch_assoc()){
                             echo '<tr>';
@@ -187,9 +181,9 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdSolicitud&order=<?php echo $asc_or_desc; ?>">Id. Proyecto<i class="fas fa-sort<?php echo $column == 'IdSolicitud' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdSolicitud&order=<?php echo $asc_or_desc; ?>">Id. del proyecto<i class="fas fa-sort<?php echo $column == 'IdSolicitud' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col"><a href="AdminListaConsultar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Solicitante<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
-                        <th class="text-center" scope="col">Correo Electrónico</th>
+                        <th class="text-center" scope="col">Correo electrónico</th>
                         <th class="text-center" scope="col">Teléfono</th>
                         <th class="text-center" scope="col">Estado</th>
                     </tr>
