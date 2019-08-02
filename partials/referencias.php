@@ -1,7 +1,9 @@
 <?php 
 	require_once 'baseDatos.php';
 	$index = 'cpiia-tap/';
-	$curPage 	 = basename($_SERVER['PHP_SELF']);
+	$curPage = basename($_SERVER['PHP_SELF']);
+	$porPagina = 10; // Número máximo de filas a mostrar en una tabla
+	
 	$estadosInscripcion = [
 	    'Esperando turno' => 'Esperando turno',
 	    'Turno asignado' => 'Turno asignado',
@@ -29,4 +31,17 @@
 	    'Servicio finalizado correctamente' => 'Servicio finalizado correctamente',
 	    'Servicio finalizado con errores' => 'Servicio finalizado con errores',
 	];
+
+	function paginacionBotones($maxPaginas, $paginaActual){
+        if($maxPaginas <= 5){
+        	$paginacionBotones=['Inicio'=>1, 'Fin'=>$maxPaginas];
+        } elseif ($paginaActual-2<1){
+        	$paginacionBotones=['Inicio'=>1, 'Fin'=>5];
+        } else if ($paginaActual+2>$maxPaginas){
+        	$paginacionBotones=['Inicio'=>$maxPaginas-4, 'Fin'=>$maxPaginas];
+        } else {
+        	$paginacionBotones=['Inicio'=>$paginaActual-2, 'Fin'=>$paginaActual+2];
+        }
+        return $paginacionBotones;
+    }
 ?>

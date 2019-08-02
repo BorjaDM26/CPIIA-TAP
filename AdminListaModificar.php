@@ -6,6 +6,36 @@
     }
 
     require_once 'partials/referencias.php';
+
+    //Paginación de la tabla de colegiados
+    $numColegiados = $conn->query("SELECT * FROM inscripcion WHERE IdLista=".$_REQUEST['idLista'])->num_rows;
+    $maxPaginasColegiados = ceil($numColegiados/$porPagina);
+    if (isset($_GET["paginaColegiados"])) { 
+        $paginaColegiados  = $_GET["paginaColegiados"]; 
+    } else { 
+        $paginaColegiados=1; 
+    };
+    $paginaColegiadosComienzo = ($paginaColegiados-1) * $porPagina;
+
+    //Paginación de la tabla de especializaciones
+    $numEspecs = $conn->query("SELECT * FROM especializacionlista E, lista L WHERE L.IdTipoLista=E.IdTipoLista AND L.IdLista=".$_REQUEST['idLista'])->num_rows;
+    $maxPaginasEspecs = ceil($numEspecs/$porPagina);
+    if (isset($_GET["paginaEspecs"])) { 
+        $paginaEspecs  = $_GET["paginaEspecs"]; 
+    } else { 
+        $paginaEspecs=1; 
+    }
+    $paginaEspecsComienzo = ($paginaEspecs-1) * $porPagina;
+
+    //Paginación de la tabla de proyectos
+    $numProyectos = $conn->query("SELECT * FROM solicitudactuacion WHERE IdLista=".$_REQUEST['idLista'])->num_rows;
+    $maxPaginasProyectos = ceil($numProyectos/$porPagina);
+    if (isset($_GET["paginaProyectos"])) { 
+        $paginaProyectos  = $_GET["paginaProyectos"]; 
+    } else { 
+        $paginaProyectos=1; 
+    }
+    $paginaProyectosComienzo = ($paginaProyectos-1) * $porPagina;
 ?>
 
 <!DOCTYPE html>
@@ -113,7 +143,7 @@
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = 'SELECT C.NumColegiado, C.Nombre, C.Apellidos, C.CorreoElectronico, I.Estado FROM inscripcion I, colegiado C WHERE I.NumColegiado=C.NumColegiado AND I.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order;
+                $consulta = 'SELECT C.NumColegiado, C.Nombre, C.Apellidos, C.CorreoElectronico, I.Estado FROM inscripcion I, colegiado C WHERE I.NumColegiado=C.NumColegiado AND I.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order.' LIMIT '.$paginaColegiadosComienzo.', '.$porPagina;
 
                 if ($result=$conn->query($consulta)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
@@ -125,9 +155,9 @@
                 <table class="table table-sm table-hover col-md-11">
                     <thead>
                         <tr>
-                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">Nº de colegiado<i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?paginaColegiados=<?php echo $paginaColegiados; ?>&idLista=<?php echo $_REQUEST["idLista"]; ?>&column=NumColegiado&order=<?php echo $asc_or_desc; ?>">Nº de colegiado<i class="fas fa-sort<?php echo $column == 'NumColegiado' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?paginaColegiados=<?php echo $paginaColegiados; ?>&idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre <i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                            <th class="text-center" scope="col"><a href="AdminListaModificar.php?paginaColegiados=<?php echo $paginaColegiados; ?>&idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Apellidos&order=<?php echo $asc_or_desc; ?>">Apellidos <i class="fas fa-sort<?php echo $column == 'Apellidos' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                             <th class="text-center" scope="col">Correo electrónico</th>
                             <th class="text-center" scope="col">Estado</th>
                         </tr>
@@ -158,6 +188,38 @@
                     </tbody>
                 </table>
             </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <?php
+                        $clausulaORD = '';
+                        if(isset($_GET['column'])){$clausulaORD .= '&colunm='.$_GET['column'];}
+                        if(isset($_GET['order'])){$clausulaORD .= '&order='.$_GET['order'];}
+                        $prevPage = $paginaColegiados-1; 
+                        $nextPage = $paginaColegiados+1;
+
+                        $paginacionBotonesColegiados=paginacionBotones($maxPaginasColegiados, $paginaColegiados);
+
+                        if($paginaColegiados<=1){
+                            echo '<li class="page-item disabled"><a class="page-link" href="AdminListaModificar.php?paginaColegiados='.$prevPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Anterior</a></li>';
+                        } else {
+                            echo '<li class="page-item"><a class="page-link" href="AdminListaModificar.php?paginaColegiados='.$prevPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Anterior</a></li>';
+                        }
+                        while ($paginacionBotonesColegiados['Inicio'] <= $paginacionBotonesColegiados['Fin']){
+                            if($paginacionBotonesColegiados['Inicio']==$paginaColegiados){
+                                echo '<li class="page-item active"><a class="page-link" href="AdminListaModificar.php?paginaColegiados='.$paginacionBotonesColegiados['Inicio'].'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">'.$paginacionBotonesColegiados['Inicio'].'</a></li>';
+                            } else {
+                                echo '<li class="page-item"><a class="page-link" href="AdminListaModificar.php?paginaColegiados='.$paginacionBotonesColegiados['Inicio'].'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">'.$paginacionBotonesColegiados['Inicio'].'</a></li>';
+                            }
+                            $paginacionBotonesColegiados['Inicio']++;
+                        }
+                        if($paginaColegiados>=$maxPaginasColegiados){
+                            echo '<li class="page-item disabled"><a class="page-link" href="AdminListaModificar.php?paginaColegiados='.$nextPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Siguiente</a></li>';
+                        } else {
+                            echo '<li class="page-item"><a class="page-link" href="AdminListaModificar.php?paginaColegiados='.$nextPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Siguiente</a></li>';
+                        }
+                    ?>
+                </ul>
+            </nav>
 
 
             <!-- Especializaciones requeridas para inscribirse en la lista -->
@@ -170,7 +232,7 @@
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = 'SELECT E.* FROM lista L, tipolista TL, especializacionlista EL, campoespecializacion E WHERE L.IdTipoLista=TL.IdTipoLista AND TL.IdTipoLista=EL.IdTipoLista AND EL.IdEspecializacion=E.IdEspecializacion AND L.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order;
+                $consulta = 'SELECT E.* FROM lista L, tipolista TL, especializacionlista EL, campoespecializacion E WHERE L.IdTipoLista=TL.IdTipoLista AND TL.IdTipoLista=EL.IdTipoLista AND EL.IdEspecializacion=E.IdEspecializacion AND L.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order.' LIMIT '.$paginaEspecsComienzo.', '.$porPagina;
 
                 if ($result=$conn->query($consulta)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
@@ -182,8 +244,8 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. de especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?paginaEspecs=<?php echo $paginaEspecs; ?>&idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdEspecializacion&order=<?php echo $asc_or_desc; ?>">Id. de especialización<i class="fas fa-sort<?php echo $column == 'IdEspecializacion' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?paginaEspecs=<?php echo $paginaEspecs; ?>&idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Nombre<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Descripción</th>
                     </tr>
                 </thead>
@@ -200,6 +262,35 @@
                     ?>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <?php
+                        $prevPage = $paginaEspecs-1; 
+                        $nextPage = $paginaEspecs+1;
+
+                        $paginacionBotonesEspecs=paginacionBotones($maxPaginasEspecs, $paginaEspecs);
+
+                        if($paginaEspecs<=1){
+                            echo '<li class="page-item disabled"><a class="page-link" href="AdminListaModificar.php?paginaEspecs='.$prevPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Anterior</a></li>';
+                        } else {
+                            echo '<li class="page-item"><a class="page-link" href="AdminListaModificar.php?paginaEspecs='.$prevPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Anterior</a></li>';
+                        }
+                        while ($paginacionBotonesEspecs['Inicio'] <= $paginacionBotonesEspecs['Fin']){
+                            if($paginacionBotonesEspecs['Inicio']==$paginaEspecs){
+                                echo '<li class="page-item active"><a class="page-link" href="AdminListaModificar.php?paginaEspecs='.$paginacionBotonesEspecs['Inicio'].'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">'.$paginacionBotonesEspecs['Inicio'].'</a></li>';
+                            } else {
+                                echo '<li class="page-item"><a class="page-link" href="AdminListaModificar.php?paginaEspecs='.$paginacionBotonesEspecs['Inicio'].'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">'.$paginacionBotonesEspecs['Inicio'].'</a></li>';
+                            }
+                            $paginacionBotonesEspecs['Inicio']++;
+                        }
+                        if($paginaEspecs>=$maxPaginasEspecs){
+                            echo '<li class="page-item disabled"><a class="page-link" href="AdminListaModificar.php?paginaEspecs='.$nextPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Siguiente</a></li>';
+                        } else {
+                            echo '<li class="page-item"><a class="page-link" href="AdminListaModificar.php?paginaEspecs='.$nextPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Siguiente</a></li>';
+                        }
+                    ?>
+                </ul>
+            </nav>
 
 
             <!-- Proyectos asignados -->
@@ -212,7 +303,7 @@
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-                $consulta = 'SELECT S.IdSolicitudAct, S.Nombre, S.CorreoElectronico, S.Telefono, S.Estado FROM lista L, solicitudactuacion S WHERE L.IdLista=S.IdLista AND L.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order;
+                $consulta = 'SELECT S.IdSolicitudAct, S.Nombre, S.CorreoElectronico, S.Telefono, S.Estado FROM lista L, solicitudactuacion S WHERE L.IdLista=S.IdLista AND L.IdLista='.$_GET['idLista'].' ORDER BY '.$column.' '.$sort_order.' LIMIT '.$paginaProyectosComienzo.', '.$porPagina;
 
                 if ($result=$conn->query($consulta)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
@@ -224,8 +315,8 @@
             <table class="table table-sm table-hover col-md-11">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdSolicitud&order=<?php echo $asc_or_desc; ?>">Id. del proyecto<i class="fas fa-sort<?php echo $column == 'IdSolicitud' ? '-' . $up_or_down : '' ?>"></i></a></th>
-                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Solicitante<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?paginaProyectos=<?php echo $paginaProyectos; ?>&idLista=<?php echo $_REQUEST["idLista"]; ?>&column=IdSolicitud&order=<?php echo $asc_or_desc; ?>">Id. del proyecto<i class="fas fa-sort<?php echo $column == 'IdSolicitud' ? '-' . $up_or_down : '' ?>"></i></a></th>
+                        <th class="text-center" scope="col"><a href="AdminListaModificar.php?paginaProyectos=<?php echo $paginaProyectos; ?>&idLista=<?php echo $_REQUEST["idLista"]; ?>&column=Nombre&order=<?php echo $asc_or_desc; ?>">Solicitante<i class="fas fa-sort<?php echo $column == 'Nombre' ? '-' . $up_or_down : '' ?>"></i></a></th>
                         <th class="text-center" scope="col">Correo electrónico</th>
                         <th class="text-center" scope="col">Teléfono</th>
                         <th class="text-center" scope="col">Estado</th>
@@ -245,6 +336,35 @@
                     ?>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <?php
+                        $prevPage = $paginaProyectos-1; 
+                        $nextPage = $paginaProyectos+1;
+
+                        $paginacionBotonesProyectos=paginacionBotones($maxPaginasProyectos, $paginaProyectos);
+
+                        if($paginaProyectos<=1){
+                            echo '<li class="page-item disabled"><a class="page-link" href="AdminListaModificar.php?paginaProyectos='.$prevPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Anterior</a></li>';
+                        } else {
+                            echo '<li class="page-item"><a class="page-link" href="AdminListaModificar.php?paginaProyectos='.$prevPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Anterior</a></li>';
+                        }
+                        while ($paginacionBotonesProyectos['Inicio'] <= $paginacionBotonesProyectos['Fin']){
+                            if($paginacionBotonesProyectos['Inicio']==$paginaProyectos){
+                                echo '<li class="page-item active"><a class="page-link" href="AdminListaModificar.php?paginaProyectos='.$paginacionBotonesProyectos['Inicio'].'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">'.$paginacionBotonesProyectos['Inicio'].'</a></li>';
+                            } else {
+                                echo '<li class="page-item"><a class="page-link" href="AdminListaModificar.php?paginaProyectos='.$paginacionBotonesProyectos['Inicio'].'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">'.$paginacionBotonesProyectos['Inicio'].'</a></li>';
+                            }
+                            $paginacionBotonesProyectos['Inicio']++;
+                        }
+                        if($paginaProyectos>=$maxPaginasProyectos){
+                            echo '<li class="page-item disabled"><a class="page-link" href="AdminListaModificar.php?paginaProyectos='.$nextPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Siguiente</a></li>';
+                        } else {
+                            echo '<li class="page-item"><a class="page-link" href="AdminListaModificar.php?paginaProyectos='.$nextPage.'&idLista='.$_REQUEST['idLista'].$clausulaORD.'">Siguiente</a></li>';
+                        }
+                    ?>
+                </ul>
+            </nav>
 
             <div class="push"></div>
         </div>

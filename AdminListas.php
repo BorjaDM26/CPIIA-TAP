@@ -12,13 +12,19 @@
 	if(isset($_REQUEST['buscadorTipoLista']) && $_REQUEST['buscadorTipoLista']!='Todos'){
 		$buscador = $buscador." AND L.IdTipoLista='".$_REQUEST['buscadorTipoLista']."' ";
 	}
+
 	if(isset($_REQUEST['buscadorGrupo']) && $_REQUEST['buscadorGrupo']=='Revisores'){
 		$buscador = $buscador.' AND L.Publica IS NULL ';
 	} elseif(isset($_REQUEST['buscadorGrupo']) && $_REQUEST['buscadorGrupo']=='Profesionales'){
 		$buscador = $buscador.' AND L.Publica IS NOT NULL ';
 	}
+
 	if(isset($_REQUEST['buscadorPub']) && $_REQUEST['buscadorPub']!='Todos'){
-		$buscador = $buscador.' AND L.Publica='.$_REQUEST['buscadorPub'].' ';
+		if ($_REQUEST['buscadorPub']=='0') {
+			$buscador = $buscador.' AND (L.Publica=0 OR L.Publica IS NULL) ';
+		} else {
+			$buscador = $buscador.' AND L.Publica=1 ';
+		}
 	}
 
 	if(isset($_REQUEST['buscadorTerri']) && $_REQUEST['buscadorTerri']!='Todos'){
@@ -28,6 +34,19 @@
 	//Consulta de las especializaciones y provincias para los campos de búsqueda
 	$stmtTipoLst = $conn->query("SELECT IdTipoLista, Nombre FROM tipolista ORDER BY IdTipoLista");
 	$stmtTerri = $conn->query("SELECT * FROM territorio");
+
+	//Paginación de la tabla de listas
+    $consListas = "SELECT L.* FROM lista L, tipolista TL, Territorio T WHERE L.IdTipoLista=TL.IdTipoLista AND L.Territorio=T.IdTerritorio ".$buscador;
+    $numListas = $conn->query($consListas)->num_rows;
+    $maxPaginas = ceil($numListas/$porPagina);
+
+    if (isset($_GET["pagina"])) { 
+        $pagina  = $_GET["pagina"]; 
+    } else { 
+        $pagina=1; 
+    };
+
+    $paginaComienzo = ($pagina-1) * $porPagina;
 ?>
 
 <!DOCTYPE html>
@@ -140,7 +159,7 @@
                 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
                 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-				$cons = "SELECT L.IdLista, TL.Nombre TipoLista, L.Publica, T.Nombre Territorio FROM lista L, tipolista TL, Territorio T	WHERE L.IdTipoLista=TL.IdTipoLista AND L.Territorio=T.IdTerritorio ".$buscador." ORDER BY ".$column." ".$sort_order;
+				$cons = "SELECT L.IdLista, TL.Nombre TipoLista, L.Publica, T.Nombre Territorio FROM lista L, tipolista TL, Territorio T	WHERE L.IdTipoLista=TL.IdTipoLista AND L.Territorio=T.IdTerritorio ".$buscador." ORDER BY ".$column." ".$sort_order.' LIMIT '.$paginaComienzo.', '.$porPagina;
 
 				if ($result=$conn->query($cons)) {
                     $up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
@@ -167,11 +186,11 @@
 								$param .= 'buscadorTerri='.$_REQUEST['buscadorTerri'].'&';
 							}
 						?>
-						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=IdLista&order=<?php echo $asc_or_desc; ?>">Id. de lista<i class="fas fa-sort<?php echo $column == 'IdLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
-						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param.'pagina='.$pagina.'&'; ?>column=IdLista&order=<?php echo $asc_or_desc; ?>">Id. de lista<i class="fas fa-sort<?php echo $column == 'IdLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param.'pagina='.$pagina.'&'; ?>column=TipoLista&order=<?php echo $asc_or_desc; ?>">Tipo<i class="fas fa-sort<?php echo $column == 'TipoLista' ? '-' . $up_or_down : '' ?>"></i></a></th>
 		                <th class="text-center" scope="col">Grupo</th>
-						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=Publica&order=<?php echo $asc_or_desc; ?>">Pública<i class="fas fa-sort<?php echo $column == 'Publica' ? '-' . $up_or_down : '' ?>"></i></a></th>
-						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param; ?>column=Territorio&order=<?php echo $asc_or_desc; ?>">Territorio<i class="fas fa-sort<?php echo $column == 'Territorio' ? '-' . $up_or_down : '' ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param.'pagina='.$pagina.'&'; ?>column=Publica&order=<?php echo $asc_or_desc; ?>">Pública<i class="fas fa-sort<?php echo $column == 'Publica' ? '-' . $up_or_down : '' ?>"></i></a></th>
+						<th class="text-center" scope="col"><a href="AdminListas.php?<?php echo $param.'pagina='.$pagina.'&'; ?>column=Territorio&order=<?php echo $asc_or_desc; ?>">Territorio<i class="fas fa-sort<?php echo $column == 'Territorio' ? '-' . $up_or_down : '' ?>"></i></a></th>
 		                <th class="text-center" scope="col">Consultar</th>
 		                <th class="text-center" scope="col">Modificar</th>
 					</tr>
@@ -198,6 +217,39 @@
 					} ?>
 				</tbody>
 			</table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <?php
+                        $clausulaORD = '';
+                        if(isset($_GET['column'])){$clausulaORD .= '&colunm='.$_GET['column'];}
+                        if(isset($_GET['order'])){$clausulaORD .= '&order='.$_GET['order'];}
+                        $prevPage = $pagina-1; 
+                        $nextPage = $pagina+1;
+
+                        $paginacionBotones=paginacionBotones($maxPaginas, $pagina);
+
+                        if($pagina<=1){
+                            echo '<li class="page-item disabled"><a class="page-link" href="AdminListas.php?'.$param.'&pagina='.$prevPage.$clausulaORD.'">Anterior</a></li>';
+                        } else {
+                            echo '<li class="page-item"><a class="page-link" href="AdminListas.php?'.$param.'&pagina='.$prevPage.$clausulaORD.'">Anterior</a></li>';
+                        }
+                        while ($paginacionBotones['Inicio'] <= $paginacionBotones['Fin']){
+                        	if($paginacionBotones['Inicio']==$pagina){
+								echo '<li class="page-item active"><a class="page-link" href="AdminListas.php?'.$param.'&pagina='.$paginacionBotones['Inicio'].$clausulaORD.'">'.$paginacionBotones['Inicio'].'</a></li>';
+                        	} else {
+								echo '<li class="page-item"><a class="page-link" href="AdminListas.php?'.$param.'&pagina='.$paginacionBotones['Inicio'].$clausulaORD.'">'.$paginacionBotones['Inicio'].'</a></li>';
+                        	}
+                            $paginacionBotones['Inicio']++;
+                        }
+                        if($pagina>=$maxPaginas){
+                            echo '<li class="page-item disabled"><a class="page-link" href="AdminListas.php?'.$param.'&pagina='.$nextPage.$clausulaORD.'&">Siguiente</a></li>';
+                        } else {
+                            echo '<li class="page-item"><a class="page-link" href="AdminListas.php?'.$param.'&pagina='.$nextPage.$clausulaORD.'">Siguiente</a></li>';
+                        }
+                    ?>
+                </ul>
+            </nav>
+
             <div class="push"></div>
         </div>
         

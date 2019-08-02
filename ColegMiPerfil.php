@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Consultar Colegiado</title>
+		<title>Mi Perfil</title>
 	</head>
 
     <body>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="form-group campoForm">
                     <label for="finInhabilitacion" class="etiqueta"> Fin de inhabilitación </label>
-                    <input class="form-control customInput" type="date" id="finInhabilitacion" name="finInhabilitacion" readonly="true" <?php echo 'value="'.$row['FinInhabilitacion'].'"'; ?> />
+                    <input class="form-control customInput" type="text" id="finInhabilitacion" name="finInhabilitacion" readonly="true" <?php echo 'value="'.$row['FinInhabilitacion'].'"'; ?> />
                 </div>
             </div>
 

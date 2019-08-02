@@ -23,6 +23,10 @@ p, *[class~="text-justified"] {
 	text-align: center;
 }
 
+*[class~="text-left"]{
+	text-align: left;
+}
+
 footer {
 	bottom:0px;
 }
@@ -193,6 +197,14 @@ table, .actualizarPass{
 select[class~="inTable"]{
 	border: none;
 	width: 100%;
+}
+
+/* Paginación */
+.page-item .page-link {
+	color: #016701;
+}
+.active .page-link {
+	background-color: #016701 !important;
 }
 
 
@@ -395,4 +407,8 @@ div[class~="footer"], div[class~="push"] {
 .fa-times{
 	color: red;
 	font-size: 20px;
+}
+
+.fa-eye, .fa-edit{
+	color: #016701;
 }
