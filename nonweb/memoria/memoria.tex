@@ -66,8 +66,8 @@
 \renewcommand{\sectionmark}[1]{\markright{#1}{}}
 %%%%\lhead{\bfseries \chaptermark}
 \lhead{\bfseries \sectionmark}
-\rfoot{\thepage}
-\cfoot{}
+%\rfoot{\thepage}
+\cfoot{\thepage}
 
 \newenvironment{CompactItemize}{
                         \begin{itemize}}
@@ -114,19 +114,21 @@
 %%% Paquetes
 \usepackage{enumerate} 
 \usepackage{placeins} %Para los FloatBarrier
+\usepackage{lscape} %Para apaisar paginas
 \usepackage[table, svgnames]{xcolor} \usepackage{array} %Formato de las tablas
- \usepackage{etoolbox}
+\usepackage{etoolbox}
+\usepackage{appendix}
 \colorlet{headercolour}{blue!25}
 \AtBeginEnvironment{tabular}{\rowcolors{1}{\ifnumless{\rownum}{2}{headercolour}{white}}{}}
 %%% Contadores
 \newcounter{tabla}
-\newcounter{figura}
+\newcounter{figura_cap4}
+\newcounter{figura_manual}
 \newcounter{rf}
 \newcounter{rnf}
 \newcounter{ri}
 \newcounter{casouso}
-
-
+\renewcommand\appendixtocname{Manual de Usuario}
 
 %\usepackage{eurofont}
 \begin{document}
@@ -143,16 +145,31 @@
 
 % Aquí va la descripción de lo que se va a hacer del anteproyecto, cambiando el tiempo verbal de futuro a pasado (de "vamos a hacer", a "hemos hecho")
 
+Los Turnos de actuación profesional son una mecánica que ofrecen normalmente los colegios profesionales a la sociedad, por la cual una persona física o jurídica, o un tribunal, pueden solicitar al colegio profesional que les facilite a un ingeniero experto con experiencia en un área concreta de la ingeniería en cuestión. Estas listas normalmente las gestiona el propio colegio profesional, y corresponden con un turno de actuación común, por ejemplo, de cara a los tribunales de justicia cuando el requerimiento de perito es de perito de parte y se hace al colegio profesional -las listas de peritos nombrados por tribunal las suele gestionar el decanato judicial-. También se utilizan cuando una persona requiere un ingeniero colegiado para una tarea concreta, le es indistinto el profesional, pero si quiere tener una seguridad de que contrata a un ingeniero colegiado por calidad y seguridad: se realiza la solicitud desde la persona física o jurídica requirente del servicio al colegio profesional, y este asigna por el sistema de turnos de actuación profesional al que corresponda por especialidad y orden. \\
+
+Dado el reglamento de turnos de actuación profesional interno perteneciente al Colegio Profesional de Ingeniería en Informática de Andalucía, este colegio proporciona a la Sociedad profesionales colegiados y titulados en ingeniería en informática para cumplir con las tareas requeridas mediante esta mecánica. \\
+
+Aquí surge la necesidad de que estas relaciones, entre solicitudes y profesionales dispuestos a cumplirlas, se realicen dentro de unas condiciones de igualdad y transparencia entre candidatos; minimizando la sobrecarga administrativa de las distintas comisiones de los respectivos turnos de actuación profesional.
 
 
 \section{Objetivos}
 
 % Aquí va la descripción de lo que se va a hacer de los objetivos, cambiando el tiempo verbal de futuro a pasado (de "vamos a hacer", a "hemos hecho")
 
+Diseñar una aplicación que solucione el problema de adjudicación de turnos de actuación profesional del Colegio Profesional de Ingeniería en Informática de Andalucía. Dicha solución cuenta con una lista de profesionales inscritos especializados en los distintos campos de la ingeniería informática, organizada por campo de especialización y provincia de ejercicio profesional, pudiendo ejercer en más de un campo y más de una provincia. En caso de que se requiera un servicio profesional en concreto, el sistema es capaz de, de forma automática, asignar los proyectos, y gestionar las listas según especifican los reglamentos del susodicho colegio profesional. Permite gestionar los distintos estados de los participantes del turno de actuación profesional, así como gestionar las resoluciones, los periodos vacacionales, las pérdidas de turno y la ejecución de las penalizaciones por infracciones reglamentarias, todo en cumplimiento del reglamento del susodicho colegio. \\
+
+El interfaz de la aplicación es vía web, teniendo perfiles específicos para los colegiados que pertenezcan a los diversos turnos de actuación profesional, para los miembros de las distintas comisiones, y para la administración técnica de la aplicación. \\
+
+La web permite la adición de usuarios profesionales, la asignación de profesional, y todas las tareas de gestión relativas al proceso. \\
+
+También se ha escrito un manual de usuario de la aplicación para cada uno de estos perfiles. \\
+
+La aplicación terminada está siendo utilizada en el Colegio Profesional de Ingeniería en Informática de Andalucía, colegio del que el tutor del trabajo fin de grado es decano.
+
 
 \section{Organización de la memoria}
 
- Hemos estructurado la memoria de la siguiente forma:
+ Se ha estructurado la memoria de la siguiente forma:
 
 \begin{itemize}
 \item En el primer capítulo enumeramos nuestros objetivos con este trabajo fin de grado.
