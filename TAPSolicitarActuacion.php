@@ -28,7 +28,7 @@
 	                    <input class="form-control customInput" type="text" id="nombre" name="nombre" required="true"/>
 	                </div>
 	                <div class="form-group campoForm">
-	                	<label for="email" class="etiqueta">Email de contacto * </label>
+	                	<label for="email" class="etiqueta">Correo electrónico * </label>
 	                    <input class="form-control customInput" type="text" id="email" name="email" required="true"/>
 	                </div>
 	                <div class="form-group campoForm">

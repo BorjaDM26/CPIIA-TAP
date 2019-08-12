@@ -1,2 +1,29 @@
-\chapter{Conclusiones}
+\chapter{Conclusiones y l\'ineas futuras}
+
+\section{Conclusiones}
+Los objetivos del proyecto han sido cumplidos satisfactoriamente, teniendo como producto una aplicación web totalmente funcional que cumple con los requisitos que se esperaban de ella, de acuerdo con lo citado en el Reglamento Genérico de Turnos de Actuación Profesional \cite{reglamentotapcpiia}. \\
+
+A pesar de alcanzar el fin esperado, ha existido una desviación entre los tiempos estimados en el anteproyecto y los realmente necesarios en la ejecución. El caso más significativo ha sido el de la fase de análisis, que ha sido mayor al estimado, pero esto ha provocado que el tiempo empleado en la implementación haya sido menor del esperado, ya que se han detectado y corregido problemas del diseño en fases previas al desarrollo. \\
+
+Además, se ha añadido una función no contemplada en los requisitos funcionales, que consiste en la posibilidad de actualizar la contraseña desde el perfil del colegiado. Esto se debe a que, durante la creación de los colegiados, a estos se les asigna una contraseña autogenerada, puesto que la creación la realizan los Responsable en lugar del propio colegiado a crear. De esta forma, puedo establecer una contraseña personalizada que le sea más fácil de memorizar. La contraseña autogenerada se envía al correo electrónico asociado al colegiado durante la creación del colegiado.\\
+
+También se han incluido algunas medidas de seguridad, como la aplicación de funciones hash sobre las contraseñas y restringir los caracteres que se pueden introducir en la plataforma en ciertos campos de texto. Con esto último se reduce la posibilidad de recibir inyecciones SQL, las cuales podrían llegar a borrar completamente la base de datos del sistema. \\
+
+
+
+\section{L\'ineas futuras}
+Aunque la solución creada cumple con lo solicitado, esta podría haber sido más completa incluyendo algunos añadidos, como la gestión de documentos, la recuperación de contraseñas, y otras medidas de seguridad frente a posibles ataques. \\
+
+La gestión documental estaría orientada a mantener los documentos aportados por los colegiados, permitiendo llevar un mejor control sobre:
+\begin{itemize}
+	\item La acreditación de posesión de un título oficial de Ingeniería Informática en territorio español, o equivalente.
+	\item Los resguardos de pagos de las cuotas colegiales.
+	\item Los títulos o certificaciones que validen conocimientos en ciertas especializaciones, que permitirán desempeñar las labores propias de ciertos tipos de listas de los TAP. \\
+\end{itemize}
+
+Tampoco se ha incluido la posibilidad de recuperación de contraseña en caso del olvido de las mismas por parte de los colegiados. Teniendo en cuenta que el inicio de sesión se realiza usando el número de colegiado y este es accesible por cualquier persona a través de las listas públicas, una posible solución sería incluir el reinicio en el panel de administración, siendo de esta forma solo accesible por los Responsable. Así, el colegiado se debería poner en contacto con el colegio para restablecer su contraseña, evitando de esta forma que pueda ser solicitada por otra persona distinta usando únicamente su número de colegiado. \\
+
+Otra línea de mejora bastante amplia sería la de la seguridad de la aplicación, puesto que las medidas que se han tomado han sido para cubrir algunos aspectos básicos de seguridad. \\
+
+Además, se ha configurado el envío de correos electrónicos solamente a los solicitantes de actuación durante la creación de una solicitud y a los colegiados tras su creación como colegiado y su asignación como encargado de un proyecto. Esto se podría ampliar añadiendo el envío de correos tras realizar cualquiera de las otras funciones permitidas por la aplicación. Estas podrían ir destinadas a los propios colegiados, y también a las comisiones encargadas de gestionar el sistema. \\
 

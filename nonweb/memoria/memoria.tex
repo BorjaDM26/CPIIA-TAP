@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,oneside,spanish]{book}
+\documentclass[12pt,a4paper,spanish]{book}
 \usepackage[utf8]{inputenc}
 
 %\usepackage[T1]{fontenc}
@@ -26,7 +26,7 @@
 \usepackage{url}
 \usepackage[pdftitle={},
               pdfauthor={Borja Delgado Martín},
-              pdfsubject={TEMATICA},
+              pdfsubject={Aplicación Web},
               pdfkeywords={Sistema, Gestión, Turnos, Actuación, Profesional, TAP, Colegio,
               			   Ingeniería, Informática, Andalucía, CPIIA},
               pdfproducer={pdfLaTeX}
@@ -56,10 +56,10 @@
 \usepackage{fancyhdr} % para cabeceras y pies de pagina
 \pagestyle{fancy}
 \addtolength{\textheight}{-1cm}
-\addtolength{\oddsidemargin}{1cm}
-\addtolength{\evensidemargin}{1cm}
-\addtolength{\textwidth}{-1.1cm}
-\addtolength{\headwidth}{-1.1cm}
+%\addtolength{\oddsidemargin}{1cm}
+%\addtolength{\evensidemargin}{1cm}
+%\addtolength{\textwidth}{-1.1cm}
+%\addtolength{\headwidth}{-1.1cm}
 
 \headsep 1cm
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
@@ -116,6 +116,14 @@
 \usepackage{placeins} %Para los FloatBarrier
 \usepackage{lscape} %Para apaisar paginas
 \usepackage[table, svgnames]{xcolor} \usepackage{array} %Formato de las tablas
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=black,
+}
+ 
+\urlstyle{same}
 \usepackage{etoolbox}
 \usepackage{appendix}
 \colorlet{headercolour}{blue!25}
@@ -130,19 +138,22 @@
 \newcounter{casouso}
 \renewcommand\appendixtocname{Manual de Usuario}
 
+
 %\usepackage{eurofont}
 \begin{document}
-%\frontmatter
 
 
+%% DATOS DEL TFG, DECLARACIÓN DE ORIGINALIDAD, RESUMEN, ABSTRACT E ÍNDICE
+\frontmatter
+\include{preludio}
 \tableofcontents
 
 
+%% CUERPO DEL TFG
+\mainmatter
 \chapter{Introducción}
 
 \section{Introducción}
-
-
 % Aquí va la descripción de lo que se va a hacer del anteproyecto, cambiando el tiempo verbal de futuro a pasado (de "vamos a hacer", a "hemos hecho")
 
 Los Turnos de actuación profesional son una mecánica que ofrecen normalmente los colegios profesionales a la sociedad, por la cual una persona física o jurídica, o un tribunal, pueden solicitar al colegio profesional que les facilite a un ingeniero experto con experiencia en un área concreta de la ingeniería en cuestión. Estas listas normalmente las gestiona el propio colegio profesional, y corresponden con un turno de actuación común, por ejemplo, de cara a los tribunales de justicia cuando el requerimiento de perito es de perito de parte y se hace al colegio profesional -las listas de peritos nombrados por tribunal las suele gestionar el decanato judicial-. También se utilizan cuando una persona requiere un ingeniero colegiado para una tarea concreta, le es indistinto el profesional, pero si quiere tener una seguridad de que contrata a un ingeniero colegiado por calidad y seguridad: se realiza la solicitud desde la persona física o jurídica requirente del servicio al colegio profesional, y este asigna por el sistema de turnos de actuación profesional al que corresponda por especialidad y orden. \\
@@ -166,7 +177,7 @@ También se ha escrito un manual de usuario de la aplicación para cada uno de e
 
 La aplicación terminada está siendo utilizada en el Colegio Profesional de Ingeniería en Informática de Andalucía, colegio del que el tutor del trabajo fin de grado es decano.
 
-
+\newpage~
 \section{Organización de la memoria}
 
  Se ha estructurado la memoria de la siguiente forma:

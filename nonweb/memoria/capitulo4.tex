@@ -1,8 +1,8 @@
 \chapter{An\'alisis}
-\section{Catálogo de Requisitos}
+\section{Catálogo de requisitos}
 En esta sección se definirán los distintos requisitos que se contemplan para el sistema. Eso incluye los requisitos funcionales, los no funcionales y los de información.
 
-\subsection{Requisitos Funcionales}
+\subsection{Requisitos funcionales}
 \label{lrf} Los requerimientos funcionales (RF) de un sistema sirven para especificar lo que este debe poder realizar, de modo que son aquellos que describen su comportamiento cuando se cumplen ciertas condiciones. \\
 
 \addtocounter{tabla}{1}
@@ -127,7 +127,7 @@ Además, el sistema debe actuar de forma automática para el mantenimiento de la
     \end{itemize}
     El sistema, de forma automática, debe:
     \begin{itemize}
-	  \item Asignar el siguiente turno de actuación a un colegiado de la lista, de acuerdo a la ordenación establecida.
+	  \item Asignar el siguiente turno de actuación a un colegiado de la lista, de acuerdo con la ordenación establecida.
 	  \item Ordenar los colegiados dentro de las listas de profesionales, obedeciendo un riguroso orden alfabético, teniendo en cuenta primero el primer apellido, después el segundo apellido y finalmente el nombre.
     \end{itemize}
     \\ \hline
@@ -210,7 +210,7 @@ En el caso de los colegiados que no tengan experiencia demostrada y estén en di
 \FloatBarrier
 
 
-\subsection{Requisitos no Funcionales}
+\subsection{Requisitos no funcionales}
 \label{lrnf} Los requisitos no funcionales (RNF) representan características generales y restricciones de la aplicación o sistema que se esté desarrollando. Se han considerado únicamente las restricciones de tecnologías que se usarán para desarrollar aplicación. \\
 
 \addtocounter{tabla}{1}
@@ -284,7 +284,7 @@ Para concluir, se define que la codificación de caracteres usada será UTF-8 (\
 \FloatBarrier
 
 
-\subsection{Requisitos de Información}
+\subsection{Requisitos de información}
 Los requisitos de información (RI) sirven para recopilar todos los datos con los que trabajará el sistema y que soportan información. \\
 
 \addtocounter{tabla}{1}
@@ -316,7 +316,7 @@ De entre los que se han considerado, comenzamos con los colegiados (\textbf{\hyp
 	  \item Campos de especialización que controla.
 	  \item Listas en las que está inscrito.
 	  \item Comisiones en las que está incluido.
-	  \item Si se encuentra inhabilitado y hasta cuando.
+	  \item Si se encuentra inhabilitado y hasta cuándo.
     \end{itemize}
     \\ \hline
   \end{tabular}
@@ -326,7 +326,7 @@ De entre los que se han considerado, comenzamos con los colegiados (\textbf{\hyp
 \FloatBarrier
 
 \addtocounter{tabla}{1}
-Continuando con los tipos de lista, se necesita mantener el nombre, la descripción, el periodo vacacional y las especializaciones necesarias para participar en las listas de dicho tipo, además de una comisión que será única para cada tipo (\textbf{\hyperref[tab:riTipoLst]{Cuadro 4.\arabic{tabla}}}). Durante el periodo vacacional, si a un colegiado le es asignado un turno de actuación, tanto su aceptación como su rechazo, no supondrán la perdida de su turno preferente dentro de la lista en cuestión.
+Continuando con los tipos de lista, se necesita mantener el nombre, la descripción, el periodo vacacional y las especializaciones necesarias para participar en las listas de dicho tipo, además de una comisión que será única para cada tipo (\textbf{\hyperref[tab:riTipoLst]{Cuadro 4.\arabic{tabla}}}). Durante el periodo vacacional, si a un colegiado le es asignado un turno de actuación, tanto su aceptación como su rechazo no supondrán la pérdida de su turno preferente dentro de la lista en cuestión.
 
 \begin{table}[!htbp]
   \centering \addtocounter{ri}{1} 
@@ -550,13 +550,13 @@ También se incluye un apartado para añadir las consideraciones del revisor sob
 \FloatBarrier
 
 
-\section{Casos de Uso}
+\section{Casos de uso}
 \label{cu} Un caso de uso es una representación de un requisito funcional del sistema. Estos sirven para describir el conjunto de secuencias de acciones que ejecuta el sistema para producir un resultado observable de interés de un actor. \\
 
 En este apartado se definirán los casos de uso relativos a los requisitos funcionales previamente definidos en el apartado de \textbf{\hyperref[lrf]{Requisitos Funcionales}} desde el punto de vista de los tres perfiles del sistema.
 
 
-\subsection{Perfil de Usuario}
+\subsection{Perfil de usuario}
 
 
 \addtocounter{figura_cap4}{1}
@@ -569,7 +569,6 @@ Aquí se definirán los casos de uso para las funciones que puedan realizar aque
   \label{fig:CasosDeUso_Usuario}
 \end{figure}
 \FloatBarrier
- \pagebreak
 
 \addtocounter{tabla}{1}
 El primer caso de uso (\textbf{\hyperref[tab:cuuConsultaTiposLst]{Cuadro 4.\arabic{tabla}}}) hace referencia al requisito funcional de \textbf{\hyperref[tab:rfGestTipoLst]{Gestión de Tipos de Lista (RF-3)}}, aunque solo a la parte de consultar su información. El usuario que la realiza no tiene que cumplir ninguna condición previa para ello.
@@ -584,10 +583,10 @@ El primer caso de uso (\textbf{\hyperref[tab:cuuConsultaTiposLst]{Cuadro 4.\arab
     Postcondición  	 & Al Usuario se le han mostrado los tipos de lista y una descripción de cada uno de ellos \\ \hline
     Curso Normal   	 & \begin{enumerate}
 	  \item El Usuario accede a TAP\textbackslash Tipos de Lista
-	  \item El sistema muestra todas los tipos de lista y una descripción de cada una de ellas
+	  \item El sistema muestra todos los tipos de lista y una descripción de cada una de ellas
     \end{enumerate}  \\ \hline
     Curso Alternativo  & No  \\ \hline
-    Observaciones 	 & No es necesario iniciar sesión en el sistema para realizar esta acción  \\ \hline
+    Observaciones 	 & No es necesario haber iniciado sesión en el sistema  \\ \hline
   \end{tabular}
   \caption{Caso de Uso \arabic{casouso} - Consultar Tipos de Lista}
   \label{tab:cuuConsultaTiposLst}
@@ -595,13 +594,13 @@ El primer caso de uso (\textbf{\hyperref[tab:cuuConsultaTiposLst]{Cuadro 4.\arab
 \FloatBarrier
 
 \addtocounter{tabla}{1}
-Después tenemos una situación similar con la consulta de listas públicas (\textbf{\hyperref[tab:cuuConsultaLstPub]{Cuadro 4.\arabic{tabla}}}) de los requisitos de \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas (RF-5)}}, pudiendo acceder solo a la consulta de listas públicas y la información que estas ofrecen de los colegiados. Para acceder a una de ellas será necesario que el interesado seleccione el tipo de lista y el territorio de la que desee consultar.
+Después tenemos una situación similar con la consulta de listas públicas (\textbf{\hyperref[tab:cuuConsultaLstPub]{Cuadro 4.\arabic{tabla}}}) de los requisitos de \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas (RF-5)}}, pudiendo acceder solo a la consulta de listas públicas y la información que estas ofrecen de los colegiados. Para ello, el interesado debe seleccionar el tipo de lista y el territorio de la lista que desee consultar.
 
 \begin{table}[!htbp]
   \centering  \addtocounter{casouso}{1}
   \begin{tabular}{|l | p{100mm}|}
     \textbf{Caso de Uso}  & \textbf{Consultar Lista Pública} \\ \hline
-    Resumen 			 & Un Usuario accede a una lista pública de profesionales para contactar con un profesional colegiado concreto directamente \\ \hline
+    Resumen 			 & Un Usuario accede a una lista pública de profesionales para contactar con un profesional colegiado \\ \hline
     Actores  		 & Usuario \\ \hline
     Precondición  	 & No \\ \hline
     Postcondición  	 & El sistema muestra los integrantes de la lista pública \\ \hline
@@ -611,7 +610,7 @@ Después tenemos una situación similar con la consulta de listas públicas (\te
 	  \item El sistema muestra un listado con la información de los profesionales inscritos en la lista pública para dicho tipo y territorio
     \end{enumerate}  \\ \hline
     Curso Alternativo  & No  \\ \hline
-    Observaciones 	 & No es necesario iniciar sesión en el sistema para realizar esta acción  \\ \hline
+    Observaciones 	 & No es necesario haber iniciado sesión en el sistema  \\ \hline
   \end{tabular}
   \caption{Caso de Uso \arabic{casouso} - Consultar Lista Pública}
   \label{tab:cuuConsultaLstPub}
@@ -638,15 +637,15 @@ La función más compleja accesible por los Usuarios es la solicitud de un profe
     Curso Alternativo  & \begin{enumerate}
 	  \item El Usuario no rellena todos los campos obligatorios y el sistema le informa que debe completarlos
     \end{enumerate}  \\ \hline
-    Observaciones 	 & No es necesario iniciar sesión en el sistema para realizar esta acción  \\ \hline
+    Observaciones 	 & No es necesario haber iniciado sesión en el sistema  \\ \hline
   \end{tabular}
   \caption{Caso de Uso \arabic{casouso} - Registrar Petición de Profesional}
   \label{tab:cuuRegPeticProf}
 \end{table}
 \FloatBarrier
 
-
-\subsection{Perfil de Colegiado}
+\newpage~
+\subsection{Perfil de colegiado}
 
 \addtocounter{figura_cap4}{1}
 En este apartado se mostrarán los casos de uso de las funciones que pueden realizar los Colegiado (\textbf{\hyperref[fig:CasosDeUso_Colegiado]{Figura 4.\arabic{figura_cap4}}}), que también serán accesibles para los Responsable.
@@ -662,14 +661,14 @@ En este apartado se mostrarán los casos de uso de las funciones que pueden real
 \addtocounter{tabla}{1}
 Para comenzar tenemos la función de iniciar sesión en el sistema (\textbf{\hyperref[tab:cucIniSes]{Cuadro 4.\arabic{tabla}}}), relacionada con el requisito funcional \textbf{\hyperref[tab:rfIniSes]{Iniciar Sesión (RF-1)}}. Para ello el colegiado tiene que introducir su número de colegiado y su contraseña.
 
-\begin{table}[!htbp]
+\begin{table}[!h]
   \centering  \addtocounter{casouso}{1}
   \begin{tabular}{|l | p{100mm}|}
     \textbf{Caso de Uso}  & \textbf{Iniciar Sesión} \\ \hline
     Resumen 		 & Un Colegiado se identifica en el sistema con su número de colegiado y contraseña \\ \hline
     Actores  		 & Colegiado \\ \hline
     Precondición  	 & Estar desconectado, pero registrado en el sistema \\ \hline
-    Postcondición  	 & El Colegiado ha iniciado sesión, y por tanto, ha sido identificado en el sistema \\ \hline
+    Postcondición  	 & El Colegiado ha iniciado sesión, y, por tanto, ha sido identificado en el sistema \\ \hline
     Curso Normal   	 & \begin{enumerate}
 	  \item El Colegiado accede a la Iniciar Sesión
 	  \item El Colegiado introduce su número de colegiado y su contraseña
@@ -710,7 +709,7 @@ Los Colegiados, una vez identificados, podrán acceder a toda su información pe
 \FloatBarrier
 
 \addtocounter{tabla}{1}
-Además tendrán la posibilidad de consultar las especializaciones que tiene confirmadas en su perfil (\textbf{\hyperref[tab:cucConsultaEspec]{Cuadro 4.\arabic{tabla}}}), relativa al requisito \textbf{\hyperref[tab:rfGestEspec]{Gestión de Campos de Especialización (RF-4)}}.
+Además, tendrán la posibilidad de consultar las especializaciones que tiene confirmadas en su perfil (\textbf{\hyperref[tab:cucConsultaEspec]{Cuadro 4.\arabic{tabla}}}), relativa al requisito \textbf{\hyperref[tab:rfGestEspec]{Gestión de Campos de Especialización (RF-4)}}.
 
 \begin{table}[!htbp]
   \centering  \addtocounter{casouso}{1}
@@ -739,7 +738,7 @@ Relacionado con el requisito \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas
   \centering  \addtocounter{casouso}{1}
   \begin{tabular}{|l | p{100mm}|}
     \textbf{Caso de Uso}  & \textbf{Consultar Listas Inscritas} \\ \hline
-    Resumen 		 & Un Colegiado consulta el conjunto de listas en las que está inscrito \\ \hline
+    Resumen 		 & Un Colegiado consulta las listas en las que participa \\ \hline
     Actores  		 & Colegiado \\ \hline
     Precondición  	 & Haber iniciado sesión \\ \hline
     Postcondición  	 & El sistema muestra el conjunto de listas de profesionales y revisores en las que está inscrito el colegiado \\ \hline
@@ -748,7 +747,7 @@ Relacionado con el requisito \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas
 	  \item El sistema muestra las listas en las que participa el colegiado
     \end{enumerate}  \\ \hline
     Curso Alternativo  & No  \\ \hline
-    Observaciones 	 & El colegiado solo puede consultar las lista en las que está inscrito \\ \hline
+    Observaciones 	 & El colegiado solo puede consultar las listas en las que está inscrito \\ \hline
   \end{tabular}
   \caption{Caso de Uso \arabic{casouso} - Consultar Listas Inscritas}
   \label{tab:cucConsultaLista}
@@ -762,7 +761,7 @@ Después, tenemos la consulta de las comisiones en las que participa el Colegiad
   \centering  \addtocounter{casouso}{1}
   \begin{tabular}{|l | p{100mm}|}
     \textbf{Caso de Uso}  & \textbf{Consultar Participación en Comisiones} \\ \hline
-    Resumen 		 & Un Colegiado consulta el conjunto de comisiones de TAP en las que está incluido \\ \hline
+    Resumen 		 & Un Colegiado consulta las comisiones en las participa \\ \hline
     Actores  		 & Colegiado \\ \hline
     Precondición  	 & Haber iniciado sesión \\ \hline
     Postcondición  	 & El sistema muestra el conjunto de las comisiones en las que participa \\ \hline
@@ -803,7 +802,7 @@ Como último caso de uso para los Colegiado tenemos la consulta de los proyectos
 \FloatBarrier
 
 
-\subsection{Perfil de Responsable}
+\subsection{Perfil de responsable}
 
 \addtocounter{figura_cap4}{1}
 En este apartado se definirán los casos de uso que solo podrán realizar los usuarios con perfil de Responsable. En la \textbf{\hyperref[fig:CasosDeUso_Responsable_A]{Figura 4.\arabic{figura_cap4}}} se pueden observar los casos relativos a los requisitos funcionales de gestión de colegiados, especializaciones, listas y tipos de lista;\addtocounter{figura_cap4}{1} y en la \textbf{\hyperref[fig:CasosDeUso_Responsable_B]{Figura 4.\arabic{figura_cap4}}} los relativos a los de gestión de comisiones y proyectos.
@@ -877,7 +876,7 @@ Los primeros son relativos al requisito funcional de \textbf{\hyperref[tab:rfGes
 		  \caption{Caso de Uso \arabic{casouso} - Consultar Información de Colegiado}
 		  \label{tab:curConsultaInfoColeg}
 		\end{table}
-		\FloatBarrier \pagebreak
+		\FloatBarrier
 
 	\item \addtocounter{tabla}{1} Modificar los colegiados ya existentes en el sistema (\textbf{\hyperref[tab:curActualizarColeg]{Cuadro 4.\arabic{tabla}}}).
 		\begin{table}[!htbp]
@@ -939,7 +938,7 @@ Relativos al requisito de \textbf{\hyperref[tab:rfGestTipoLst]{Gestión de Tipos
 		\end{table}
 		\FloatBarrier
 
-	\pagebreak
+	\newpage~
 	\item \addtocounter{tabla}{1} Actualizar tipo de lista ya creado (\textbf{\hyperref[tab:curActualizarTipoLst]{Cuadro 4.\arabic{tabla}}}).
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -968,7 +967,7 @@ Relativos al requisito de \textbf{\hyperref[tab:rfGestTipoLst]{Gestión de Tipos
 		\FloatBarrier
 \end{itemize}
 
-\pagebreak
+\newpage~
 En cuanto al requisito de \textbf{\hyperref[tab:rfGestEspec]{Gestión de Campos de Especialización (RF-4)}} se definen cinco nuevos casos de uso:
 \begin{itemize}
 	\item \addtocounter{tabla}{1} Creación de nueva especialización (\textbf{\hyperref[tab:curCrearEspec]{Cuadro 4.\arabic{tabla}}}). Es necesario que no exista antes una con el mismo nombre.
@@ -999,7 +998,7 @@ En cuanto al requisito de \textbf{\hyperref[tab:rfGestEspec]{Gestión de Campos 
 		\end{table}
 		\FloatBarrier
 	
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Consultar especializaciones (\textbf{\hyperref[tab:curConsultarEspec]{Cuadro 4.\arabic{tabla}}}).
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1023,7 +1022,7 @@ En cuanto al requisito de \textbf{\hyperref[tab:rfGestEspec]{Gestión de Campos 
 		\end{table}
 		\FloatBarrier
 
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Actualizar especialización ya creada (\textbf{\hyperref[tab:curActualizarEspec]{Cuadro 4.\arabic{tabla}}}).
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1051,7 +1050,7 @@ En cuanto al requisito de \textbf{\hyperref[tab:rfGestEspec]{Gestión de Campos 
 		\end{table}
 		\FloatBarrier
 	
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Asignar especialización a colegiado (\textbf{\hyperref[tab:curAsignarEspecColeg]{Cuadro 4.\arabic{tabla}}}). Esto servirá para registrar los conocimientos que poseen los colegiados una vez los acrediten.
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1079,7 +1078,7 @@ En cuanto al requisito de \textbf{\hyperref[tab:rfGestEspec]{Gestión de Campos 
 		\end{table}
 		\FloatBarrier
 	
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Requerir especialización a tipo de lista (\textbf{\hyperref[tab:curRequerirEspecTipoLst]{Cuadro 4.\arabic{tabla}}}). De esta forma se establecen los conocimientos necesarios para pertenecer a las listas de ese tipo.
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1108,7 +1107,7 @@ En cuanto al requisito de \textbf{\hyperref[tab:rfGestEspec]{Gestión de Campos 
 		\FloatBarrier
 \end{itemize}
 
-\pagebreak
+\newpage~
 Del requisito \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas (RF-5)}} aparecen cinco nuevos casos de uso:
 \begin{itemize}
 	\item \addtocounter{tabla}{1} Crear una lista (\textbf{\hyperref[tab:curCrearLista]{Cuadro 4.\arabic{tabla}}}).
@@ -1138,7 +1137,7 @@ Del requisito \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas (RF-5)}} apare
 		\end{table}
 		\FloatBarrier
 	
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Consultar las listas ya existentes (\textbf{\hyperref[tab:curConsultarLista]{Cuadro 4.\arabic{tabla}}}). A diferencia de la consulta de listas públicas a la que tienen acceso los Usuario, en este caso los Responsables tienen acceso a la información de todas las lista del sistema, sean públicas o privadas y de profesionales o de revisores.
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1163,7 +1162,7 @@ Del requisito \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas (RF-5)}} apare
 		\end{table}
 		\FloatBarrier 
   
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Modificar las listas ya creadas en el sistema (\textbf{\hyperref[tab:curActualizarLista]{Cuadro 4.\arabic{tabla}}}).
 		\begin{table}[!htbp]
 		  \centering \addtocounter{casouso}{1}
@@ -1193,7 +1192,7 @@ Del requisito \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas (RF-5)}} apare
 		\end{table}
 		\FloatBarrier
 		
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Añadir inscripciones de colegiados a las listas (\textbf{\hyperref[tab:curCrearInscrLst]{Cuadro 4.\arabic{tabla}}}). Los Responsables se basarán en los criterios del Reglamento de TAP \cite{reglamentotapcpiia} para ver si el Colegiado en cuestión cumple lo necesario para forma parte de la lista. Además, el colegiado deberá tener conocimientos en todas las especializaciones requeridas al tipo de lista seleccionada.
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1224,7 +1223,7 @@ Del requisito \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas (RF-5)}} apare
 		\end{table}
 		\FloatBarrier
 		
-    \pagebreak
+    \newpage~
 		\item \addtocounter{tabla}{1} Eliminar inscripción en lista de un colegiado (\textbf{\hyperref[tab:curEliminarInscrLst]{Cuadro 4.\arabic{tabla}}}). Esto ocurrirá cuando los colegiados soliciten su baja de alguna de las listas en las que estén inscritos, ya que la pertenencia a las listas es totalmente voluntaria.
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1253,7 +1252,7 @@ Del requisito \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas (RF-5)}} apare
 		\FloatBarrier
 \end{itemize}
 
-\pagebreak
+\newpage~
 Relacionados con el requisito funcional de \textbf{\hyperref[tab:rfGestComTAP]{Gestión de Comisiones de TAP (RF-6)}} existen cuatro casos de uso para el perfil de Responsable:
 \begin{itemize}
 	\item \addtocounter{tabla}{1} Añadir una comisión (\textbf{\hyperref[tab:curCrearComision]{Cuadro 4.\arabic{tabla}}}).
@@ -1269,7 +1268,7 @@ Relacionados con el requisito funcional de \textbf{\hyperref[tab:rfGestComTAP]{G
 			  \item El Responsable accede a Administración\textbackslash Comisiones
 			  \item El sistema muestra el conjunto de comisiones existentes
 			  \item El Responsable selecciona ``Crear''
-			  \item El sistema crea la neva comisión
+			  \item El sistema crea la nueva comisión
 		    \end{enumerate}  \\ \hline
 		    Curso Alternativo  & No  \\ \hline
 		    Observaciones 	 & No  \\ \hline
@@ -1279,7 +1278,7 @@ Relacionados con el requisito funcional de \textbf{\hyperref[tab:rfGestComTAP]{G
 		\end{table}
 		\FloatBarrier
 	
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Añadir colegiados a una comisión de TAP (\textbf{\hyperref[tab:curIncluirColegComisionTAP]{Cuadro 4.\arabic{tabla}}}). De igual forma que en las inscripciones a listas, el Responsable deberá verificar que el colegiado en cuestión cumple con lo requerido en el Reglamento de TAP \cite{reglamentotapcpiia} para formar parte de la comisión.
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1310,7 +1309,7 @@ Relacionados con el requisito funcional de \textbf{\hyperref[tab:rfGestComTAP]{G
 		\end{table}
 		\FloatBarrier
   
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Expulsar colegiados de una comisión de TAP (\textbf{\hyperref[tab:curExpulsarColegComisionTAP]{Cuadro 4.\arabic{tabla}}}). Como ocurría con las inscripciones en listas, la pertenencia a una comisión de TAP es voluntaria y el colegiado puede solicitar su salida de la misma en cualquier momento.
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1340,7 +1339,7 @@ Relacionados con el requisito funcional de \textbf{\hyperref[tab:rfGestComTAP]{G
 		\end{table}
 		\FloatBarrier 
   
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Asignar la presidencia de una comisión de TAP a uno de sus miembros (\textbf{\hyperref[tab:curAsignarPresidenciaComisionTAP]{Cuadro 4.\arabic{tabla}}})
 		\begin{table}[!htbp]
 		  \centering \addtocounter{casouso}{1}
@@ -1368,7 +1367,7 @@ Relacionados con el requisito funcional de \textbf{\hyperref[tab:rfGestComTAP]{G
 		\FloatBarrier
 \end{itemize}
 
-\pagebreak
+\newpage~
 \addtocounter{tabla}{1}
 El caso de uso de inhabilitar colegiado (\textbf{\hyperref[tab:curInhabilitar]{Cuadro 4.\arabic{tabla}}}), correspondiente al requisito funcional \textbf{\hyperref[tab:rfInhabilitar]{Inhabilitar Colegiados (RF-7)}} se encarga de expulsar al colegiado de todas las listas y comisiones de las que forma parte.
 
@@ -1399,8 +1398,8 @@ El caso de uso de inhabilitar colegiado (\textbf{\hyperref[tab:curInhabilitar]{C
 \end{table}
 \FloatBarrier
 
-\pagebreak
-Finalmente, y de acuerdo al requisito \textbf{\hyperref[tab:rfGestProyectos]{Gestión de Proyectos (RF-8)}}, encontramos los últimos cinco casos de uso:
+\newpage~
+Finalmente, y de acuerdo con el requisito \textbf{\hyperref[tab:rfGestProyectos]{Gestión de Proyectos (RF-8)}}, encontramos los últimos cinco casos de uso:
 \begin{itemize}
 	\item \addtocounter{tabla}{1} Consultar los proyectos existentes (\textbf{\hyperref[tab:curConsultarProyectos]{Cuadro 4.\arabic{tabla}}}).
 		\begin{table}[!htbp]
@@ -1426,7 +1425,7 @@ Finalmente, y de acuerdo al requisito \textbf{\hyperref[tab:rfGestProyectos]{Ges
 		\end{table}
 		\FloatBarrier
 
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Actualizar estado de un proyecto (\textbf{\hyperref[tab:curActualizarProyecto]{Cuadro 4.\arabic{tabla}}}). Esto incluye la modificación del estado de la solicitud, del servicio o del visado.
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1454,7 +1453,7 @@ Finalmente, y de acuerdo al requisito \textbf{\hyperref[tab:rfGestProyectos]{Ges
 		\end{table}
 		\FloatBarrier
 
-  \pagebreak
+  \newpage~
 	\item \addtocounter{tabla}{1} Añadir colegiado profesional a un proyecto (\textbf{\hyperref[tab:curAsignarProfProyecto]{Cuadro 4.\arabic{tabla}}}). 
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1483,7 +1482,7 @@ Finalmente, y de acuerdo al requisito \textbf{\hyperref[tab:rfGestProyectos]{Ges
 		\end{table}
 		\FloatBarrier
 		
-    \pagebreak
+    \newpage~
 		\item \addtocounter{tabla}{1} Añadir colegiado revisor a un proyecto (\textbf{\hyperref[tab:curAsignarRevisorProyecto]{Cuadro 4.\arabic{tabla}}}). 
 		\begin{table}[!htbp]
 		  \centering  \addtocounter{casouso}{1}
@@ -1512,8 +1511,8 @@ Finalmente, y de acuerdo al requisito \textbf{\hyperref[tab:rfGestProyectos]{Ges
 		\end{table}
 		\FloatBarrier
 
-  \pagebreak
-	\item \addtocounter{tabla}{1} Por último, queda la asignación de tutelador al encargado de un proyecto (\textbf{\hyperref[tab:curAsignarTutela]{Cuadro 4.\arabic{tabla}}}). Esto es necesario en el primer proyecto del colegiado encargado. Si el Colegiado supervisado comete un infracción durante la ejecución del proyecto, la sanción también se le aplicará al tutelador.
+  \newpage~
+	\item \addtocounter{tabla}{1} Por último, queda la asignación de tutelador al encargado de un proyecto (\textbf{\hyperref[tab:curAsignarTutela]{Cuadro 4.\arabic{tabla}}}). Esto es necesario en el primer proyecto del colegiado encargado. Si el Colegiado supervisado comete una infracción durante la ejecución del proyecto, la sanción también se le aplicará al tutelador.
 		\begin{table}[!htbp]
 		  \centering \addtocounter{casouso}{1}
 		  \begin{tabular}{|l | p{100mm}|}
@@ -1542,52 +1541,58 @@ Finalmente, y de acuerdo al requisito \textbf{\hyperref[tab:rfGestProyectos]{Ges
 
 
 
-\pagebreak
-\section{Modelo de Clases}
+\newpage~
+\section{Modelo de clases}
 \label{mc} El modelo de clases tiene como objetivo principal el describir la estructura de un sistema mostrando sus clases, atributos, operaciones y relaciones entre los objetos. Para definir este modelo se han creado tres diagramas, que se encargarán de representar las entidades, las interfaces y el control de estas. \\
 
 \addtocounter{figura_cap4}{1}
-En primer lugar tenemos el diagrama de clases de entidad (\textbf{\hyperref[fig:ClasesEntidad]{Figura 4.\arabic{figura_cap4}}}), que definirá los objetos que existirán en el sistema, y las relaciones entre ellos, además de sus atributos y operaciones propias. \\
+En primer lugar, tenemos el diagrama de clases de entidad (\textbf{\hyperref[fig:ClasesEntidad]{Figura 4.\arabic{figura_cap4}}}), que definirá los objetos que existirán en el sistema, y las relaciones entre ellos, además de sus atributos y operaciones propias. \\
 
 \addtocounter{figura_cap4}{1}
-Después tenemos el diagrama de clases de interfaz (\textbf{\hyperref[fig:ClasesInterfaz]{Figura 4.\arabic{figura_cap4}}}), que establece las vistas que contendrá la aplicación a desarrollar. Estos objetos cuentan con operaciones que podrá realizar el usuario sobre cada vista, haciendo referencia en su mayoría a los botones de las mismas. \\
+Después, tenemos el diagrama de clases de interfaz (\textbf{\hyperref[fig:ClasesInterfaz]{Figura 4.\arabic{figura_cap4}}}), que establece las vistas que contendrá la aplicación a desarrollar. Estos objetos cuentan con operaciones que podrá realizar el usuario sobre cada vista, haciendo referencia en su mayoría a los botones de las mismas. \\
 
 \addtocounter{figura_cap4}{1}
-Por último tenemos el diagrama de clases de control (\textbf{\hyperref[fig:ClasesControl]{Figura 4.\arabic{figura_cap4}}}), que se encarga de actuar entre las entidades y las interfaces. Estas son las que realizan en su mayoría la actividad del sistema.
+Por último, tenemos el diagrama de clases de control (\textbf{\hyperref[fig:ClasesControl]{Figura 4.\arabic{figura_cap4}}}), que se encarga de actuar entre las entidades y las interfaces. Estas son las que realizan en su mayoría la actividad del sistema.
 
 \begin{landscape}
+  \label{fig:ClasesEntidad}
+  \vspace*{\fill}
 	\begin{figure}[!htbp]
 	  \centering
 	  \includegraphics[width=230mm]{3_5-ClasesEntidad.png}
 	  \caption{Diagrama de Clases (Entidades)}
-	  \label{fig:ClasesEntidad}
 	\end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:ClasesInterfaz}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{3_5-ClasesInterfaz.png}
     \caption{Diagrama de Clases (Interfaces)}
-    \label{fig:ClasesInterfaz}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 
 \begin{landscape}
+  \label{fig:ClasesControl}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=215mm]{3_5-ClasesControl.png}
     \caption{Diagrama de Clases (Control)}
-    \label{fig:ClasesControl}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
-\pagebreak
-\section{Diagramas de Secuencia}
+\newpage~
+\section{Diagramas de secuencia}
 Los diagramas de secuencia sirven para describir el comportamiento dinámico del sistema, haciendo énfasis en la secuencia de mensajes intercambiados por los objetos. Estos describirán el flujo normal y alternativo definido en los \textbf{\hyperref[cu]{Casos de Uso}} utilizando los objetos de los diagramas de clases del apartado \textbf{\hyperref[mc]{Modelo de Clases}}. \\
 
 
@@ -1604,12 +1609,14 @@ Primero, respecto al caso de uso \textbf{\hyperref[tab:cuuConsultaTiposLst]{Cons
 \addtocounter{figura_cap4}{1}
 Después, en el caso de uso \textbf{\hyperref[tab:cuuConsultaLstPub]{Consultar Lista Pública (CU02)}} tenemos el flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU2_Normal]{Figura 4.\arabic{figura_cap4}}}).
 \begin{landscape}
+  \label{fig:Secuencia_CU2_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU02_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 2 - Flujo Normal)}
-    \label{fig:Secuencia_CU2_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
@@ -1624,12 +1631,14 @@ El tercer caso de uso, \textbf{\hyperref[tab:cuuRegPeticProf]{Registrar Petició
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU3_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=222mm]{DiagramasSecuencia/CU03_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 3 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU3_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
@@ -1644,12 +1653,14 @@ El caso de uso \textbf{\hyperref[tab:cucIniSes]{Iniciar Sesión (CU04)}} tiene u
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU4_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=195mm]{DiagramasSecuencia/CU04_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 4 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU4_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
@@ -1699,22 +1710,26 @@ Los diagramas de secuencia para los casos de uso de consultas como Colegiado son
 \addtocounter{figura_cap4}{1}
 En \textbf{\hyperref[tab:curColegAlta]{Dar Alta en TAP a Colegiado (CU10)}}, tenemos un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU10_Normal]{Figura 4.\arabic{figura_cap4}}}) \addtocounter{figura_cap4}{1} y uno alternativo si se trata de introducir un número de colegiado repetido (\textbf{\hyperref[fig:Secuencia_CU10_Alt1]{Figura 4.\arabic{figura_cap4}}}).
 \begin{landscape}
+  \label{fig:Secuencia_CU10_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU10_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 10 - Flujo Normal)}
-    \label{fig:Secuencia_CU10_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU10_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU10_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 10 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU10_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
@@ -1731,65 +1746,77 @@ El caso de uso \textbf{\hyperref[tab:curConsultaInfoColeg]{Consultar Informació
 \addtocounter{figura_cap4}{1}
 En \textbf{\hyperref[tab:curActualizarColeg]{Actualizar Información de un Colegiado (CU12)}}, tenemos un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU12_Normal]{Figura 4.\arabic{figura_cap4}}}) \addtocounter{figura_cap4}{1} y uno alternativo si se trata de dejar vacío un campo de datos obligatorio (\textbf{\hyperref[fig:Secuencia_CU12_Alt1]{Figura 4.\arabic{figura_cap4}}}).
 \begin{landscape}
+  \label{fig:Secuencia_CU12_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU12_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 12 - Flujo Normal)}
-    \label{fig:Secuencia_CU12_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU12_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU12_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 12 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU12_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \addtocounter{figura_cap4}{1}
-En los casos de uso \textbf{\hyperref[tab:curCrearTipoLst]{Crear Nuevo Tipo de Lista (CU13)}} y \textbf{\hyperref[tab:curActualizarTipoLst]{Actualizar Tipo de Lista (CU14)}}, del requisito \textbf{\hyperref[tab:rfGestTipoLst]{Gestión de Tipos de Lista (RF-3)}}, cada uno tiene un flujo normal (\textbf{\hyperref[fig:Secuencia_CU13_Normal]{Figura 4.\arabic{figura_cap4}}} y\addtocounter{figura_cap4}{1} \textbf{\hyperref[fig:Secuencia_CU14_Normal]{Figura 4.\arabic{figura_cap4}}} respectivamente) y otro alternativo.\addtocounter{figura_cap4}{1} En el primero, el flujo alternativo viene marcado por el intento de crear un nuevo tipo con el mismo nombre de otro ya existente (\textbf{\hyperref[fig:Secuencia_CU13_Alt1]{Figura 4.\arabic{figura_cap4}}}),\addtocounter{figura_cap4}{1} y el segundo por dejar vacío alguno de los campos obligatorios durante la actualización (\textbf{\hyperref[fig:Secuencia_CU14_Alt1]{Figura 4.\arabic{figura_cap4}}}).
+En los casos de uso \textbf{\hyperref[tab:curCrearTipoLst]{Crear Nuevo Tipo de Lista (CU13)}} y \textbf{\hyperref[tab:curActualizarTipoLst]{Actualizar Tipo de Lista (CU14)}}, del requisito \textbf{\hyperref[tab:rfGestTipoLst]{Gestión de Tipos de Lista (RF-3)}}, cada uno tiene un flujo normal (\textbf{\hyperref[fig:Secuencia_CU13_Normal]{Figura 4.\arabic{figura_cap4}}} y\addtocounter{figura_cap4}{1} \textbf{\hyperref[fig:Secuencia_CU14_Normal]{Figura 4.26}} respectivamente) y otro alternativo.\addtocounter{figura_cap4}{1} En el primero, el flujo alternativo viene marcado por el intento de crear un nuevo tipo con el mismo nombre de otro ya existente (\textbf{\hyperref[fig:Secuencia_CU13_Alt1]{Figura 4.25}}),\addtocounter{figura_cap4}{1} y el segundo por dejar vacío alguno de los campos obligatorios durante la actualización (\textbf{\hyperref[fig:Secuencia_CU14_Alt1]{Figura 4.\arabic{figura_cap4}}}).
 
 \begin{landscape}
+  \label{fig:Secuencia_CU13_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU13_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 13 - Flujo Normal)}
-    \label{fig:Secuencia_CU13_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU13_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU13_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 13 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU13_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU14_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU14_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 14 - Flujo Normal)}
-    \label{fig:Secuencia_CU14_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU14_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU14_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 14 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU14_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
@@ -1800,77 +1827,91 @@ El requisito funcional \textbf{\hyperref[tab:rfGestEspec]{Gestión de Campos de 
   \item \addtocounter{figura_cap4}{1} Respecto a \textbf{\hyperref[tab:curConsultarEspec]{Consultar una Especialización (CU16)}}, solo hay un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU16_Normal]{Figura 4.\arabic{figura_cap4}}}).
   \item \addtocounter{figura_cap4}{1} En \textbf{\hyperref[tab:curActualizarEspec]{Actualizar Información de una Especialización (CU17)}}, existe un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU17_Normal]{Figura 4.\arabic{figura_cap4}}}) \addtocounter{figura_cap4}{1} y uno alternativo si se trata de dejar vacío un campo de datos obligatorio (\textbf{\hyperref[fig:Secuencia_CU17_Alt1]{Figura 4.\arabic{figura_cap4}}}).
   \item \addtocounter{figura_cap4}{1} El caso de uso \textbf{\hyperref[tab:curAsignarEspecColeg]{Asignar Especialización a Colegiado (CU18)}}, tiene únicamente un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU18_Normal]{Figura 4.\arabic{figura_cap4}}}).
-  \item \addtocounter{figura_cap4}{1} Y por último, \textbf{\hyperref[tab:curRequerirEspecTipoLst]{Requerir Especialización a Tipo de Lista (CU19)}}, que cuenta solo con un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU19_Normal]{Figura 4.\arabic{figura_cap4}}}).
+  \item \addtocounter{figura_cap4}{1} Y, por último, \textbf{\hyperref[tab:curRequerirEspecTipoLst]{Requerir Especialización a Tipo de Lista (CU19)}}, que cuenta solo con un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU19_Normal]{Figura 4.\arabic{figura_cap4}}}).
 \end{itemize}
 
 \begin{landscape}
+  \label{fig:Secuencia_CU15_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU15_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 15 - Flujo Normal)}
-    \label{fig:Secuencia_CU15_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU15_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU15_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 15 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU15_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU16_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU16_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 16 - Flujo Normal)}
-    \label{fig:Secuencia_CU16_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 
 \begin{landscape}
+  \label{fig:Secuencia_CU17_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU17_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 17 - Flujo Normal)}
-    \label{fig:Secuencia_CU17_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU17_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU17_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 17 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU17_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU18_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU18_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 18 - Flujo Normal)}
-    \label{fig:Secuencia_CU18_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU19_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU19_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 19 - Flujo Normal)}
-    \label{fig:Secuencia_CU19_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
@@ -1885,82 +1926,98 @@ El requisito \textbf{\hyperref[tab:rfGestLst]{Gestión de Listas (RF-5)}} agrupa
 \end{itemize}
 
 \begin{landscape}
+  \label{fig:Secuencia_CU20_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU20_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 20 - Flujo Normal)}
-    \label{fig:Secuencia_CU20_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU20_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU20_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 20 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU20_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU21_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU21_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 21 - Flujo Normal)}
-    \label{fig:Secuencia_CU21_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU22_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU22_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 22 - Flujo Normal)}
-    \label{fig:Secuencia_CU22_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU22_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU22_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 22 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU22_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU23_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU23_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 23 - Flujo Normal)}
-    \label{fig:Secuencia_CU23_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU23_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU23_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 23 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU23_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU24_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU24_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 24 - Flujo Normal)}
-    \label{fig:Secuencia_CU24_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
@@ -1974,52 +2031,62 @@ Respecto al requisito \textbf{\hyperref[tab:rfGestComTAP]{Gestión de Comisiones
 \end{itemize}
 
 \begin{landscape}
+  \label{fig:Secuencia_CU25_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU25_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 25 - Flujo Normal)}
-    \label{fig:Secuencia_CU25_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU26_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU26_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 26 - Flujo Normal)}
-    \label{fig:Secuencia_CU26_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU26_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU26_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 26 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU26_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU27_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU27_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 27 - Flujo Normal)}
-    \label{fig:Secuencia_CU27_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU28_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU28_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 28 - Flujo Normal)}
-    \label{fig:Secuencia_CU28_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
@@ -2031,86 +2098,102 @@ Finalmente, tenemos los diagramas de secuencia relativos al requisito \textbf{\h
   \item \addtocounter{figura_cap4}{1} Para el caso de uso \textbf{\hyperref[tab:curConsultarProyectos]{Consultar Proyecto (CU30)}}, solo hay un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU30_Normal]{Figura 4.\arabic{figura_cap4}}}).
   \item \addtocounter{figura_cap4}{1} \textbf{\hyperref[tab:curActualizarProyecto]{Actualizar Estado del Proyecto (CU31)}}, tiene solo un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU31_Normal]{Figura 4.\arabic{figura_cap4}}}).
   \item \addtocounter{figura_cap4}{1} El caso \textbf{\hyperref[tab:curAsignarProfProyecto]{Añadir Profesional a Proyecto (CU32)}}, tiene un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU32_Normal]{Figura 4.\arabic{figura_cap4}}}) \addtocounter{figura_cap4}{1} y uno alternativo si no hay ningún colegiado profesional disponible en la lista (\textbf{\hyperref[fig:Secuencia_CU32_Alt1]{Figura 4.\arabic{figura_cap4}}}).
-  \item \addtocounter{figura_cap4}{1} En \textbf{\hyperref[tab:curAsignarRevisorProyecto]{Añadir Revisor a Proyecto (CU33)}}, tenemos un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU33_Normal]{Figura \arabic{figura_cap4}}}) \addtocounter{figura_cap4}{1} y uno alternativo si no hay ningún revisor disponible en la lista (\textbf{\hyperref[fig:Secuencia_CU33_Alt1]{Figura 4.\arabic{figura_cap4}}}).
-  \item \addtocounter{figura_cap4}{1} Por último tenemos el caso de uso \textbf{\hyperref[tab:curAsignarTutela]{Asignar Tutelador a un Proyecto (CU34)}}, que cuenta únicamente coun un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU34_Normal]{Figura 4.\arabic{figura_cap4}}}).
+  \item \addtocounter{figura_cap4}{1} En \textbf{\hyperref[tab:curAsignarRevisorProyecto]{Añadir Revisor a Proyecto (CU33)}}, tenemos un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU33_Normal]{Figura 4.\arabic{figura_cap4}}}) \addtocounter{figura_cap4}{1} y uno alternativo si no hay ningún revisor disponible en la lista (\textbf{\hyperref[fig:Secuencia_CU33_Alt1]{Figura 4.\arabic{figura_cap4}}}).
+  \item \addtocounter{figura_cap4}{1} Por último, tenemos el caso de uso \textbf{\hyperref[tab:curAsignarTutela]{Asignar Tutelador a un Proyecto (CU34)}}, que cuenta únicamente con un flujo de secuencia normal (\textbf{\hyperref[fig:Secuencia_CU34_Normal]{Figura 4.\arabic{figura_cap4}}}).
 \end{itemize}
 
 \begin{landscape}
+  \label{fig:Secuencia_CU29_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU29_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 29 - Flujo Normal)}
-    \label{fig:Secuencia_CU29_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU30_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU30_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 30 - Flujo Normal)}
-    \label{fig:Secuencia_CU30_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU31_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU31_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 31 - Flujo Normal)}
-    \label{fig:Secuencia_CU31_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU32_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU32_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 32 - Flujo Normal)}
-    \label{fig:Secuencia_CU32_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU32_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU32_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 32 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU32_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU33_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU33_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 33 - Flujo Normal)}
-    \label{fig:Secuencia_CU33_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU33_Alt1}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU33_Alt1.png}
     \caption{Diagrama de Secuencia (Caso de Uso 33 - Flujo Alternativo 1)}
-    \label{fig:Secuencia_CU33_Alt1}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier
 
 \begin{landscape}
+  \label{fig:Secuencia_CU34_Normal}
+  \vspace*{\fill}
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=230mm]{DiagramasSecuencia/CU34_Normal.png}
     \caption{Diagrama de Secuencia (Caso de Uso 34 - Flujo Normal)}
-    \label{fig:Secuencia_CU34_Normal}
   \end{figure}
+  \vfill
 \end{landscape}
 \FloatBarrier

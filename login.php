@@ -8,10 +8,19 @@
 		exit();
 	}
 
+	// Se han introducido los campos de número de colegiado y contraseña y se comprueba el inicio de sesión
 	if(!empty($_POST['NumColeg']) && !empty($_POST['pass'])){
 		$numColeg = $_REQUEST["NumColeg"];
 		$cryptedPass = hash('sha256', $_REQUEST["pass"]);
-	    $stmt = $conn->query("SELECT Rol, Nombre, Apellidos, Pass FROM colegiado WHERE NumColegiado='".$numColeg."'");
+
+		// Comprobación de que los datos introducidos cumplen con el formato adecuado
+		if (!preg_match("/^([0-9]+)$/", $numColeg)) { 
+			echo'<script type="text/javascript"> alert("Error al iniciar sesión. El número de colegiado debe ser un número."); window.location.href="login.php"; </script>';
+		    exit();
+		}
+
+		// Comprobar si los datos coinciden
+	    $stmt = $conn->query("SELECT Rol, Nombre, Apellidos, Pass FROM colegiado WHERE NumColegiado='$numColeg'");
 
 	    if($stmt->num_rows == 1){
 	    	$row = $stmt->fetch_assoc();
